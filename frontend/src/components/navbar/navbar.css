@@ -63,7 +63,7 @@
   }
   
   .nav-links:hover {
-    color: #1786a8;
+    color: #25b4e0;
   }
 
   .nav-links-2:hover {
@@ -71,7 +71,7 @@
   }
   
   .sign-in-button {
-    background-color: #25b4e0;
+    background-color: #52bb90;
     color: #ffffff;
     padding: 0.5rem 1rem;
     border: none; 
@@ -82,6 +82,6 @@
   }
   
   .sign-in-button:hover {
-    background-color: #52bb90; 
+    background-color: #46a07a; 
     color: #ffffff;
   }

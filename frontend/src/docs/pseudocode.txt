@@ -1,11 +1,15 @@
 DV Pseudocode:homepage 
 
+insp sites: 
+https://mentorcruise.com/ 
+https://www.guru.com/m/hire/freelancers/mentors/
+
 navbar:
 
 	1.	Created Navbar:
 	•	Sections: Home, Find Mentors, About, Contact (Formspree for contact form).
 	•	Made multiple logo designs.
-	•	Color theme: Teal (#25b4e) and Green (#52bb90).
+	•	Color theme: Teal (#25b4e0) and Green (#52bb90).
 Quick Brainstorm:
 	•	Do the colors blend well with the logos?
 	•	Mobile view ?? 
@@ -30,6 +34,10 @@ Quick Brainstorm:
 	•	Plan to include mentor specialties using hashtags.
 Quick Brainstorm:
 	•	How many mentor boxes should display per row on different screen sizes?
+    •   Website layout closer to each other ?
+    •   Type Effect
+    •   Sponsor divider 
+
 
 
 

@@ -38,6 +38,10 @@ Quick Brainstorm:
     •   Type Effect
     •   Sponsor divider 
 
+    need to Do
+
+    fox the home container to bigger screen size to match nav and sponsor 
+
 
 
 

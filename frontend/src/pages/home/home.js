@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../../components/navbar/navbar';
 import home from './home.css';
+import SponsorDivider from '../../components/sponsor/sponsorDivider';
 
 function Home() {
   return (
@@ -23,6 +24,7 @@ function Home() {
           {/* for the animation for the mentors */} 
         </div>
       </div>
+      <SponsorDivider />
     </div>
   );
 }

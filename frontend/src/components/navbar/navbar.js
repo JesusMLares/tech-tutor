@@ -14,13 +14,13 @@ function Navbar() {
             <Link to="/" className="nav-links">Home</Link>
           </li>
           <li className="nav-item">
-            <Link to="/mentors" className="nav-links">Find Mentors</Link>
+            <Link to="/mentors" className="nav-links-2">Find Mentors</Link>
           </li>
           <li className="nav-item">
             <Link to="/about" className="nav-links">About</Link>
           </li>
           <li className="nav-item">
-            <Link to="/contact" className="nav-links">Contact</Link>
+            <Link to="/contact" className="nav-links-2">Contact</Link>
           </li>
           <li className="nav-item">
             <Link to="/login" className="sign-in-button">Login</Link>

@@ -54,9 +54,20 @@
     padding: 0.5rem 1rem;
     transition: all 0.3s ease-out;
   }
+
+  .nav-links-2 {
+    color: #000000; 
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease-out;
+  }
   
   .nav-links:hover {
     color: #1786a8;
+  }
+
+  .nav-links-2:hover {
+    color: #52bb90;
   }
   
   .sign-in-button {

@@ -19,6 +19,11 @@ const GET_USERS_QUERY = gql`
       id
       name
       email
+      posts {
+        id
+        title
+        content
+      }
     }
   }
 `;
@@ -56,11 +61,16 @@ const TestGraphQL = () => {
 
     const handleDeleteUser = async () => {
         const variables = { id: parseInt(deleteUserId, 10) };
-        await client.request(DELETE_USER_MUTATION, variables);
-        setDeleteUserId('');
-        handleGetUsers(); // Refresh the user list after deletion
-      };
-  
+        try {
+          await client.request(DELETE_USER_MUTATION, variables);
+          setDeleteUserId('');
+          handleGetUsers(); // Refresh the user list after deletion
+        } catch (error) {
+          console.error(error);
+          alert(error.response.errors[0].message);
+        }
+    };
+
     return (
       <div>
         <h1>Create User</h1>

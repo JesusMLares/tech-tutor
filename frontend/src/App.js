@@ -1,11 +1,11 @@
 //Primsa
 import React from 'react';
-import TestGraphQL from './components/TestGraphQL/testGraphQL';
+import TestGraph from './components/TestGraph/TestGraph';
 
 function App() {
   return (
     <div >
-      <TestGraphQL />
+      <TestGraph />
     </div>
   );
 }

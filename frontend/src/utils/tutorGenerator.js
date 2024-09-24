@@ -34,6 +34,10 @@ const skills = [
     return photoUrl;
   }
   
+  function getRandomRating() {
+    return (Math.random() * (5.0 - 3.5) + 3.5).toFixed(1);
+  }
+
   async function getRandomTutor(usedUrls) {
     try {
       const response = await fetch('https://randomuser.me/api/');
@@ -46,7 +50,8 @@ const skills = [
         name: `${user.name.first} ${user.name.last}`,
         photo: photoUrl,
         skills: getRandomSkills(),
-        gender: user.gender
+        gender: user.gender,
+        rating: getRandomRating()
       };
     } catch (error) {
       console.error('Error fetching random tutor:', error);

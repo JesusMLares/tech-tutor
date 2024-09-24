@@ -11,7 +11,7 @@ function Home() {
       <div className="home-container">
         <div className="home-left">
           <p className='home-slogan'>Learn to code and innovate, with a guide to help you elevate Tech Tutor</p>
-          <h1 className="home-title">1 on 1 Mentorship</h1>
+          <h1 className="home-title">1-on-1 Guidance</h1>
           <div className="search-bar">
             <input 
               type="text" 

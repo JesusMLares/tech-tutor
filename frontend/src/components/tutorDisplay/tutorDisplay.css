@@ -11,7 +11,7 @@
   
   .tutor-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
     justify-content: center;
   }
@@ -52,14 +52,19 @@
   }
   
   .skill-tag {
-    background-color: #e0f2fe;
-    color: #0369a1;
+    background-color: #52bb90;
+    color: #ffffff;
     padding: 0.25rem 0.5rem;
     border-radius: 20px;
     font-size: 0.8rem;
     margin: 0.25rem;
   }
   
+  .tutor-rating {
+    font-weight: bold;
+    color: #1786a8;
+    margin-top: 0.5rem;
+  }
   
 
   

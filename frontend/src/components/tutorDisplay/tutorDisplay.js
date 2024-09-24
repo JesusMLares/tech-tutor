@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getMultipleRandomTutors } from '../../utils/tutorGenerator';
 import './tutorDisplay.css';
 
-const TutorCard = ({ name, photo, skills }) => (
+const TutorCard = ({ name, photo, skills, rating }) => (
     <div className="tutor-card">
       <img src={photo} alt={name} className="tutor-image" />
       <h3>{name}</h3>
@@ -11,6 +11,7 @@ const TutorCard = ({ name, photo, skills }) => (
           <span key={index} className="skill-tag">{skill}</span>
         ))}
       </div>
+      <p className="tutor-rating">Rating: {rating} / 5.0</p>
     </div>
   );
 
@@ -21,7 +22,7 @@ const TutorDisplay = () => {
   useEffect(() => {
     async function fetchTutors() {
       try {
-        const randomTutors = await getMultipleRandomTutors(4);
+        const randomTutors = await getMultipleRandomTutors(12);
         setTutors(randomTutors);
       } catch (error) {
         console.error('Error fetching tutors:', error);

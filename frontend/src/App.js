@@ -1,6 +1,6 @@
 //Primsa
 import React from 'react';
-import TestGraphQL from './components/TestGraphQL/TestGraphQL';
+import TestGraphQL from './components/TestGraphQL/testGraphQL';
 
 function App() {
   return (

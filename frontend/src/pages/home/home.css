@@ -1,0 +1,91 @@
+.home {
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .home-container {
+    display: flex;
+    flex: 1;
+    padding: 2rem;
+  }
+  
+  .home-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 100px;
+  }
+  
+  .home-slogan {
+    font-size: 1.5rem;
+    color: #555;
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+    max-width: 600px; /* padding making the line slightly off */
+    position: relative;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.home-slogan::before,
+.home-slogan::after {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 3px;
+}
+
+.home-slogan::before {
+    top: 0;
+    right: 0; 
+    background-color: #52bb90;
+}
+
+.home-slogan::after {
+    bottom: 0;
+    left: 0;
+    background-color: #25b4e0;
+}
+
+  .home-title {
+    font-size: 4rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    color: #1786a8;
+  }
+  
+  .search-bar {
+    display: flex;
+    margin-top: 1rem;
+  }
+  
+  .search-input {
+    flex: 1;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 2px solid #52bb90;
+    border-radius: 4px 0 0 4px;
+  }
+  
+  .search-button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    background-color: #52bb90;
+    color: white;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .search-button:hover {
+    background-color: #46a07a;
+  }
+  
+  /* maybe can can the animation for the mentors */
+  .home-right {
+    flex: 1;
+    
+  }
+  

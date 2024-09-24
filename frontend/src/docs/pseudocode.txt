@@ -1,0 +1,53 @@
+DV Pseudocode:homepage 
+
+insp sites: 
+https://mentorcruise.com/ 
+https://www.guru.com/m/hire/freelancers/mentors/
+
+navbar:
+
+	1.	Created Navbar:
+	•	Sections: Home, Find Mentors, About, Contact (Formspree for contact form).
+	•	Made multiple logo designs.
+	•	Color theme: Teal (#25b4e0) and Green (#52bb90).
+Quick Brainstorm:
+	•	Do the colors blend well with the logos?
+	•	Mobile view ?? 
+
+
+
+
+main section:
+
+	2.	Main Img:
+	•	Improved style for better user engagement.
+Quick Brainstorm:
+	3.	Main Section (Home Page):
+	•	Add a hero image with blended colors.
+	•	Insert a search bar.
+	•	Plan to include simple animations (similar to MentorCruise).
+Quick Brainstorm:
+	•	Will the search bar need an animation when focused?
+	•	Should the hero image be static or have a subtle animation?
+	4.	Mentor Boxes:
+	•	Use flexbox for mentor containers.
+	•	Plan to include mentor specialties using hashtags.
+Quick Brainstorm:
+	•	How many mentor boxes should display per row on different screen sizes?
+    •   Website layout closer to each other ?
+    •   Type Effect
+    •   Sponsor divider 
+
+    need to Do
+
+    fox the home container to bigger screen size to match nav and sponsor 
+
+
+
+
+
+Future Ideas:
+
+	•	Create detailed mentor profile pages with reviews, availability, skills, and scheduling options.
+	•	Add star ratings and a “favorite” feature for mentors.
+	

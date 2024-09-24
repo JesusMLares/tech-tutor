@@ -1,7 +1,8 @@
 import React from "react";
-import AccountNav from "./accountNav/accountNav";
+import AccountNav from "../accountNav/accountNav";
+import "./Account.css";
 
-function Account() {
+function UserAccount() {
   return (
     <div className="min-h-screen flex flex-col">
       <AccountNav />
@@ -19,9 +20,9 @@ function Account() {
           <div className="p-10 min-h-[300px] bg-white rounded-lg custom-shadow">
             <h1 className="text-2xl font-bold mb-6">Appointment Times</h1>
             <ul>
-              <li className="pb-3">September 28, 10:00 AM</li>
-              <li className="pb-3">October 5, 1:30 PM</li>
-              <li className="pb-3">October 12, 4:00 PM</li>
+              <li className="pb-3">September 28, 10:00 AM (With Mentor Name)</li>
+              <li className="pb-3">October 5, 1:30 PM (With Mentor Name)</li>
+              <li className="pb-3">October 12, 4:00 PM (With Mentor Name)</li>
             </ul>
           </div>
         </div>
@@ -30,4 +31,4 @@ function Account() {
   );
 }
 
-export default Account;
+export default UserAccount;

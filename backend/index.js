@@ -3,7 +3,7 @@ const { makeExecutableSchema } = require("@graphql-tools/schema")
 const { readFileSync } = require("fs")
 const { join } = require("path")
 const { PrismaClient } = require("@prisma/client")
-const bcrypt = require("bcryptjs")
+const bcrypt = require("bcrypt")
 const { hash } = require("crypto")
 require("dotenv").config()
 

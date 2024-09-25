@@ -1,7 +1,9 @@
 type User {
-  id: Int!
-  name: String!
+  id: String!
+  firstName: String!
+  lastName: String!
   email: String!
+  role: String!
   posts: [Post!]!
 }
 
@@ -10,6 +12,7 @@ type Post {
   title: String!
   content: String
   published: Boolean!
+  authorId: String!
   author: User!
 }
 
@@ -19,10 +22,18 @@ type Query {
 }
 
 type Mutation {
-  createUser(name: String!, email: String!): User!
-  createPost(title: String!, content: String, authorId: Int!): Post!
-  updateUser(id: Int!, name: String, email: String): User!
+  createUser(input: UserInput!): User!
+  createPost(title: String!, content: String, published: Boolean, authorId: String!): Post!
+  updateUser(id: String!, firstName: String, lastName: String, email: String, password_hash: String, role: String): User!
   updatePost(id: Int!, title: String, content: String, published: Boolean): Post!
-  deleteUser(id: Int!): User!
+  deleteUser(id: String!): User!
   deletePost(id: Int!): Post!
+}
+
+input UserInput {
+  firstName: String!
+  lastName: String!
+  email: String!
+  password_hash: String!
+  role: String!
 }

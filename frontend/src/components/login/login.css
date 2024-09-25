@@ -94,3 +94,7 @@ input[type="checkbox"] {
         display: none;
     }
 }
+
+.custom-color {
+    color: #0000EE;
+}

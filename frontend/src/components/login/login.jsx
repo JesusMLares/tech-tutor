@@ -1,6 +1,7 @@
 import React from "react";
 import "./login.css";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 
@@ -47,6 +48,7 @@ function Login() {
             <label htmlFor="mentor-checkbox">
               I am a mentor 
               <input type="checkbox" id="mentor-checkbox" name="checkbox" />
+            <Link to="/signUp" className="pl-12 custom-color">Sign Up</Link>
             </label>
             <br />
             <button type="submit" className="inputs">Log in</button>

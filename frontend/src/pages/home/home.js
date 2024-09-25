@@ -7,6 +7,7 @@ import TutorDisplay from '../../components/tutorDisplay/tutorDisplay';
 import Showcase from '../../components/showcase/showcase';
 import { getMultipleRandomTutors } from '../../utils/tutorGenerator';
 import Footer from '../../components/footer/footer';
+import FooterFiller from '../../components/footerfiller/footerFiller';
 
 function Home() {
   const [tutors, setTutors] = useState([]);
@@ -74,6 +75,7 @@ function Home() {
       <SponsorDivider />
       <Showcase />
       <TutorDisplay />
+      <FooterFiller />
       <Footer />
     </div>
   );

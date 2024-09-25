@@ -7,14 +7,14 @@
   .home-container {
     display: flex;
     flex: 1;
-    padding: 5rem;
+    /* padding: 5rem; */ /* Remove padding for the scroll up to touch */
   }
   
   .home-left {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-left: 100px;
+    padding-left: 180px;
   }
   
   .home-slogan {
@@ -86,6 +86,56 @@
   /* maybe can can the animation for the mentors */
   .home-right {
     flex: 1;
-    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
   }
   
+  .tutor-roll-container {
+    width: 300px; 
+    height: 80vh; 
+    overflow: hidden;
+    border-radius: 8px; 
+    position: relative;
+    left: 10px;
+  }
+  
+  .tutor-roll {
+    animation: scrollUp 30s linear infinite;
+  }
+  
+  .tutor {
+    padding: 10px;
+    margin: 5px 0;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+  
+  .tutor-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .tutor h3 {
+    margin: 5px 0;
+    font-size: 1rem;
+  }
+  
+  .tutor p {
+    margin: 3px 0;
+    font-size: 0.8rem;
+  }
+
+  @keyframes scrollUp {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-50%);
+    }
+  }

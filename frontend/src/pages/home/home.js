@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '../../components/navbar/navbar';
-import home from './home.css';
+import './home.css'; 
 import SponsorDivider from '../../components/sponsor/sponsorDivider';
 import TutorDisplay from '../../components/tutorDisplay/tutorDisplay';
 import Showcase from '../../components/showcase/showcase';
+import { getMultipleRandomTutors } from '../../utils/tutorGenerator';
 
 function Home() {
+  const [tutors, setTutors] = useState([]);
+
+  useEffect(() => {
+    async function fetchTutors() {
+      const fetchedTutors = await getMultipleRandomTutors(10);
+      setTutors(fetchedTutors);
+    }
+    fetchTutors();
+  }, []);
+
   return (
     <div className="home">
       <Navbar />
@@ -23,7 +34,28 @@ function Home() {
           </div>
         </div>
         <div className="home-right">
-          {/* for the animation for the mentors */} 
+          <div className="tutor-roll-container">
+            <div className="tutor-roll">
+              {tutors.map((tutor, index) => (
+                <div key={index} className="tutor">
+                  <img src={tutor.photo} alt={tutor.name} className="tutor-image" />
+                  <h3>{tutor.name}</h3>
+                  <p>Skills: {tutor.skills.join(', ')}</p>
+                  <p>Rating: {tutor.rating}</p>
+                </div>
+              ))}
+            </div>
+            <div className="tutor-roll">
+              {tutors.map((tutor, index) => (
+                <div key={index + tutors.length} className="tutor">
+                  <img src={tutor.photo} alt={tutor.name} className="tutor-image" />
+                  <h3>{tutor.name}</h3>
+                  <p>Skills: {tutor.skills.join(', ')}</p>
+                  <p>Rating: {tutor.rating}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
       <SponsorDivider />

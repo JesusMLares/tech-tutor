@@ -31,12 +31,14 @@
     display: flex;
     align-items: center;
     text-decoration: none;
+    margin-left: auto;
   }
   
   .navbar-logo-img {
-    width: 250px; 
+    width: 190px; 
     height: auto;
-    margin-right: 10px;
+    margin-right: 490px;
+    padding-top: 15px;
   }
   
   .nav-menu {

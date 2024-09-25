@@ -37,22 +37,16 @@ function Home() {
         <div className="home-right">
           <div className="tutor-roll-container">
             <div className="tutor-roll">
-              {tutors.map((tutor, index) => (
-                <div key={index} className="tutor">
-                  <img src={tutor.photo} alt={tutor.name} className="tutor-image" />
-                  <h3>{tutor.name}</h3>
-                  <p>Skills: {tutor.skills.join(', ')}</p>
-                  <p>Rating: {tutor.rating}</p>
-                </div>
+            {tutors.map((tutor, index) => (
+            <div key={index} className="tutor">
+              <img src={tutor.photo} alt={tutor.name} className="tutor-image" />
+              <h3>{tutor.name}</h3>
+              <p className="tutor-skills">
+                {tutor.skills.map((skill, skillIndex) => (
+                 <span key={skillIndex} className="skill-tag">{skill}</span>
               ))}
-            </div>
-            <div className="tutor-roll">
-              {tutors.map((tutor, index) => (
-                <div key={index + tutors.length} className="tutor">
-                  <img src={tutor.photo} alt={tutor.name} className="tutor-image" />
-                  <h3>{tutor.name}</h3>
-                  <p>Skills: {tutor.skills.join(', ')}</p>
-                  <p>Rating: {tutor.rating}</p>
+            </p>
+            <p className="tutor-rating">Rating: {tutor.rating}</p>
                 </div>
               ))}
             </div>

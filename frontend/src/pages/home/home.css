@@ -7,6 +7,8 @@
   .home-container {
     display: flex;
     flex: 1;
+    max-width: 1200px;
+    margin: 0 auto;
     /* padding: 5rem; */ /* Remove padding for the scroll up to touch */
   }
   
@@ -14,7 +16,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-left: 180px;
+    padding-right: 18rem;
   }
   
   .home-slogan {
@@ -108,7 +110,7 @@
   .tutor {
     padding: 10px;
     margin: 5px 0;
-    background-color: #f0f0f0;
+    background-color: #f0f9ff;
     border-radius: 5px;
     text-align: center;
     font-size: 0.9rem;
@@ -129,6 +131,29 @@
   .tutor p {
     margin: 3px 0;
     font-size: 0.8rem;
+  }
+
+  .tutor p.tutor-skills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+  
+  .tutor p.tutor-skills span {
+    background-color: #52bb90;
+    color: #ffffff;
+    padding: 0.25rem 0.5rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    margin: 0.25rem;
+    display: inline-block;
+  }
+  
+  .tutor p.tutor-rating {
+    font-weight: bold;
+    color: #1786a8;
+    margin-top: 0.5rem;
   }
 
   @keyframes scrollUp {

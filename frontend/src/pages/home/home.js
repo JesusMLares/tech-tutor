@@ -5,6 +5,7 @@ import SponsorDivider from '../../components/sponsor/sponsorDivider';
 import TutorDisplay from '../../components/tutorDisplay/tutorDisplay';
 import Showcase from '../../components/showcase/showcase';
 import { getMultipleRandomTutors } from '../../utils/tutorGenerator';
+import Footer from '../../components/footer/footer';
 
 function Home() {
   const [tutors, setTutors] = useState([]);
@@ -61,6 +62,7 @@ function Home() {
       <SponsorDivider />
       <Showcase />
       <TutorDisplay />
+      <Footer />
     </div>
   );
 }

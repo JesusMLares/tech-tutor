@@ -155,6 +155,22 @@ Quick Brainstorm:
 	•	What metrics will be used to assess the effectiveness of this section?
 
 
+Footer Brainstorm:
+
+	1.	Logo:
+	•	Add the Tech Tutor logo.
+	•	Position it on the left side of the footer.
+	2.	Links from Navbar:
+	•	Reuse the navbar links (Home, Find Mentors, About, Contact).
+	•	Arrange them horizontally in the center of the footer.
+	3.	Contact Us Section:
+	•	Add a Contact Us link or small form at the right side.
+	•	Include an email or contact form submission.
+	4.	General Styling:
+	•	Ensure the footer is responsive.
+	•	Use a background color that complements the site (possibly dark teal).
+	•	Center-align text and ensure spacing between elements.
+
 Future Ideas:
 
 	•	Create detailed mentor profile pages with reviews, availability, skills, and scheduling options.

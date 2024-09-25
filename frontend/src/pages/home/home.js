@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import ReactTypingEffect from 'react-typing-effect';
 import Navbar from '../../components/navbar/navbar';
 import './home.css'; 
 import SponsorDivider from '../../components/sponsor/sponsorDivider';
@@ -24,7 +25,24 @@ function Home() {
       <div className="home-container">
         <div className="home-left">
           <p className='home-slogan'>Learn to code and innovate, with a guide to help you elevate Tech Tutor</p>
-          <h1 className="home-title">1-on-1 Guidance</h1>
+          <h1 className="home-title">
+            1-on-1 {' '}
+            <ReactTypingEffect
+              text={[ 'Resume', 'Interview', 'HTML', 'Python', 
+                'CoverLetter', 'React.js', 'SQL', 'Career',
+                'MongoDB', 'TutorSupport', 'Django', 'Portfolio',
+                'JavaScript', 'PostgreSQL', 'Flask', 'Git/GitHub',
+                'Node.js', 'Vue.js', 'Angular', 'TypeScript',
+                'RubyRails', 'C++', 'Swift', 'Go(Golang)',
+                'GraphQL', 'RESTfulAPIs', 'Docker', 'AWS(Cloud)',
+                'Sass (SCSS)', 'JobPrepHelp', 'CSS']}
+              speed={100}
+              eraseDelay={700}
+              typingDelay={100}
+              className='typing-effect'
+            />
+            <br />
+            Guidance</h1>
           <div className="search-bar">
             <input 
               type="text" 

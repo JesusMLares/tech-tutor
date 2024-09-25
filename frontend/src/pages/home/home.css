@@ -56,6 +56,10 @@
     margin-bottom: 2rem;
     color: #1786a8;
   }
+
+  .typing-effect {
+    color:#52bb90;
+  }
   
   .search-bar {
     display: flex;

@@ -1,0 +1,100 @@
+/* Main layout */
+.signup-main-container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Sidebar styling */
+.signup-side-bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #000435;
+    max-width: 25vw;
+    height: 100vh;
+}
+
+.signup-login-logo {
+    max-width: 100%;
+    height: auto;
+    padding: 20px;
+}
+
+
+.signup-login-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Center box for login form */
+.signup-login-box {
+    width: 300px;
+    padding: 40px;
+    background-color: white;
+    box-shadow: 0px 4px 8px #333;
+    border-radius: 8px;
+    text-align: left;
+}
+
+.signup-login-box h1 {
+    font-size: 2rem;
+}
+
+/* Form inputs styling */
+.signup-inputs {
+    width: 100%;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+button.signup-inputs {
+    background-color: #000435;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    transition: background-color 0.3s ease-in;
+}
+
+button.signup-inputs:hover {
+    background-color: #333;
+}
+
+
+.signup-form p, h1 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.signup-form label {
+    display: block;
+    margin-bottom: 15px;
+}
+
+label[for="mentor-checkbox"] {
+    display: flex;
+    align-items: center;
+}
+
+input[type="checkbox"] {
+    margin-left: 3px;
+    vertical-align: middle;
+}
+
+
+@media (max-width: 768px) {
+    .signup-side-bar {
+        display: none;
+    }
+}
+
+.custom-color {
+    color: #0000EE;
+}

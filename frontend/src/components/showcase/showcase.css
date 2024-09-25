@@ -1,0 +1,162 @@
+.showcase-container {
+    padding: 8rem 2rem;
+    background-color: #ffffff;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.tutor-showcase-sc {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+.tutor-showcase-sc h2,
+.become-tutor h2 {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: #0f172a;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.tutor-grid-sc {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.tutor-card-sc {
+    background-color: #f0f9ff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    padding: 1.5rem;
+    text-align: center;
+    width: 250px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tutor-card-sc:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.tutor-image-sc {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    margin-bottom: 1rem;
+}
+
+.tutor-title-sc {
+    color: #475569;
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.tutor-price-sc {
+    font-weight: bold;
+    color: #0369a1;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.tutor-features-sc {
+    list-style-type: none;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+.tutor-features-sc li {
+    margin-bottom: 0.5rem;
+    color: #0f172a;
+}
+
+.showcase-benefits {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+.showcase-benefits h3 {
+    font-size: 2rem;
+    color: #0f172a;
+    margin-bottom: 1rem;
+}
+
+.showcase-benefits p {
+    font-size: 1.1rem;
+    color: #475569;
+    line-height: 1.6;
+}
+
+.benefits-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style-type: none;
+    padding: 0;
+    margin: 2rem 0;
+}
+
+.benefits-list li {
+    margin: 0.5rem 1rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #e0f2fe;
+    border-radius: 20px;
+    color: #0369a1;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.cta-button {
+    background-color: #52bb90;
+    color: white;
+    border: none;
+    padding: 0.75rem 2rem;
+    font-size: 1.1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 1rem;
+}
+
+.cta-button:hover {
+    background-color: #46a07a;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial {
+    max-width: 700px;
+    margin: 2.5rem auto;
+    text-align: center;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: #475569;
+}
+
+.testimonial-author {
+    font-weight: bold;
+    margin-top: 1rem;
+    color: #0f172a;
+}
+
+.become-tutor {
+    margin-top: 4rem;
+    padding: 2rem 0;
+    background-color: #f0f9ff;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.become-tutor p {
+    font-size: 1.1rem;
+    color: #475569;
+    margin-bottom: 1.5rem;
+}

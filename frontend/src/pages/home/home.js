@@ -3,6 +3,7 @@ import Navbar from '../../components/navbar/navbar';
 import home from './home.css';
 import SponsorDivider from '../../components/sponsor/sponsorDivider';
 import TutorDisplay from '../../components/tutorDisplay/tutorDisplay';
+import Showcase from '../../components/showcase/showcase';
 
 function Home() {
   return (
@@ -26,6 +27,7 @@ function Home() {
         </div>
       </div>
       <SponsorDivider />
+      <Showcase />
       <TutorDisplay />
     </div>
   );

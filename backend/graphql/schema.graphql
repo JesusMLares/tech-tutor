@@ -1,28 +1,96 @@
-type User {
-  id: Int!
-  name: String!
-  email: String!
+type Query {
+  users: [User!]!
+  user(id: ID!): User
   posts: [Post!]!
+  post(id: ID!): Post
+  appointments: [Appointment!]!
+  appointment(id: ID!): Appointment
+}
+
+type Mutation {
+  createUser(data: CreateUserInput!): User!
+  createTutor(data: CreateTutorInput!): User!
+  createPost(data: CreatePostInput!): Post!
+  updatePost(id: ID!, data: UpdatePostInput!): Post!
+  deletePost(id: ID!): Post!
+  createAppointment(data: CreateAppointmentInput!): Appointment!
+  deleteAppointment(id: ID!): Appointment!
+  addSkillToTutor(userId: ID!, skill: String!): UserSkills!
+}
+
+type User {
+  id: ID!
+  username: String!
+  firstname: String!
+  lastname: String!
+  email: String!
+  role: Role!
+  posts: [Post!]!
+  appointments: [Appointment!]!
+  skills: [UserSkills!]!
 }
 
 type Post {
-  id: Int!
+  id: ID!
   title: String!
   content: String
   published: Boolean!
   author: User!
+  appointments: [Appointment!]!
 }
 
-type Query {
-  users: [User!]!
-  posts: [Post!]!
+type Appointment {
+  id: ID!
+  user: User!
+  post: Post!
+  tutor: User!
+  date: String!
 }
 
-type Mutation {
-  createUser(name: String!, email: String!): User!
-  createPost(title: String!, content: String, authorId: Int!): Post!
-  updateUser(id: Int!, name: String, email: String): User!
-  updatePost(id: Int!, title: String, content: String, published: Boolean): Post!
-  deleteUser(id: Int!): User!
-  deletePost(id: Int!): Post!
+type UserSkills {
+  id: ID!
+  user: User!
+  skill: String!
+}
+
+enum Role {
+  USER
+  TUTOR
+  ADMIN
+}
+
+input CreateUserInput {
+  username: String!
+  firstname: String!
+  lastname: String!
+  email: String!
+  password: String!
+}
+
+input CreateTutorInput {
+  username: String!
+  firstname: String!
+  lastname: String!
+  email: String!
+  password: String!
+}
+
+input CreatePostInput {
+  title: String!
+  content: String
+  published: Boolean
+  authorId: ID!
+}
+
+input UpdatePostInput {
+  title: String
+  content: String
+  published: Boolean
+}
+
+input CreateAppointmentInput {
+  userId: ID!
+  postId: ID!
+  tutorId: ID!
+  date: String!
 }

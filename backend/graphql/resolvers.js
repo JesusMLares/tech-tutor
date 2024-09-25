@@ -1,21 +1,3 @@
-const { ApolloServer, gql } = require("apollo-server")
-const { makeExecutableSchema } = require("@graphql-tools/schema")
-const { readFileSync } = require("fs")
-const { join } = require("path")
-const { PrismaClient } = require("@prisma/client")
-const bcrypt = require("bcryptjs")
-const { hash } = require("crypto")
-require("dotenv").config()
-
-const prisma = new PrismaClient()
-
-// Define GraphQL schema
-const typeDefs = readFileSync(
-  join(__dirname, "graphql", "schema.graphql"),
-  "utf8"
-)
-
-// Define resolvers
 const resolvers = {
   Query: {
     // Fetch all users
@@ -149,22 +131,22 @@ const resolvers = {
     // Create a new user
     createUser: async (_, { data }) => {
       try {
-        const hashedPassword = await bcrypt.hash(data.password, 10); // Hash the password
         return await prisma.user.create({
           data: {
             username: data.username,
             firstname: data.firstname,
             lastname: data.lastname,
             email: data.email,
-            password: hashedPassword,
+            password: data.password,
             role: "USER",
           },
-        })
+        });
       } catch (error) {
+        console.error('Error creating user:', error); // Log the error details
         if (error.code === "P2002" && error.meta.target.includes("email")) {
-          throw new Error(`A user with the email ${data.email} already exists.`)
+          throw new Error(`A user with the email ${data.email} already exists.`);
         }
-        throw new Error("Error creating user")
+        throw new Error("Error creating user");
       }
     },
     // Create a new tutor
@@ -256,12 +238,4 @@ const resolvers = {
   },
 }
 
-// Create the Apollo Server
-const server = new ApolloServer({ typeDefs, resolvers })
-
-const port = process.env.PORT || 4000
-
-// Start the server
-server.listen({ port }).then(({ url }) => {
-  console.log(`🚀 Server ready at ${url}`)
-})
+module.exports = resolvers

@@ -1,0 +1,107 @@
+.tutor-display {
+    padding: 2rem;
+    background-color: #ffffff;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .tutor-display-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .tutor-display-header h2 {
+    color: #1786a8;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .tutor-display-header p {
+    color: #666;
+    font-size: 1.2rem;
+  }
+  
+  .tutor-display h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #333;
+  }
+  
+  .tutor-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    justify-content: center;
+  }
+  
+  .tutor-card {
+    background-color: #f0f9ff;
+    border-radius: 8px;
+    box-shadow: 0 5px 4px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .tutor-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  .tutor-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+  }
+  
+  .tutor-card h3 {
+    margin: 0.5rem 0;
+    color: #333;
+    font-size: 1.2rem;
+  }
+  
+  .tutor-skills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+  
+  .skill-tag {
+    background-color: #52bb90;
+    color: #ffffff;
+    padding: 0.25rem 0.5rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    margin: 0.25rem;
+  }
+  
+  .tutor-rating {
+    font-weight: bold;
+    color: #1786a8;
+    margin-top: 0.5rem;
+  }
+  
+  .view-all-tutors {
+    text-align: center;
+    margin-top: 3rem;
+  }
+  
+  .view-all-button {
+    background-color: #52bb90;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .view-all-button:hover {
+    background-color: #46a07a;
+  }
+
+  

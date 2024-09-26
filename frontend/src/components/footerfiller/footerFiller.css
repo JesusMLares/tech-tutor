@@ -1,0 +1,114 @@
+.footer-filler {
+    background-color: #ffffff;
+    padding: 4rem;
+  }
+  
+  .footer-filler-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+  
+  .cta-section {
+    text-align: center;
+    margin-bottom: 4rem;
+    background-color: #ffffff;
+    padding: 3rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .cta-section h2 {
+    font-size: 2.5rem;
+    color: #1786a8;
+    margin-bottom: 1rem;
+  }
+  
+  .cta-button {
+    background-color: #52bb90;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(82, 187, 144, 0.3);
+  }
+  
+  .cta-button:hover {
+    background-color: #46a07a;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(82, 187, 144, 0.4);
+  }
+  
+  .stats-section {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 4rem;
+  }
+  
+  .stat-item {
+    text-align: center;
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+  }
+  
+  .stat-item h3 {
+    font-size: 3rem;
+    color: #52bb90;
+    margin-bottom: 0.5rem;
+  }
+  
+  .newsletter-section {
+    text-align: center;
+    background-color: #ffffff;
+    padding: 3rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .newsletter-section h2 {
+    font-size: 2rem;
+    color: #1786a8;
+    margin-bottom: 1rem;
+  }
+  
+  .newsletter-form {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+  }
+  
+  .newsletter-form input {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 30px 0 0 30px;
+    width: 300px;
+    transition: all 0.3s ease;
+  }
+  
+  .newsletter-form input:focus {
+    outline: none;
+    border-color: #52bb90;
+    box-shadow: 0 0 0 2px rgba(82, 187, 144, 0.2);
+  }
+  
+  .newsletter-form button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    background-color: #52bb90;
+    color: white;
+    border: none;
+    border-radius: 0 30px 30px 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .newsletter-form button:hover {
+    background-color: #46a07a;
+  }

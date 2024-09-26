@@ -7,14 +7,16 @@
   .home-container {
     display: flex;
     flex: 1;
-    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    /* padding: 5rem; */ /* Remove padding for the scroll up to touch */
   }
   
   .home-left {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-left: 100px;
+    padding-right: 18rem;
   }
   
   .home-slogan {
@@ -54,6 +56,10 @@
     margin-bottom: 2rem;
     color: #1786a8;
   }
+
+  .typing-effect {
+    color:#52bb90;
+  }
   
   .search-bar {
     display: flex;
@@ -65,7 +71,7 @@
     padding: 0.75rem;
     font-size: 1rem;
     border: 2px solid #52bb90;
-    border-radius: 4px 0 0 4px;
+    border-radius: 30px 0 0 30px;
   }
   
   .search-button {
@@ -74,7 +80,7 @@
     background-color: #52bb90;
     color: white;
     border: none;
-    border-radius: 0 4px 4px 0;
+    border-radius: 0 30px 30px 0;
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
@@ -86,6 +92,79 @@
   /* maybe can can the animation for the mentors */
   .home-right {
     flex: 1;
-    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
   }
   
+  .tutor-roll-container {
+    width: 300px; 
+    height: 80vh; 
+    overflow: hidden;
+    border-radius: 8px; 
+    position: relative;
+    left: 10px;
+  }
+  
+  .tutor-roll {
+    animation: scrollUp 30s linear infinite;
+  }
+  
+  .tutor {
+    padding: 10px;
+    margin: 5px 0;
+    background-color: #f0f9ff;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+  
+  .tutor-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .tutor h3 {
+    margin: 5px 0;
+    font-size: 1rem;
+  }
+  
+  .tutor p {
+    margin: 3px 0;
+    font-size: 0.8rem;
+  }
+
+  .tutor p.tutor-skills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+  
+  .tutor p.tutor-skills span {
+    background-color: #52bb90;
+    color: #ffffff;
+    padding: 0.25rem 0.5rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    margin: 0.25rem;
+    display: inline-block;
+  }
+  
+  .tutor p.tutor-rating {
+    font-weight: bold;
+    color: #1786a8;
+    margin-top: 0.5rem;
+  }
+
+  @keyframes scrollUp {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-50%);
+    }
+  }

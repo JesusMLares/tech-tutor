@@ -61,15 +61,11 @@ const resolvers = {
     },
     updateUser: async (
       _,
-      { id, firstName, lastName, email, password_hash, role }
+      { input }
     ) => {
-      const data = { firstName, lastName, email, role }
-      if (password_hash) {
-        data.password_hash = await bcrypt.hash(password_hash, 10)
-      }
       return await prisma.user.update({
         where: { id },
-        data,
+        data: { firstName, lastName, email, role },
       })
     },
     updatePost: async (_, { id, title, content, published }) => {

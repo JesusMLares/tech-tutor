@@ -22,7 +22,7 @@ type Query {
 }
 
 type Mutation {
-  createUser(input: UserInput!): User!
+  createUser(input: CreateUserInput!): User!
   createPost(title: String!, content: String, published: Boolean, authorId: String!): Post!
   updateUser(id: String!, firstName: String, lastName: String, email: String, password_hash: String, role: String): User!
   updatePost(id: Int!, title: String, content: String, published: Boolean): Post!
@@ -30,10 +30,11 @@ type Mutation {
   deletePost(id: Int!): Post!
 }
 
-input UserInput {
+input CreateUserInput {
   firstName: String!
   lastName: String!
   email: String!
   password_hash: String!
   role: String!
 }
+

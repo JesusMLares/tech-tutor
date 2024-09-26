@@ -4,6 +4,7 @@ import TestCreateUser from './components/Test/TestUser/TestCreateUser';
 import TestUpdateUser from './components/Test/TestUser/TestUpdateUser';
 import TestCreatePost from './components/Test/TestPost/TestCreatePost';
 import TestQueryPost from './components/Test/TestPost/TestQueryPost';
+import TestUpdatePost from './components/Test/TestPost/TestUpdatePost';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <TestUpdateUser />
 
       <TestCreatePost />
+      <TestUpdatePost />
       <TestQueryPost />
     </div>
     

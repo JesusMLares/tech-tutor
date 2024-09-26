@@ -49,6 +49,7 @@ const TestQueryPost = () => {
     const [postId, setPostId] = useState("")
     const [post, setPost] = useState(null)
     const [posts, setPosts] = useState([])
+    
     const [userId, setUserId] = useState("")
     const [userPosts, setUserPosts] = useState([])
 

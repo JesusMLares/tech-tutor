@@ -25,7 +25,6 @@ type Post {
 #   date: String!
 # }
 
-
 # ----- QUERIES -----
 type Query {
   users: [User!]!
@@ -34,15 +33,14 @@ type Query {
   post(id: String!): Post!
 }
 
-
 # ----- MUTATIONS -----
 type Mutation {
   createUser(input: CreateUserInput!): User!
   createPost(input: CreatePostInput): Post!
   updateUser(id: String!, input: UpdateUserInput): User!
-  updatePost(id: Int!, title: String, content: String, published: Boolean): Post!
-  deleteUser(input: DeleteUserInput): User!
-  deletePost(id: Int!): Post!
+  updatePost(id: String!, input: UpdatePostInput): Post!
+  deleteUser(id: String!): User!
+  deletePost(id: String!): Post!
 }
 
 # ----- INPUTS -----
@@ -55,7 +53,7 @@ input CreateUserInput {
   role: String!
 }
 
-input CreatePostInput{
+input CreatePostInput {
   title: String!
   content: String
   published: Boolean
@@ -70,13 +68,10 @@ input UpdateUserInput {
   role: String
 }
 
-input UpdatePostInput{
+input UpdatePostInput {
   title: String
   content: String
   published: Boolean
 }
 
 # Delete
-input DeleteUserInput{
-  id: String!
-}

@@ -32,6 +32,7 @@ const resolvers = {
   },
 
   Mutation: {
+    // ----- Create -----
     createUser: async (_, { input }) => {
       const { firstName, lastName, email, password_hash, role } = input
       try {
@@ -66,6 +67,7 @@ const resolvers = {
         throw new Error(`Failed to create post`)
       }
     },
+    // ----- Update -----
     updateUser: async (_, { id, input }) => {
       try {
         const { firstName, lastName, email, role } = input
@@ -78,14 +80,20 @@ const resolvers = {
         throw new Error("Failed to update user")
       }
     },
-    updatePost: async (_, { id, title, content, published }) => {
-      return await prisma.post.update({
-        where: { id },
-        data: { title, content, published },
-      })
+    updatePost: async (_, { id, input }) => {
+      const { title, content, published } = input
+      try{
+        return await prisma.post.update({
+          where: { id },
+          data: { title, content, published },
+        })
+      } catch (error) {
+        console.error(error)
+        throw new Error("Failed to update post")
+      }
     },
-    deleteUser: async (_, { input }) => {
-      const { id } = input
+    // ----- Delete -----
+    deleteUser: async (_, { id }) => {
       return await prisma.user.delete({
         where: { id },
       })

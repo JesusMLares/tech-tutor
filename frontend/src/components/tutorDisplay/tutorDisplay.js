@@ -39,11 +39,17 @@ const TutorDisplay = () => {
 
   return (
     <div className="tutor-display">
-      <h2>Tutors Ready to Guide You!</h2>
+      <div className="tutor-display-header">
+        <h2>Explore 500+ Available Mentors</h2>
+        <p>Find the perfect tutor to guide you on your learning journey</p>
+      </div>
       <div className="tutor-grid">
         {tutors.map((tutor, index) => (
           <TutorCard key={index} {...tutor} />
         ))}
+      </div>
+      <div className="view-all-tutors">
+        <button className="view-all-button">View All Tutors</button>
       </div>
     </div>
   );

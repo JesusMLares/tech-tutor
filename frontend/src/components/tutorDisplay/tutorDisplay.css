@@ -4,6 +4,22 @@
     max-width: 1200px;
     margin: 0 auto;
   }
+
+  .tutor-display-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .tutor-display-header h2 {
+    color: #1786a8;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .tutor-display-header p {
+    color: #666;
+    font-size: 1.2rem;
+  }
   
   .tutor-display h2 {
     text-align: center;
@@ -68,5 +84,24 @@
     margin-top: 0.5rem;
   }
   
+  .view-all-tutors {
+    text-align: center;
+    margin-top: 3rem;
+  }
+  
+  .view-all-button {
+    background-color: #52bb90;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .view-all-button:hover {
+    background-color: #46a07a;
+  }
 
   

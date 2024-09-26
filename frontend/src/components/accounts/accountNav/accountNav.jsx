@@ -1,8 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './accountNav.css';
+import { useNavigate } from "react-router-dom";
 
 function AccountNav() {
+  const navigate = useNavigate();
+
+  function logOut() {
+    // Add additional logic for logging the user out 
+    navigate("/");
+  }
   return (
     <nav className="navbar">
       <div className="navbar-container">
@@ -23,7 +30,8 @@ function AccountNav() {
             <Link to="/contact" className="nav-links-2">Contact</Link>
           </li>
           <li className="nav-item">
-          <button className="log-out-button" onClick={() => alert("Logged Out")}>Log Out</button>
+          {/* <button className="log-out-button" onClick={() => navigate("/")}>Log Out</button> */}
+          <button className="log-out-button" onClick={logOut}>Log Out</button>
           </li>
         </ul>
       </div>

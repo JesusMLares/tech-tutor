@@ -1,11 +1,8 @@
 import React from "react";
-import "./login.css";
+import "./signUp.css";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
 
-
-
-function Login() {
+function SignUp() {
   const navigate = useNavigate();
 
   function handleSubmit(e) {
@@ -27,31 +24,30 @@ function Login() {
   }
 
   return (
-    <div className="main-container">
-      <div className="side-bar">
+    <div className="signup-main-container">
+      <div className="signup-side-bar">
         <div>
-          <img src='/img/tech-tutor-pc-nobg.png' alt='Tech Tutor Logo' className='login-logo' />
+          <img src='/img/tech-tutor-pc-nobg.png' alt='Tech Tutor Logo' className='signup-login-logo' />
         </div>
       </div>
-      <div className="login-section">
-        <div className="login-box">
-          <h1>Login</h1>
+      <div className="signup-login-section">
+        <div className="signup-login-box">
+          <h1>Create Account</h1>
           <form method="post" onSubmit={handleSubmit}>
             <p>Email</p>
             <label>
-              <input className="inputs" type="email" name="email" />
+              <input className="signup-inputs" type="email" name="email" />
             </label>
             <p>Password</p>
             <label>
-              <input className="inputs" type="password" name="password" />
+              <input className="signup-inputs" type="password" name="password" />
             </label>
             <label htmlFor="mentor-checkbox">
               I am a mentor 
               <input type="checkbox" id="mentor-checkbox" name="checkbox" />
-            <Link to="/signUp" className="pl-12 custom-color">Sign Up</Link>
             </label>
             <br />
-            <button type="submit" className="inputs">Log in</button>
+            <button type="submit" className="signup-inputs">Log in</button>
           </form>
         </div>
       </div>
@@ -59,4 +55,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default SignUp;

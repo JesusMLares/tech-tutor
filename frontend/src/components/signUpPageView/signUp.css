@@ -1,11 +1,11 @@
 /* Main layout */
-.main-container {
+.signup-main-container {
     display: flex;
     height: 100vh;
 }
 
 /* Sidebar styling */
-.side-bar {
+.signup-side-bar {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -15,14 +15,14 @@
     height: 100vh;
 }
 
-.login-logo {
+.signup-login-logo {
     max-width: 100%;
     height: auto;
     padding: 20px;
 }
 
 
-.login-section {
+.signup-login-section {
     flex: 1;
     display: flex;
     justify-content: center;
@@ -30,7 +30,7 @@
 }
 
 /* Center box for login form */
-.login-box {
+.signup-login-box {
     width: 300px;
     padding: 40px;
     background-color: white;
@@ -39,12 +39,12 @@
     text-align: left;
 }
 
-.login-box h1 {
+.signup-login-box h1 {
     font-size: 2rem;
 }
 
 /* Form inputs styling */
-.inputs {
+.signup-inputs {
     width: 100%;
     margin-top: .5rem;
     margin-bottom: .5rem;
@@ -54,7 +54,7 @@
     border: 1px solid #ccc;
 }
 
-button.inputs {
+button.signup-inputs {
     background-color: #000435;
     color: white;
     border: none;
@@ -63,17 +63,17 @@ button.inputs {
     transition: background-color 0.3s ease-in;
 }
 
-button.inputs:hover {
+button.signup-inputs:hover {
     background-color: #333;
 }
 
 
-form p, h1 {
+.signup-form p, h1 {
     font-size: 18px;
     margin-bottom: 10px;
 }
 
-form label {
+.signup-form label {
     display: block;
     margin-bottom: 15px;
 }
@@ -90,7 +90,7 @@ input[type="checkbox"] {
 
 
 @media (max-width: 768px) {
-    .side-bar {
+    .signup-side-bar {
         display: none;
     }
 }

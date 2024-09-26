@@ -27,7 +27,7 @@ const UPDATE_USER_MUTATION = gql`
   }
 `
 
-const UpdateUserForm = () => {
+const TestUpdateUser = () => {
   const [userId, setUserId] = useState("")
   const [user, setUser] = useState(null)
   const [firstName, setFirstName] = useState("")
@@ -103,4 +103,4 @@ const UpdateUserForm = () => {
   )
 }
 
-export default UpdateUserForm
+export default TestUpdateUser

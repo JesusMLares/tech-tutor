@@ -1,14 +1,15 @@
 //Primsa
 import React from 'react';
-import TestGraph from './components/TestGraph/TestGraph';
-import TestUpdateUser from './components/TestGraph/TestUpdateUser';
+import TestCreateUser from './components/Test/TestUser/TestCreateUser';
+import TestUpdateUser from './components/Test/TestUser/TestUpdateUser';
 
 function App() {
   return (
     <div >
-      <TestGraph />
+      <TestCreateUser />
       <TestUpdateUser />
     </div>
+    
   );
 }
 

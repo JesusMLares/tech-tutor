@@ -41,7 +41,7 @@ const DELETE_USER_MUTATION = gql`
   }
 `
 
-const TestGraph = () => {
+const TestCreateUser = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -123,4 +123,4 @@ const TestGraph = () => {
   )
 }
 
-export default TestGraph
+export default TestCreateUser

@@ -1,3 +1,4 @@
+# ----- SCHEMA -----
 type User {
   id: String!
   firstName: String!
@@ -8,7 +9,7 @@ type User {
 }
 
 type Post {
-  id: Int!
+  id: String!
   title: String!
   content: String
   published: Boolean!
@@ -24,21 +25,28 @@ type Post {
 #   date: String!
 # }
 
+
+# ----- QUERIES -----
 type Query {
   users: [User!]!
   posts: [Post!]!
   user(id: String!): User!
+  post(id: String!): Post!
 }
 
+
+# ----- MUTATIONS -----
 type Mutation {
   createUser(input: CreateUserInput!): User!
-  createPost(title: String!, content: String, published: Boolean, authorId: String!): Post!
+  createPost(input: CreatePostInput): Post!
   updateUser(id: String!, input: UpdateUserInput): User!
   updatePost(id: Int!, title: String, content: String, published: Boolean): Post!
   deleteUser(input: DeleteUserInput): User!
   deletePost(id: Int!): Post!
 }
 
+# ----- INPUTS -----
+# Create
 input CreateUserInput {
   firstName: String!
   lastName: String!
@@ -47,6 +55,14 @@ input CreateUserInput {
   role: String!
 }
 
+input CreatePostInput{
+  title: String!
+  content: String
+  published: Boolean
+  authorId: String!
+}
+
+# Update
 input UpdateUserInput {
   firstName: String
   lastName: String
@@ -54,6 +70,13 @@ input UpdateUserInput {
   role: String
 }
 
+input UpdatePostInput{
+  title: String
+  content: String
+  published: Boolean
+}
+
+# Delete
 input DeleteUserInput{
   id: String!
 }

@@ -20,6 +20,7 @@ const resolvers = {
     users: async () => await prisma.user.findMany(),
     posts: async () => await prisma.post.findMany(),
     user: async (_, { id }) => await prisma.user.findUnique({ where: { id } }),
+    post: async(_, { id }) => await prisma.post.findUnique({ where: { id }}),
   },
   User: {
     posts: async (parent) =>
@@ -45,13 +46,12 @@ const resolvers = {
           },
         })
       } catch (error) {
-        if (error.code === "P2002" && error.meta.target.includes("email")) {
-          throw new Error(`A user with the email ${email} already exists.`)
-        }
-        throw error
+        console.error(error)
+        throw new Error(`Failed to create user` )
       }
     },
-    createPost: async (_, { title, content, published, authorId }) => {
+    createPost: async (_, { input }) => {
+      const { title, content, published, authorId } = input
       return await prisma.post.create({
         data: {
           title,

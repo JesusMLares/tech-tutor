@@ -110,7 +110,7 @@ const TestCreateUser = () => {
       </select>
       <button onClick={handleCreateUser}>Create User</button>
       
-      <h2>Users</h2>
+      <h1>Users</h1>
       <button onClick={handleGetUsers}>Get Users</button>
       <ul>
         {users.map((user) => (

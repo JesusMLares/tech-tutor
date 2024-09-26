@@ -34,7 +34,7 @@ const GET_USERS_QUERY = gql`
 `
 
 const DELETE_USER_MUTATION = gql`
-  mutation DeleteUser($id: Int!) {
+  mutation DeleteUser($id: DeleteUserInput!) {
     deleteUser(id: $id) {
       id
     }
@@ -115,7 +115,7 @@ const TestGraph = () => {
       <ul>
         {users.map((user) => (
           <li key={user.id}>
-            {user.firstName} {user.lastName} - {user.email} ({user.role})
+           {user.id} - {user.firstName} {user.lastName} - {user.email} ({user.role})
           </li>
         ))}
       </ul>

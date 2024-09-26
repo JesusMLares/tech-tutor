@@ -19,6 +19,7 @@ const resolvers = {
   Query: {
     users: async () => await prisma.user.findMany(),
     posts: async () => await prisma.post.findMany(),
+    user: async (_, { id }) => await prisma.user.findUnique({ where: { id } }),
   },
   User: {
     posts: async (parent) =>
@@ -28,11 +29,12 @@ const resolvers = {
     author: async (parent) =>
       await prisma.user.findUnique({ where: { id: parent.authorId } }),
   },
+
   Mutation: {
     createUser: async (_, { input }) => {
-      const { firstName, lastName, email, password_hash, role } = input;
+      const { firstName, lastName, email, password_hash, role } = input
       try {
-        const hashedPassword = await bcrypt.hash(password_hash, 10);
+        const hashedPassword = await bcrypt.hash(password_hash, 10)
         return await prisma.user.create({
           data: {
             firstName,
@@ -41,12 +43,12 @@ const resolvers = {
             password_hash: hashedPassword,
             role,
           },
-        });
+        })
       } catch (error) {
-        if (error.code === 'P2002' && error.meta.target.includes('email')) {
-          throw new Error(`A user with the email ${email} already exists.`);
+        if (error.code === "P2002" && error.meta.target.includes("email")) {
+          throw new Error(`A user with the email ${email} already exists.`)
         }
-        throw error;
+        throw error
       }
     },
     createPost: async (_, { title, content, published, authorId }) => {
@@ -59,14 +61,17 @@ const resolvers = {
         },
       })
     },
-    updateUser: async (
-      _,
-      { input }
-    ) => {
-      return await prisma.user.update({
-        where: { id },
-        data: { firstName, lastName, email, role },
-      })
+    updateUser: async (_, { id, input }) => {
+      try {
+        const { firstName, lastName, email, role } = input
+        return await prisma.user.update({
+          where: { id },
+          data: { firstName, lastName, email, role },
+        })
+      } catch (error) {
+        console.error(error)
+        throw new Error("Failed to update user")
+      }
     },
     updatePost: async (_, { id, title, content, published }) => {
       return await prisma.post.update({
@@ -74,7 +79,8 @@ const resolvers = {
         data: { title, content, published },
       })
     },
-    deleteUser: async (_, { id }) => {
+    deleteUser: async (_, { input }) => {
+      const { id } = input
       return await prisma.user.delete({
         where: { id },
       })

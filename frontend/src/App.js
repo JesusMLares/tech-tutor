@@ -6,8 +6,11 @@ import UserAccountPage from './pages/userAccountPage/userAccountPage';
 import MentorAccountPage from './pages/mentorAccountPage/MentorAccountPage';
 import SignUpPage from './pages/signUpPage/SignUpPage';
 import CheckOutPage from './pages/checkoutPage/CheckOutPage';
+import PaymentPage from './pages/payment/PaymentView';
+
 
 function App() {
+
   return (
     <Router>
       <Routes>
@@ -17,6 +20,7 @@ function App() {
         <Route path="/mentor/account" element={<MentorAccountPage />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/checkout" element={<CheckOutPage />} />
+        <Route path="/payment" element={<PaymentPage />} />
       </Routes>
     </Router>
   );

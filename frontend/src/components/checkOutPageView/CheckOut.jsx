@@ -5,9 +5,9 @@ import "./checkOut.css";
 function CheckOut() {
 
   return (
-    <div className="checkout-main-container">
-      <h1>This is the Checkout page</h1>
-    </div>
+    <>
+      <h1>Checkout Page</h1>
+    </>
   );
 }
 

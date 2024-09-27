@@ -1,9 +1,9 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { loadStripe } from "@stripe/stripe-js"
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
 import "./payment.css";
-import CheckOut from "../checkOutPageView/CheckOut"; 
-import { Elements } from "@stripe/stripe-js";
+import CheckOut from "../checkOutPageView/CheckOut";
 
 function Payment(props) {
   const [stripePromise, setStripePromise] = useState(null);
@@ -11,7 +11,7 @@ function Payment(props) {
 
   useEffect(() => {
     fetch("/checkOut/config").then(async (r) => {
-      const {publishableKey} = await r.json();
+      const { publishableKey } = await r.json();
 
       //console.log("Publishable key:",publishableKey);
       setStripePromise(loadStripe(publishableKey));
@@ -23,7 +23,7 @@ function Payment(props) {
       method: "POST",
       body: JSON.stringify({}),
     }).then(async (r) => {
-      const {clientSecret} = await r.json();
+      const { clientSecret } = await r.json();
 
       //console.log("Client Secret:",clientSecret);
       setClientSecret(clientSecret);
@@ -33,9 +33,11 @@ function Payment(props) {
   return (
     <>
       <h1>Payment Page</h1>
-      <Elments>
-        <CheckOut />
-      </Elments>
+      {stripePromise && clientSecret && (
+        <Elements stripe={stripePromise} options={{ clientSecret }}>
+          <CheckOut />
+        </Elements>
+      )};
     </>
   );
 }

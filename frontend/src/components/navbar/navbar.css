@@ -4,7 +4,7 @@
     box-sizing: border-box;
   }
   /* navbar */
-  .navbar {
+  .navbar-nb {
     background-color: #ffffff; 
     height: 80px;
     display: flex;
@@ -18,7 +18,7 @@
     box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
   }
   
-  .navbar-container {
+  .navbar-container-nb {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -27,52 +27,52 @@
     padding: 0 20px;
   }
   
-  .navbar-logo {
+  .navbar-logo-nb {
     display: flex;
     align-items: center;
     text-decoration: none;
     margin-left: auto;
   }
   
-  .navbar-logo-img {
+  .navbar-logo-img-nb {
     width: 190px; 
     height: auto;
     margin-right: 490px;
     padding-top: 15px;
   }
   
-  .nav-menu {
+  .nav-menu-nb {
     display: flex;
     list-style: none;
   }
   
-  .nav-item {
+  .nav-item-nb {
     margin-left: 20px;
   }
   
-  .nav-links {
+  .nav-links-nb {
     color: #000000; 
     text-decoration: none;
     padding: 0.5rem 1rem;
     transition: all 0.3s ease-out;
   }
 
-  .nav-links-2 {
+  .nav-links-2-nb {
     color: #000000; 
     text-decoration: none;
     padding: 0.5rem 1rem;
     transition: all 0.3s ease-out;
   }
   
-  .nav-links:hover {
+  .nav-links-nb:hover {
     color: #25b4e0;
   }
 
-  .nav-links-2:hover {
+  .nav-links-2-nb:hover {
     color: #52bb90;
   }
   
-  .sign-in-button {
+  .sign-in-button-nb {
     background-color: #52bb90;
     color: #ffffff;
     padding: 0.5rem 1rem;
@@ -83,7 +83,7 @@
     transition: all 0.3s ease-out;
   }
   
-  .sign-in-button:hover {
+  .sign-in-button-nb:hover {
     background-color: #46a07a; 
     color: #ffffff;
   }

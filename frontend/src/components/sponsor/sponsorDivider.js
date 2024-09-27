@@ -3,8 +3,8 @@ import './sponsorDivider.css';
 
 const SponsorDivider = () => {
   return (
-    <div className="sponsor-divider">
-      <div className="sponsor-logos">
+    <div className="sponsor-divider-sd">
+      <div className="sponsor-logos-sd">
         <img src="./img/spon-stripe-logo.png" alt="Sponsor 1" />
         <img src="/img/spon-fiverr-logo.png" alt="Sponsor 2" />
         <img id="microsoft-logo" src="/img/spon-microsoft-logo.png" alt="Sponsor 3" />

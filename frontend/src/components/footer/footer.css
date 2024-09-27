@@ -1,10 +1,10 @@
-.footer {
+.footer-ft {
     background-color: #1786a8;
     color: #ffffff;
     padding: 2rem;
   }
   
-  .footer-content {
+  .footer-content-ft {
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
@@ -12,44 +12,44 @@
     flex-wrap: wrap;
   }
   
-  .footer-logo img {
+  .footer-logo-ft img {
     max-width: 150px;
     height: auto;
   }
 
-  .footer-links, .footer-contact {
+  .footer-links-ft, .footer-contact-ft {
     margin: 1rem 2rem;
   }
   
-  .footer-links h3, .footer-contact h3 {
+  .footer-links-ft h3, .footer-contact-ft h3 {
     font-size: 1.2rem;
     margin-bottom: 1rem;
   }
   
-  .footer-links ul {
+  .footer-links-ft ul {
     list-style-type: none;
     padding: 0;
   }
   
-  .footer-links ul li {
+  .footer-links-ft ul li {
     margin-bottom: 0.5rem;
   }
   
-  .footer-links ul li a {
+  .footer-links-ft ul li a {
     color: #ffffff;
     text-decoration: none;
     transition: color 0.3s ease;
   }
   
-  .footer-links ul li a:hover {
+  .footer-links-ft ul li a:hover {
     color: #e0f2fe;
   }
   
-  .footer-contact p {
+  .footer-contact-ft p {
     margin-bottom: 0.5rem;
   }
   
-  .footer-bottom {
+  .footer-bottom-ft {
     text-align: center;
     margin-top: 2rem;
     padding-top: 1rem;

@@ -21,12 +21,12 @@ function Home() {
   }, []);
 
   return (
-    <div className="home">
+    <div className="home-hm">
       <Navbar />
-      <div className="home-container">
-        <div className="home-left">
-          <p className='home-slogan'>Learn to code and innovate, with a guide to help you elevate Tech Tutor</p>
-          <h1 className="home-title">
+      <div className="home-container-hm">
+        <div className="home-left-hm">
+          <p className='home-slogan-hm'>Learn to code and innovate, with a guide to help you elevate Tech Tutor</p>
+          <h1 className="home-title-hm">
             1-on-1 {' '}
             <ReactTypingEffect
               text={[ 'Resume', 'Interview', 'HTML', 'Python', 
@@ -40,32 +40,32 @@ function Home() {
               speed={100}
               eraseDelay={700}
               typingDelay={100}
-              className='typing-effect'
+              className='typing-effect-hm'
             />
             <br />
             Guidance</h1>
-          <div className="search-bar">
+          <div className="search-bar-hm">
             <input 
               type="text" 
               placeholder="Search for mentors or skills..."
-              className="search-input"
+              className="search-input-hm"
             />
-            <button className="search-button">Search</button>
+            <button className="search-button-hm">Search</button>
           </div>
         </div>
-        <div className="home-right">
-          <div className="tutor-roll-container">
-            <div className="tutor-roll">
+        <div className="home-right-hm">
+          <div className="tutor-roll-container-hm">
+            <div className="tutor-roll-hm">
             {tutors.map((tutor, index) => (
-            <div key={index} className="tutor">
-              <img src={tutor.photo} alt={tutor.name} className="tutor-image" />
+            <div key={index} className="tutor-hm">
+              <img src={tutor.photo} alt={tutor.name} className="tutor-image-hm" />
               <h3>{tutor.name}</h3>
-              <p className="tutor-skills">
+              <p className="tutor-skills-hm">
                 {tutor.skills.map((skill, skillIndex) => (
-                 <span key={skillIndex} className="skill-tag">{skill}</span>
+                 <span key={skillIndex} className="skill-tag-hm">{skill}</span>
               ))}
             </p>
-            <p className="tutor-rating">Rating: {tutor.rating}</p>
+            <p className="tutor-rating-hm">Rating: {tutor.rating}</p>
                 </div>
               ))}
             </div>

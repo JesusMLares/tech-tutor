@@ -1,10 +1,10 @@
-.home {
+.home-hm {
     min-height: 70vh;
     display: flex;
     flex-direction: column;
   }
   
-  .home-container {
+  .home-container-hm {
     display: flex;
     flex: 1;
     max-width: 1200px;
@@ -12,14 +12,14 @@
     /* padding: 5rem; */ /* Remove padding for the scroll up to touch */
   }
   
-  .home-left {
+  .home-left-hm {
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding-right: 18rem;
   }
   
-  .home-slogan {
+  .home-slogan-hm {
     font-size: 1.5rem;
     color: #555;
     margin-bottom: 1.5rem;
@@ -30,43 +30,43 @@
     padding-bottom: 15px;
 }
 
-.home-slogan::before,
-.home-slogan::after {
+.home-slogan-hm::before,
+.home-slogan-hm::after {
     content: '';
     position: absolute;
     width: 60px;
     height: 3px;
 }
 
-.home-slogan::before {
+.home-slogan-hm::before {
     top: 0;
     right: 0; 
     background-color: #52bb90;
 }
 
-.home-slogan::after {
+.home-slogan-hm::after {
     bottom: 0;
     left: 0;
     background-color: #25b4e0;
 }
 
-  .home-title {
+  .home-title-hm {
     font-size: 4rem;
     font-weight: bold;
     margin-bottom: 2rem;
     color: #1786a8;
   }
 
-  .typing-effect {
+  .typing-effect-hm {
     color:#52bb90;
   }
   
-  .search-bar {
+  .search-bar-hm {
     display: flex;
     margin-top: 1rem;
   }
   
-  .search-input {
+  .search-input-hm {
     flex: 1;
     padding: 0.75rem;
     font-size: 1rem;
@@ -74,7 +74,7 @@
     border-radius: 30px 0 0 30px;
   }
   
-  .search-button {
+  .search-button-hm {
     padding: 0.75rem 1.5rem;
     font-size: 1rem;
     background-color: #52bb90;
@@ -85,12 +85,12 @@
     transition: background-color 0.3s ease;
   }
   
-  .search-button:hover {
+  .search-button-hm:hover {
     background-color: #46a07a;
   }
   
   /* maybe can can the animation for the mentors */
-  .home-right {
+  .home-right-hm {
     flex: 1;
     display: flex;
     justify-content: center;
@@ -98,7 +98,7 @@
     overflow: hidden;
   }
   
-  .tutor-roll-container {
+  .tutor-roll-container-hm {
     width: 300px; 
     height: 80vh; 
     overflow: hidden;
@@ -107,11 +107,11 @@
     left: 10px;
   }
   
-  .tutor-roll {
+  .tutor-roll-hm {
     animation: scrollUp 30s linear infinite;
   }
   
-  .tutor {
+  .tutor-hm {
     padding: 10px;
     margin: 5px 0;
     background-color: #f0f9ff;
@@ -120,31 +120,32 @@
     font-size: 0.9rem;
   }
   
-  .tutor-image {
-    width: 50px;
-    height: 50px;
+  .tutor-image-hm {
     border-radius: 50%;
+    width: 120px;
+    height: 120px;
     object-fit: cover;
+    margin-bottom: 1rem;
   }
   
-  .tutor h3 {
+  .tutor-hm h3 {
     margin: 5px 0;
     font-size: 1rem;
   }
   
-  .tutor p {
+  .tutor-hm p {
     margin: 3px 0;
     font-size: 0.8rem;
   }
 
-  .tutor p.tutor-skills {
+  .tutor-hm p.tutor-skills-hm {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     margin-top: 0.5rem;
   }
   
-  .tutor p.tutor-skills span {
+  .tutor-hm p.tutor-skills-hm span {
     background-color: #52bb90;
     color: #ffffff;
     padding: 0.25rem 0.5rem;
@@ -154,7 +155,7 @@
     display: inline-block;
   }
   
-  .tutor p.tutor-rating {
+  .tutor-hm p.tutor-rating-hm {
     font-weight: bold;
     color: #1786a8;
     margin-top: 0.5rem;

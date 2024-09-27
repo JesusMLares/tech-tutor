@@ -1,4 +1,4 @@
-.showcase-container {
+.showcase-container-sc {
     padding: 4rem 2rem;
     background-color: #ffffff;
     max-width: 1200px;
@@ -14,7 +14,7 @@
 }
 
 .tutor-showcase-sc h2,
-.become-tutor h2 {
+.become-tutor-sc h2 {
     text-align: center;
     margin-bottom: 2.5rem;
     color: #0f172a;
@@ -77,26 +77,26 @@
     color: #0f172a;
 }
 
-.showcase-benefits {
+.showcase-benefits-sc {
     max-width: 900px;
     margin: 0 auto;
     text-align: center;
     padding: 2rem 1rem;
 }
 
-.showcase-benefits h3 {
+.showcase-benefits-sc h3 {
     font-size: 2rem;
     color: #0f172a;
     margin-bottom: 1rem;
 }
 
-.showcase-benefits p {
+.showcase-benefits-sc p {
     font-size: 1.1rem;
     color: #475569;
     line-height: 1.6;
 }
 
-.benefits-list {
+.benefits-list-sc {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -105,7 +105,7 @@
     margin: 2rem 0;
 }
 
-.benefits-list li {
+.benefits-list-sc li {
     margin: 0.5rem 1rem;
     padding: 0.75rem 1.5rem;
     background-color: #e0f2fe;
@@ -115,7 +115,7 @@
     font-weight: 500;
 }
 
-.cta-button {
+.cta-button-sc {
     background-color: #52bb90;
     color: white;
     border: none;
@@ -127,12 +127,12 @@
     margin-top: 1rem;
 }
 
-.cta-button:hover {
+.cta-button-sc:hover {
     background-color: #46a07a;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.testimonial {
+.testimonial-sc {
     max-width: 700px;
     margin: 2.5rem auto;
     text-align: center;
@@ -141,13 +141,13 @@
     color: #475569;
 }
 
-.testimonial-author {
+.testimonial-author-sc {
     font-weight: bold;
     margin-top: 1rem;
     color: #0f172a;
 }
 
-.become-tutor {
+.become-tutor-sc {
     margin-top: 4rem;
     padding: 2rem 0;
     background-color: #f0f9ff;
@@ -155,7 +155,7 @@
     text-align: center;
 }
 
-.become-tutor p {
+.become-tutor-sc p {
     font-size: 1.1rem;
     color: #475569;
     margin-bottom: 1.5rem;

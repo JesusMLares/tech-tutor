@@ -3,15 +3,15 @@ import { getMultipleRandomTutors } from '../../utils/tutorGenerator';
 import './tutorDisplay.css';
 
 const TutorCard = ({ name, photo, skills, rating }) => (
-    <div className="tutor-card">
-      <img src={photo} alt={name} className="tutor-image" />
+    <div className="tutor-card-td">
+      <img src={photo} alt={name} className="tutor-image-td" />
       <h3>{name}</h3>
-      <div className="tutor-skills">
+      <div className="tutor-skills-td">
         {skills.map((skill, index) => (
-          <span key={index} className="skill-tag">{skill}</span>
+          <span key={index} className="skill-tag-td">{skill}</span>
         ))}
       </div>
-      <p className="tutor-rating">Rating: {rating} / 5.0</p>
+      <p className="tutor-rating-td">Rating: {rating} / 5.0</p>
     </div>
   );
 
@@ -38,18 +38,18 @@ const TutorDisplay = () => {
   }
 
   return (
-    <div className="tutor-display">
-      <div className="tutor-display-header">
+    <div className="tutor-display-td">
+      <div className="tutor-display-header-td">
         <h2>Explore 500+ Available Mentors</h2>
         <p>Find the perfect tutor to guide you on your learning journey</p>
       </div>
-      <div className="tutor-grid">
+      <div className="tutor-grid-td">
         {tutors.map((tutor, index) => (
           <TutorCard key={index} {...tutor} />
         ))}
       </div>
-      <div className="view-all-tutors">
-        <button className="view-all-button">View All Tutors</button>
+      <div className="view-all-tutors-td">
+        <button className="view-all-button-td">View All Tutors</button>
       </div>
     </div>
   );

@@ -1,0 +1,37 @@
+.contact-page-ct {
+    background-color: #f9fafb;
+    min-height: 100vh;
+  }
+  
+  .contact-container-ct {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+  h1 {
+    color: #1786a8;
+  }
+
+  h2 {
+    color: #0c1922;
+    margin-bottom: 0.5rem;
+  }
+  
+  .faq-section-ct {
+    margin-bottom: 3rem;
+  }
+  
+  .faq-item-ct {
+    margin-bottom: 1.5rem;
+    background-color: #ffffff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .faq-item-ct h3 {
+    color: #52bb90;
+    margin-bottom: 0.5rem;
+  }
+  

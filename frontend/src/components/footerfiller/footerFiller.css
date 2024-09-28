@@ -1,5 +1,5 @@
 .footer-filler-ff {
-    background-color: #ffffff;
+    background: linear-gradient(to bottom, #f9fafb, #1786a8);
     padding: 4rem;
   }
   
@@ -12,15 +12,13 @@
   .cta-section-ff {
     text-align: center;
     margin-bottom: 4rem;
-    background-color: #ffffff;
     padding: 3rem;
     border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   }
   
   .cta-section-ff h2 {
     font-size: 2.5rem;
-    color: #1786a8;
+    color: #000000;
     margin-bottom: 1rem;
   }
 
@@ -37,13 +35,11 @@
     border-radius: 30px;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(82, 187, 144, 0.3);
   }
   
   .cta-button-ff:hover {
     background-color: #46a07a;
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(82, 187, 144, 0.4);
   }
   
   .stats-section-ff {
@@ -54,10 +50,8 @@
   
   .stat-item-ff {
     text-align: center;
-    background-color: #ffffff;
     padding: 2rem;
     border-radius: 10px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
     transition: transform 0.3s ease;
   }
   
@@ -69,15 +63,13 @@
   
   .newsletter-section-ff {
     text-align: center;
-    background-color: #ffffff;
     padding: 3rem;
     border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   }
   
   .newsletter-section-ff h2 {
     font-size: 2rem;
-    color: #1786a8;
+    color: #000000;
     margin-bottom: 1rem;
   }
   
@@ -99,7 +91,6 @@
   .newsletter-form-ff input:focus {
     outline: none;
     border-color: #52bb90;
-    box-shadow: 0 0 0 2px rgba(82, 187, 144, 0.2);
   }
   
   .newsletter-form-ff button {

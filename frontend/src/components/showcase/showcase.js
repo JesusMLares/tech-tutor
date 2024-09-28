@@ -6,7 +6,7 @@ const TutorCard = ({ name, title, price, features, imageUrl }) => (
     <img src={imageUrl} alt={name} className="tutor-image-sc" />
     <h3>{name}</h3>
     <p className="tutor-title-sc">{title}</p>
-    <p className="tutor-price-sc">${price}/month</p>
+    <p className="tutor-price-sc">${price}/per day</p>
     <ul className="tutor-features-sc">
       {features.map((feature, index) => (
         <li key={index}>{feature}</li>

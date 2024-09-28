@@ -70,10 +70,21 @@
     background-color: #52bb90;
     color: #ffffff;
     border-radius: 15px;
+    text-align: center;
   }
   
   .team-section-ab h2 {
     color: #ffffff;
+  }
+
+  .team-section-ab a {
+    color: #000000;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .team-section-ab a:hover {
+    text-decoration: underline;
   }
   
   .team-members-ab {
@@ -91,10 +102,12 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     color: #333;
     transition: transform 0.3s ease;
+    cursor: pointer;
   }
   
   .team-member-ab:hover {
     transform: translateY(-5px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.473);
   }
   
   .team-member-ab h3 {

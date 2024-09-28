@@ -80,10 +80,10 @@ const About = () => {
           </p>
 
           <div className="team-members-ab">
-            <div className="team-member-ab">
+            <div className="team-member-ab" onClick={() => window.open("https://www.linkedin.com/in/anthony-ghilardi/", "_blank")}>
               <h3>Anthony Ghilardi</h3>
               <p className="team-role-ab">
-                Frontend Developer |  Payment Systems Integration
+                Frontend Developer | Payment Systems Integration
               </p>
               <p>
                 Anthony spearheaded the implementation of crucial frontend
@@ -93,7 +93,7 @@ const About = () => {
               </p>
             </div>
 
-            <div className="team-member-ab">
+            <div className="team-member-ab" onClick={() => window.open("https://www.linkedin.com/in/jesus-m-lares/", "_blank")}>
               <h3>Jesus Lares</h3>
               <p className="team-role-ab">
                 Backend Developer | Database Management & Authentication
@@ -106,7 +106,7 @@ const About = () => {
               </p>
             </div>
 
-            <div className="team-member-ab">
+            <div className="team-member-ab" onClick={() => window.open("https://www.linkedin.com/in/davidavargas-dev/", "_blank")}>
               <h3>David A Vargas</h3>
               <p className="team-role-ab">
                 UI/UX Designer | Frontend Developer
@@ -114,7 +114,8 @@ const About = () => {
               <p>
                 David brought the platform to life with his keen eye for design,
                 creating an intuitive user interface and implementing essential
-                frontend logic, including API-driven features and authentication to enhance user experience.
+                frontend logic, including API-driven features and authentication
+                to enhance user experience.
               </p>
             </div>
           </div>
@@ -126,6 +127,33 @@ const About = () => {
             fresh perspective ensure that Tech Tutor remains at the forefront of
             educational technology, providing unparalleled tutoring services in
             the ever-evolving world of tech.
+          </p>
+          <p>
+            Connect with our team on LinkedIn:
+            <br />
+            <a
+              href="https://www.linkedin.com/in/anthony-ghilardi/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Anthony Ghilardi
+            </a>
+            {" "}|{" "}
+            <a
+              href="https://www.linkedin.com/in/jesus-m-lares/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+            Jesus Lares
+            </a>
+            {" "}|{" "}
+            <a
+              href="https://www.linkedin.com/in/davidavargas-dev/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              David A Vargas
+            </a>
           </p>
         </section>
       </div>

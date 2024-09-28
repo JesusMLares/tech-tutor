@@ -19,7 +19,6 @@ function App() {
         <Route path="/user/account" element={<UserAccountPage />} />
         <Route path="/mentor/account" element={<MentorAccountPage />} />
         <Route path="/signup" element={<SignUpPage />} />
-        <Route path="/checkout" element={<CheckOutPage />} />
         <Route path="/payment" element={<PaymentPage />} />
       </Routes>
     </Router>

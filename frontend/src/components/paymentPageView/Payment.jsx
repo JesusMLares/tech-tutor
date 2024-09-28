@@ -32,12 +32,11 @@ function Payment(props) {
 
   return (
     <>
-      <h1>Payment Page</h1>
       {stripePromise && clientSecret && (
         <Elements stripe={stripePromise} options={{ clientSecret }}>
           <CheckOut />
         </Elements>
-      )};
+      )}
     </>
   );
 }

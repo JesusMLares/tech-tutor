@@ -38,6 +38,7 @@ const TutorDisplay = () => {
   }
 
   return (
+    <div className="tutor-display-page-td">
     <div className="tutor-display-td">
       <div className="tutor-display-header-td">
         <h2>Explore 500+ Available Mentors</h2>
@@ -51,6 +52,7 @@ const TutorDisplay = () => {
       <div className="view-all-tutors-td">
         <button className="view-all-button-td">View All Tutors</button>
       </div>
+    </div>
     </div>
   );
 };

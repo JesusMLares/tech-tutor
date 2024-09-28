@@ -54,7 +54,7 @@
     font-size: 4rem;
     font-weight: bold;
     margin-bottom: 2rem;
-    color: #1786a8;
+    color: #0c1922;
   }
 
   .typing-effect-hm {
@@ -95,7 +95,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+    overflow: visible;
   }
   
   .tutor-roll-container-hm {
@@ -105,16 +105,18 @@
     border-radius: 8px; 
     position: relative;
     left: 10px;
+    padding: 0 10px;
   }
   
   .tutor-roll-hm {
     animation: scrollUp 30s linear infinite;
+    padding: 10px 0;
   }
   
   .tutor-hm {
     padding: 10px;
-    margin: 5px 0;
-    background-color: #f0f9ff;
+    margin: 10px 0;
+    background-color: #ffffff;
     border-radius: 5px;
     text-align: center;
     font-size: 0.9rem;
@@ -122,6 +124,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.092);
   }
   
   .tutor-image-hm {

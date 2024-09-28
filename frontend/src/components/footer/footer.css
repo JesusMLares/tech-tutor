@@ -1,5 +1,5 @@
 .footer-ft {
-    background-color: #1786a8;
+    background-color: #0c1922;
     color: #ffffff;
     padding: 2rem;
   }
@@ -13,7 +13,7 @@
   }
   
   .footer-logo-ft img {
-    max-width: 150px;
+    max-width: 250px;
     height: auto;
   }
 
@@ -54,4 +54,35 @@
     margin-top: 2rem;
     padding-top: 1rem;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .github-info-ft {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+  
+  .github-info-ft a {
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    text-decoration: none;
+    margin-right: 1rem;
+    transition: opacity 0.3s ease;
+  }
+  
+  .github-info-ft a:hover {
+    opacity: 0.8;
+  }
+  
+  .github-logo-ft {
+    width: 40px;
+    height: 40px;
+    margin-right: 0.5rem;
+  }
+  
+  .github-info-ft p {
+    margin: 0;
+    font-size: 0.9rem;
   }

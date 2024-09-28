@@ -26,6 +26,13 @@ const Footer = () => {
       </div>
       <div className="footer-bottom-ft">
         <p>&copy; 2023 Tech Tutor. All rights reserved.</p>
+        <div className="github-info-ft">
+          <a href="https://github.com/JesusMLares/tech-tutor"       target="_blank"     rel="noopener noreferrer">
+            <img src="/img/github-logo-2.png" alt="GitHub" className="github-logo-ft" />
+            View on GitHub
+          </a>
+          <p>Created by: Anthony Ghilardi | Jesus Lares | David A Vargas</p>
+        </div>
       </div>
     </footer>
   );

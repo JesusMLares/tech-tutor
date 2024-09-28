@@ -8,7 +8,6 @@
 .tutor-showcase-sc {
     background-color: #ffffff;
     border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     padding: 2.5rem;
     margin-bottom: 3rem;
 }
@@ -31,7 +30,7 @@
 }
 
 .tutor-card-sc {
-    background-color: #f0f9ff;
+    background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     padding: 1.5rem;
@@ -46,7 +45,7 @@
 
 .tutor-card-sc:hover {
     transform: translateY(-10px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.241);
 }
 
 .tutor-image-sc {
@@ -65,7 +64,7 @@
 
 .tutor-price-sc {
     font-weight: bold;
-    color: #0369a1;
+    color: #52bb90;
     font-size: 1.25rem;
     margin-bottom: 1rem;
 }
@@ -73,7 +72,6 @@
 .tutor-features-sc {
     list-style-type: none;
     padding: 0;
-    margin: 1rem 0;
 }
 
 .tutor-features-sc li {
@@ -114,7 +112,7 @@
     padding: 0.75rem 1.5rem;
     background-color: #e0f2fe;
     border-radius: 20px;
-    color: #0369a1;
+    color: #000000;
     font-size: 1rem;
     font-weight: 500;
 }
@@ -125,7 +123,7 @@
     border: none;
     padding: 0.75rem 2rem;
     font-size: 1.1rem;
-    border-radius: 4px;
+    border-radius: 30px;
     cursor: pointer;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
     margin-top: 1rem;
@@ -133,7 +131,6 @@
 
 .cta-button-sc:hover {
     background-color: #46a07a;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .testimonial-sc {
@@ -154,7 +151,7 @@
 .become-tutor-sc {
     margin-top: 4rem;
     padding: 2rem 0;
-    background-color: #f0f9ff;
+    background-color: #e0f2fe;
     border-radius: 10px;
     text-align: center;
 }

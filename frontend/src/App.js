@@ -7,6 +7,7 @@ import MentorAccountPage from './pages/mentorAccountPage/MentorAccountPage';
 import SignUpPage from './pages/signUpPage/SignUpPage';
 import CheckOutPage from './pages/checkoutPage/CheckOutPage';
 import PaymentPage from './pages/payment/PaymentView';
+import PaymentSuccessPage from './pages/paymentSuccessView/PaymentSuccessView';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path="/mentor/account" element={<MentorAccountPage />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/payment" element={<PaymentPage />} />
+        <Route path="/confirmation" element={<PaymentSuccessPage />} />
       </Routes>
     </Router>
   );

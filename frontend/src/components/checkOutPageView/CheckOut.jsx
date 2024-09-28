@@ -19,6 +19,8 @@ function CheckOut() {
   const [isProcessing, setIsProcessing] = useState(false);
 
   const [selectedDate, setSelectedDate] = useState(null);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
 
   const handleDateChange = (newDate) => {
     setSelectedDate(newDate);
@@ -28,23 +30,24 @@ function CheckOut() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!stripe || !elements || !selectedDate) {
-      setMessage("Please select a date before submitting.");
+    if (!stripe || !elements || !selectedDate || !firstName || !lastName) {
+      setMessage("Please fill in all fields before submitting.");
       return;
     }
 
     setIsProcessing(true);
 
-    const appointmentDate = dayjs(selectedDate).format("YYYY-MM-DD"); // Format the date as needed
+    const appointmentDate = dayjs(selectedDate).format("YYYY-MM-DD");
 
     const { error, paymentIntent } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: `${window.location.origin}/completion`,
-        // Include the selectedDate in the metadata (or adjust based on your backend implementation)
+        return_url: `${window.location.origin}/confirmation`,
         payment_method_data: {
           metadata: {
             appointmentDate: appointmentDate,
+            firstName: firstName,
+            lastName: lastName,
           },
         },
       },
@@ -54,7 +57,10 @@ function CheckOut() {
     if (error) {
       setMessage(error.message);
     } else if (paymentIntent && paymentIntent.status === "succeeded") {
-      setMessage(`Payment successful! Appointment Date: ${appointmentDate}`);
+      setMessage(
+        `Payment successful! Appointment Date: ${appointmentDate}, Name: ${firstName} ${lastName}`
+      );
+      window.location.href = "/confirmation"
     } else if (paymentIntent && paymentIntent.status === "processing") {
       setMessage("Payment is still processing.");
     } else if (paymentIntent && paymentIntent.status === "requires_action") {
@@ -74,10 +80,22 @@ function CheckOut() {
           <h1>Book an appointment</h1>
           <form>
             <label>
-              <input type="text" name="name" placeholder="First Name" />
+              <input
+                type="text"
+                name="firstName"
+                placeholder="First Name"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+              />
             </label>
             <label>
-              <input type="text" name="name" placeholder="Last Name" />
+              <input
+                type="text"
+                name="lastName"
+                placeholder="Last Name"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+              />
             </label>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DateCalendar

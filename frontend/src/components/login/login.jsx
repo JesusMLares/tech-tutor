@@ -2,11 +2,13 @@ import React from "react";
 import "./login.css";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 
 
 
 function Login() {
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -17,6 +19,8 @@ function Login() {
     // This only returns data to the console needs to be changed in the future 
     const formJson = Object.fromEntries(formData.entries());
     console.log(formJson);
+
+    login({ name: formJson.email });
 
     // Logic for where a user is routed to based on whether or not they check the box
     if(formJson.checkbox === "on"){

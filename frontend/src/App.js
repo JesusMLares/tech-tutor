@@ -1,5 +1,6 @@
 import React from 'react';
 import Home from "./pages/home/home";
+import { AuthProvider } from './context/AuthContext';
 import LoginPage from "./pages/loginPage/loginPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import UserAccountPage from './pages/userAccountPage/userAccountPage';
@@ -9,6 +10,7 @@ import Contact from './pages/contact/contact';
 
 function App() {
   return (
+    <AuthProvider>
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
@@ -19,6 +21,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
       </Routes>
     </Router>
+    </AuthProvider> 
   );
 }
 

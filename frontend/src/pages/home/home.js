@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import ReactTypingEffect from 'react-typing-effect';
 import Navbar from '../../components/navbar/navbar';
+import AccountNav from '../../components/accounts/accountNav/accountNav';
+import { useAuth } from '../../context/AuthContext';
 import './home.css'; 
 import SponsorDivider from '../../components/sponsor/sponsorDivider';
 import TutorDisplay from '../../components/tutorDisplay/tutorDisplay';
@@ -11,6 +13,7 @@ import FooterFiller from '../../components/footerfiller/footerFiller';
 
 function Home() {
   const [tutors, setTutors] = useState([]);
+  const { user } = useAuth();
 
   useEffect(() => {
     async function fetchTutors() {
@@ -22,7 +25,7 @@ function Home() {
 
   return (
     <div className="home-hm">
-      <Navbar />
+      {user ? <AccountNav /> : <Navbar />}
       <div className="home-container-hm">
         <div className="home-left-hm">
           <p className='home-slogan-hm'>Learn to code and innovate, with a guide to help you elevate Tech Tutor</p>

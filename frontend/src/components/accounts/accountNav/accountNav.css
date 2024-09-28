@@ -33,7 +33,6 @@
     text-decoration: none;
   }
   
-  /* logo img conflict here */
   .navbar-logo-img { 
     width: 250px; 
     height: auto;
@@ -45,7 +44,6 @@
     list-style: none;
   }
   
-  /* login button conflict */
   .nav-item {
     margin-left: 20px;
     display: flex;

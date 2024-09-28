@@ -19,16 +19,32 @@ const resolvers = {
   Query: {
     users: async () => await prisma.user.findMany(),
     posts: async () => await prisma.post.findMany(),
-    user: async (_, { id }) => await prisma.user.findUnique({ where: { id } }),
+    appointments: async () => await prisma.appointment.findMany(),
+    user: async (_, { id }) => await prisma.user.findUnique({ where: { id, } }),
     post: async (_, { id }) => await prisma.post.findUnique({ where: { id } }),
+    appointment: async (_, { id }) => await prisma.appointment.findUnique({ where: { id }}),
   },
   User: {
     posts: async (parent) =>
       await prisma.post.findMany({ where: { authorId: parent.id } }),
+    userAppointments: async (parent) =>
+      await prisma.appointment.findMany({ where: { userId: parent.id } }),
+    tutorAppointments: async (parent) =>
+      await prisma.appointment.findMany({ where: { tutorId: parent.id } }),
   },
   Post: {
     author: async (parent) =>
       await prisma.user.findUnique({ where: { id: parent.authorId } }),
+    appointments: async (parent) =>
+      await prisma.appointment.findMany({ where: { postId: parent.id } }),
+  },
+  Appointment: {
+    user: async (parent) =>
+      await prisma.user.findUnique({ where: { id: parent.userId } }),
+    tutor: async (parent) =>
+      await prisma.user.findUnique({ where: { id: parent.tutorId } }),
+    post: async (parent) =>
+      await prisma.post.findUnique({ where: { id: parent.postId } }),
   },
 
   Mutation: {
@@ -65,6 +81,22 @@ const resolvers = {
       } catch (error) {
         console.error(error)
         throw new Error(`Failed to create post`)
+      }
+    },
+    createAppointment: async (_, { input }) => {
+      try {
+        const { date, userId, tutorId, postId} = input
+        return await prisma.appointment.create({
+          data: {
+            date,
+            userId,
+            tutorId,
+            postId,
+          }
+        })
+      } catch (error){
+        console.error(error)
+        throw new Error(`Failed to create appointment`)
       }
     },
     // ----- Update -----

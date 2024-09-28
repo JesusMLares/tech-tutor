@@ -6,6 +6,8 @@ type User {
   email: String!
   role: String!
   posts: [Post!]!
+  userAppointments: [Appointment!]!
+  tutorAppointments: [Appointment!]!
 }
 
 type Post {
@@ -15,28 +17,37 @@ type Post {
   published: Boolean!
   authorId: String!
   author: User!
+  appointments: [Appointment!]!
 }
 
-# type Appointment{
-#   id: Int!
-#   user: User!
-#   tutor: User!
-#   post: Post!
-#   date: String!
-# }
+type Appointment {
+  id: ID!
+  date: String!
+  userId: String!
+  user: User!
+  tutorId: String!
+  tutor: User!
+  postId: String!
+  post: Post!
+}
 
-# ----- QUERIES -----
+
+
+# ----- QUERIES ----- Read
 type Query {
   users: [User!]!
   posts: [Post!]!
+  appointments: [Appointment!]!
   user(id: String!): User!
   post(id: String!): Post!
+  appointment(id: String!): Appointment!
 }
 
-# ----- MUTATIONS -----
+# ----- MUTATIONS ----- Create, Update, Delete
 type Mutation {
   createUser(input: CreateUserInput!): User!
   createPost(input: CreatePostInput): Post!
+  createAppointment(input: CreateAppointmentInput): Appointment!
   updateUser(id: String!, input: UpdateUserInput): User!
   updatePost(id: String!, input: UpdatePostInput): Post!
   deleteUser(id: String!): User!
@@ -58,6 +69,13 @@ input CreatePostInput {
   content: String
   published: Boolean
   authorId: String!
+}
+
+input CreateAppointmentInput {
+  date: String!
+  userId: String!
+  tutorId: String!
+  postId: String!
 }
 
 # Update

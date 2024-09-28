@@ -8,20 +8,34 @@ datasource db {
 }
 
 model User {
-  id            String  @id @default(uuid())
-  firstName     String?
-  lastName      String?
-  email         String  @unique
-  password_hash String
-  role          String
-  posts         Post[]
+  id                String        @id @default(uuid())
+  firstName         String?
+  lastName          String?
+  email             String        @unique
+  password_hash     String
+  role              String
+  posts             Post[]
+  userAppointments  Appointment[] @relation("UserAppointments")
+  tutorAppointments Appointment[] @relation("TutorAppointments")
 }
 
 model Post {
-  id        String      @id @default(uuid())
-  title     String
-  content   String?
-  published Boolean  @default(false)
-  authorId  String
-  author    User     @relation(fields: [authorId], references: [id])
+  id           String        @id @default(uuid())
+  title        String
+  content      String?
+  published    Boolean       @default(false)
+  authorId     String
+  author       User          @relation(fields: [authorId], references: [id])
+  appointments Appointment[]
+}
+
+model Appointment {
+  id      String   @id @default(uuid())
+  date    String
+  userId  String
+  user    User     @relation("UserAppointments", fields: [userId], references: [id])
+  tutorId String
+  tutor   User     @relation("TutorAppointments", fields: [tutorId], references: [id])
+  postId  String
+  Post    Post     @relation(fields: [postId], references: [id])
 }

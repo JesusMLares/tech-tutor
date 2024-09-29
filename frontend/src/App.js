@@ -8,6 +8,7 @@ import MentorAccountPage from './pages/mentorAccountPage/MentorAccountPage';
 import SignUpPage from './pages/signUpPage/SignUpPage';
 import Contact from './pages/contact/contact';
 import About from './pages/about/about';
+import FindTutor from './pages/findTutor/findTutor';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/tutors" element={<FindTutor />} />
       </Routes>
     </Router>
     </AuthProvider> 

@@ -48,7 +48,7 @@ function Login() {
             <label htmlFor="mentor-checkbox">
               I am a mentor 
               <input type="checkbox" id="mentor-checkbox" name="checkbox" />
-            <Link to="/signUp" className="pl-12 custom-color">Sign Up</Link>
+            <Link to="/signUp" className="sign-up-link">Sign Up</Link>
             </label>
             <br />
             <button type="submit" className="inputs">Log in</button>

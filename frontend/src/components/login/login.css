@@ -41,6 +41,8 @@
 
 .login-box h1 {
     font-size: 2rem;
+    color:#1786a8;
+    font-weight: bold;
 }
 
 /* Form inputs styling */

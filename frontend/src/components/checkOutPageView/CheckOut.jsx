@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { AppointmentContext } from "../../context/AppointmentContext";
+import { useNavigate } from "react-router-dom";
 import {
   useStripe,
   useElements,
@@ -11,13 +13,16 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
 import dayjs from "dayjs";
 
+
 function CheckOut() {
   const stripe = useStripe();
   const elements = useElements();
+  const navigate = useNavigate();
+
+  const { setAppointmentDetails } = useContext(AppointmentContext);
 
   const [message, setMessage] = useState(null);
   const [isProcessing, setIsProcessing] = useState(false);
-
   const [selectedDate, setSelectedDate] = useState(null);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -60,7 +65,14 @@ function CheckOut() {
       setMessage(
         `Payment successful! Appointment Date: ${appointmentDate}, Name: ${firstName} ${lastName}`
       );
-      window.location.href = "/confirmation";
+      setAppointmentDetails({
+        firstName,
+        lastName,
+        appointmentDate,
+        mentor: "",
+      });
+
+      navigate("/confirmation");
     } else if (paymentIntent && paymentIntent.status === "processing") {
       setMessage("Payment is still processing.");
     } else if (paymentIntent && paymentIntent.status === "requires_action") {

@@ -33,6 +33,7 @@
 .payment-header h1 {
   font-size: 2rem;
   color: #228B22;
+  font-weight: bold;
 }
 
 .date-name-container {
@@ -43,7 +44,8 @@
   border-radius: 1rem;
   box-shadow: 0 10px 15px -3px #1a1a1aB3, 0 6px 10px -2px #1a1a1a4D;
   padding: 2rem;
-  background-color: #25b4e0;
+  /* background-color: #25b4e0; */
+  background-color: #e0f2fe;
 }
 
 .name-container {

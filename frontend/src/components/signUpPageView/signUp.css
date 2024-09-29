@@ -40,7 +40,9 @@
 }
 
 .signup-login-box h1 {
-    font-size: 2rem;
+    font-size: 1.9rem;
+    color: #1786a8;
+    font-weight: bold;
 }
 
 /* Form inputs styling */

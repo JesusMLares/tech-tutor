@@ -37,7 +37,7 @@ function CheckOut() {
 
     setIsProcessing(true);
 
-    const appointmentDate = dayjs(selectedDate).format("YYYY-MM-DD");
+    const appointmentDate = dayjs(selectedDate).format("MM-DD-YYYY");
 
     const { error, paymentIntent } = await stripe.confirmPayment({
       elements,
@@ -60,7 +60,7 @@ function CheckOut() {
       setMessage(
         `Payment successful! Appointment Date: ${appointmentDate}, Name: ${firstName} ${lastName}`
       );
-      window.location.href = "/confirmation"
+      window.location.href = "/confirmation";
     } else if (paymentIntent && paymentIntent.status === "processing") {
       setMessage("Payment is still processing.");
     } else if (paymentIntent && paymentIntent.status === "requires_action") {
@@ -78,37 +78,36 @@ function CheckOut() {
       <div className="payment-grid-cotainer">
         <div className="payment-header">
           <h1>Book an appointment</h1>
-          <form>
-            <label>
-              <input
-                type="text"
-                name="firstName"
-                placeholder="First Name"
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
-              />
-            </label>
-            <label>
-              <input
-                type="text"
-                name="lastName"
-                placeholder="Last Name"
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
-              />
-            </label>
+          <form className="date-name-container">
+            <div className="name-container">
+              <label>
+                <input
+                  type="text"
+                  name="firstName"
+                  placeholder="First Name"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                />
+              </label>
+              <label>
+                <input
+                  type="text"
+                  name="lastName"
+                  placeholder="Last Name"
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
+                />
+              </label>
+            </div>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DateCalendar
                 label="Select appointment date"
                 value={selectedDate}
                 onChange={handleDateChange}
+                minDate={dayjs().subtract(1, "month")} // Set the minimum date
+                maxDate={dayjs().add(1, "year")} // Set the maximum date
               />
             </LocalizationProvider>
-            {selectedDate && (
-              <div>
-                <p>Selected Date: {dayjs(selectedDate).format("YYYY-MM-DD")}</p>
-              </div>
-            )}
           </form>
         </div>
         <div className="payment-form-container">

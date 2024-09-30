@@ -4,9 +4,8 @@ import { GraphQLClient, gql } from "graphql-request"
 const client = new GraphQLClient("http://localhost:5000")
 
 const CREATE_USER_MUTATION = gql`
-  mutation CreateUser($input: CreateUserInput!) { #From resolver
+  mutation CreateUser($input: CreateUserInput!) {
     createUser(input: $input) { 
-      # Schema ^
       id
       firstName
       lastName

@@ -115,17 +115,18 @@ const TestQueryPost = () => {
             <button onClick={handleFetchPost}>Fetch Post</button>
             {post && (
                 <div>
-                    <h2>{post.title}</h2>
+                    <h2>{post.title} : {post.authorId}</h2>
                     <p>{post.content}</p>
                     <p>{post.published ? "Published" : "Not Published"}</p>
                 </div>
             )}
-            <h1>Fetch Posts</h1>
+            <h1>Fetch All Posts</h1>
             <button onClick={handleFetchPosts}>Fetch Posts</button>
             <ul>
                 {posts.map((post) => (
                     <li key={post.id}>
                         <div><h3>{post.title} - {post.id}</h3></div>
+                        <div>Author: {post.authorId}</div>
                         <p>{post.content}</p>
                         <p>{post.published ? "Published" : "Not Published"}</p>
                     </li>

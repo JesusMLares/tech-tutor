@@ -1,35 +1,35 @@
-.tutor-listing-page-td {
+.tutor-listing-page-ft {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
   }
   
-  .tutor-listing-content-td {
+  .tutor-listing-content-ft {
     display: flex;
     flex: 1;
     padding: 2rem;
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
   }
   
-  .tutor-filter-sidebar-td {
+  .tutor-filter-sidebar-ft {
     width: 200px;
     padding-right: 2rem;
   }
   
-  .filter-title-td {
+  .filter-title-ft {
     color: #1786a8;
     font-size: 1.2rem;
     margin-bottom: 1rem;
   }
   
-  .level-buttons-td {
+  .level-buttons-ft {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
   }
   
-  .level-button-td {
+  .level-button-ft {
     padding: 0.5rem 1rem;
     background-color: #f0f0f0;
     border: none;
@@ -39,31 +39,31 @@
     text-align: left;
   }
   
-  .level-button-td:hover,
-  .level-button-td.active {
+  .level-button-ft:hover,
+  .level-button-ft.active {
     background-color: #52bb90;
     color: white;
   }
   
-  .tutor-list-container-td {
+  .tutor-list-container-ft {
     flex: 1;
   }
   
-  .tutor-list-title-td {
+  .tutor-list-title-ft {
     color: #1786a8;
     font-size: 2.5rem;
     margin-bottom: 2rem;
     text-align: center;
   }
   
-  .tutor-grid-td {
+  .tutor-grid-ft {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
     justify-content: center;
   }
   
-  .tutor-card-td {
+  .tutor-card-ft {
     background-color: #ffffff;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
@@ -77,12 +77,12 @@
     cursor: pointer;
   }
   
-  .tutor-card-td:hover {
+  .tutor-card-ft:hover {
     transform: translateY(-5px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.241);
   }
   
-  .tutor-image-td {
+  .tutor-image-ft {
     width: 200px;
     height: 200px;
     object-fit: cover;
@@ -90,20 +90,20 @@
     margin-bottom: 1rem;
   }
   
-  .tutor-name-td {
+  .tutor-name-ft {
     margin: 0.5rem 0;
     color: #333;
     font-size: 1.2rem;
   }
   
-  .tutor-skills-td {
+  .tutor-skills-ft {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     margin-top: 0.5rem;
   }
   
-  .skill-tag-td {
+  .skill-tag-ft {
     background-color: #52bb90;
     color: #ffffff;
     padding: 0.25rem 0.5rem;
@@ -112,36 +112,8 @@
     margin: 0.25rem;
   }
   
-  .tutor-rating-td {
+  .tutor-rating-ft {
     font-weight: bold;
     color: #1786a8;
     margin-top: 0.5rem;
-  }
-  
-  @media (max-width: 1200px) {
-    .tutor-grid-td {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-  
-  @media (max-width: 900px) {
-    .tutor-grid-td {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-  
-  @media (max-width: 600px) {
-    .tutor-listing-content-td {
-      flex-direction: column;
-    }
-  
-    .tutor-filter-sidebar-td {
-      width: 100%;
-      padding-right: 0;
-      margin-bottom: 2rem;
-    }
-  
-    .tutor-grid-td {
-      grid-template-columns: 1fr;
-    }
   }

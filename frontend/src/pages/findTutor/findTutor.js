@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
+import Navbar from '../../components/navbar/navbar';
+import AccountNav from '../../components/accounts/accountNav/accountNav';
 import { premadeTutors, getTutorsByLevel } from '../../utils/premadeTutors';
 import './findTutor.css';
+import Footer from '../../components/footer/footer';
 
 const FindTutor = () => {
+  const { user } = useAuth();  
   const [selectedLevel, setSelectedLevel] = useState(null);
   const navigate = useNavigate();
 
@@ -22,6 +27,7 @@ const FindTutor = () => {
 
   return (
     <div className="tutor-listing-page-ft">
+        {user ? <AccountNav /> : <Navbar />}
       <div className="tutor-listing-content-ft">
         <aside className="tutor-filter-sidebar-ft">
           <h2 className="filter-title-ft">Filter by Level</h2>
@@ -56,6 +62,7 @@ const FindTutor = () => {
           </div>
         </main>
       </div>
+        <Footer />
     </div>
   );
 };

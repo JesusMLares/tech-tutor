@@ -9,6 +9,7 @@ import SignUpPage from './pages/signUpPage/SignUpPage';
 import Contact from './pages/contact/contact';
 import About from './pages/about/about';
 import FindTutor from './pages/findTutor/findTutor';
+import TutorPage from './components/tutorpage/tutorpage';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/tutors" element={<FindTutor />} />
+        <Route path="/tutor/:id" element={<TutorPage />} />
       </Routes>
     </Router>
     </AuthProvider> 

@@ -10,7 +10,7 @@ import TestAppointment from './components/Test/TestAppointment/TestAppointment';
 function App() {
   return (
     <div >
-      <TestCreateUser />
+      {/* <TestCreateUser /> */}
       <TestUser />
       <TestUpdateUser />
 

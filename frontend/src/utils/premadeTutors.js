@@ -8,12 +8,14 @@ const generatePremadeTutors = async () => {
     ...entryLevelTutors.map((tutor, index) => ({
       ...tutor,
       id: `entry-${index + 1}`,
-      level: 'Entry Level'
+      level: 'Entry Level',
+      rating: Math.random() + 1
     })),
     ...onlineTutors.map((tutor, index) => ({
       ...tutor,
       id: `online-${index + 1}`,
-      level: 'Online'
+      level: 'Online',
+        rating: Math.random() * 4 + 1 
     }))
   ];
 

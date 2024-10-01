@@ -1,20 +1,23 @@
-import React, { useState } from "react"
-import { GraphQLClient, gql } from "graphql-request"
+import React, { useState } from "react";
+import { GraphQLClient, gql } from "graphql-request";
 
-const client = new GraphQLClient("http://localhost:5000")
+const client = new GraphQLClient("http://localhost:5000");
 
 const CREATE_USER_MUTATION = gql`
   mutation CreateUser($input: CreateUserInput!) {
     createUser(input: $input) {
-      id
-      firstName
-      lastName
-      email
-      role
-      skills
-      hourlyRate
-      rating
-      isAvailable
+      token
+      user {
+        id
+        firstName
+        lastName
+        email
+        role
+        skills
+        hourlyRate
+        rating
+        isAvailable
+      }
     }
   }
 `;
@@ -31,6 +34,7 @@ const CreateUser = () => {
     rating: "",
     isAvailable: false,
   });
+  const [token, setToken] = useState("");
 
   const handleFormChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -41,7 +45,7 @@ const CreateUser = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const { firstName, lastName, email, password, role, skills, hourlyRate, rating, isAvailable } = formData;
     const input = {
       firstName,
@@ -52,14 +56,12 @@ const CreateUser = () => {
       skills: skills.split(",").map(skill => skill.trim()), // Convert skills to array
       hourlyRate: hourlyRate ? parseFloat(hourlyRate) : null,
       rating: rating ? parseFloat(rating) : null,
-      isAvailable,
+      isAvailable, // This will now be a boolean
     };
 
-    console.log("Input data:", input);
-    // This is ugly ^ Spread operator was not working with me
-
     try {
-      await client.request(CREATE_USER_MUTATION, { input })
+      const response = await client.request(CREATE_USER_MUTATION, { input });
+      setToken(response.createUser.token); // Set the token in state
       setFormData({
         firstName: "",
         lastName: "",
@@ -70,12 +72,12 @@ const CreateUser = () => {
         hourlyRate: "",
         rating: "",
         isAvailable: false,
-      })
+      });
     } catch (error) {
-      console.error(error)
-      throw new Error("Error creating user")
+      console.error(error);
+      throw new Error("Error creating user");
     }
-  }
+  };
 
   return (
     <div>
@@ -119,21 +121,21 @@ const CreateUser = () => {
           name="skills"
           value={formData.skills}
           onChange={handleFormChange}
-          placeholder="Skills (Comma Seper - Tutor)"
+          placeholder="Skills (comma separated)"
         />
         <input
           type="number"
           name="hourlyRate"
           value={formData.hourlyRate}
           onChange={handleFormChange}
-          placeholder="Hourly Rate (Tutor Only)"
+          placeholder="Hourly Rate"
         />
         <input
           type="number"
           name="rating"
           value={formData.rating}
           onChange={handleFormChange}
-          placeholder="Rating (Tutor Only)"
+          placeholder="Rating"
         />
         <label>
           <input
@@ -146,8 +148,14 @@ const CreateUser = () => {
         </label>
         <button type="submit">Create</button>
       </form>
+      {token && (
+        <div>
+          <h2>JWT Token</h2>
+          <p>{token}</p>
+        </div>
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default CreateUser
+export default CreateUser;

@@ -18,23 +18,23 @@ function App() {
   return (
     <AuthProvider>
       <AppointmentProvider>
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/user/account" element={<UserAccountPage />} />
-        <Route path="/mentor/account" element={<MentorAccountPage />} />
-        <Route path="/signup" element={<SignUpPage />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/tutors" element={<FindTutor />} />
-        <Route path="/tutor/:id" element={<TutorPage />} />
-        <Route path="/payment" element={<PaymentPage />} />
-        <Route path="/confirmation" element={<PaymentSuccessPage />} />
-      </Routes>
-    </Router>
-    </AppointmentProvider>
-    </AuthProvider> 
+        <Router>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/user/account" element={<UserAccountPage />} />
+            <Route path="/mentor/account" element={<MentorAccountPage />} />
+            <Route path="/signup" element={<SignUpPage />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/tutors" element={<FindTutor />} />
+            <Route path="/tutor/:id" element={<TutorPage />} />
+            <Route path="/payment" element={<PaymentPage />} />
+            <Route path="/confirmation" element={<PaymentSuccessPage />} />
+          </Routes>
+        </Router>
+      </AppointmentProvider>
+    </AuthProvider>
   );
 }
 

@@ -4,25 +4,25 @@ import "./Account.css";
 
 function UserAccount() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="user-account-container">
       <AccountNav />
-      <div className="flex flex-1 items-center justify-center">
-        <div className="grid grid-cols-2 gap-x-8 p-8 w-full max-w-6xl">
-          <div className="p-10 min-h-[300px] bg-white rounded-lg custom-shadow">
-            <h1 className="text-2xl font-bold mb-6">Account Information</h1>
-            <p className="pb-3">
+      <div className="center-account-boxes">
+        <div className="user-grid-layout">
+          <div className="user-account-info-container">
+            <h1 className="user-account-header">Account Information</h1>
+            <p>
               <strong>UserName:</strong> JohnDoe
             </p>
             <p>
               <strong>Email:</strong> johndoe@example.com
             </p>
           </div>
-          <div className="p-10 min-h-[300px] bg-white rounded-lg custom-shadow">
-            <h1 className="text-2xl font-bold mb-6">Appointment Times</h1>
-            <ul>
-              <li className="pb-3">September 28, 10:00 AM (With Mentor Name)</li>
-              <li className="pb-3">October 5, 1:30 PM (With Mentor Name)</li>
-              <li className="pb-3">October 12, 4:00 PM (With Mentor Name)</li>
+          <div className="user-appointment-container">
+            <h1 className="user-appointment-header">Appointment Times</h1>
+            <ul className="appointment-items">
+              <li>September 28, 10:00 AM (With Mentor Name)</li>
+              <li>October 5, 1:30 PM (With Mentor Name)</li>
+              <li>October 12, 4:00 PM (With Mentor Name)</li>
             </ul>
           </div>
         </div>

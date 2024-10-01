@@ -5,14 +5,17 @@ const app = express();
 const PORT = process.env.PORT;
 
 // Imports the routes from other files uisng express router
-const routeOne = require('./routes/routeOne')
-const routeTwo = require('./routes/routeTwo')
+const checkOut = require('./routes/checkOut')
+const products = require('./routes/products')
 
 // Passes the route to each specific file, therefore 
 // routes do not have to be explicity defined in their file
-app.use('/routeOne', routeOne)
-app.use('/routeTwo', routeTwo)
+app.use('/checkOut', checkOut)
+app.use('/products', products)
 
 app.listen(PORT, () => {
     console.log("The server is working if you can read this")
 })
+
+
+// ****** PROXY SERVER TO LOCALHOST ADDED TO FRONTEND PACKAGE.JSON *******

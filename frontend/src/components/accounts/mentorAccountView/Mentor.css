@@ -1,3 +1,115 @@
-.custom-shadow {
-    box-shadow: 0 10px 15px -3px rgba(82, 187, 144, 0.7), 0 6px 10px -2px rgba(82, 187, 144, 0.3);
+.mentor-account-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.center-mentor-boxes {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mentor-grid-layout {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 2rem;
+  padding: 2rem;
+  width: 100%;
+  max-width: 72rem;
+}
+
+.mentor-account-info-container {
+  padding: 2.5rem;
+  min-height: 300px;
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(82, 187, 144, 0.7), 0 6px 10px -2px rgba(82, 187, 144, 0.3);
+}
+
+.mentor-account-info-container p {
+  padding-bottom: 0.75rem;
+}
+
+.mentor-account-header {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+.mentor-appointment-container {
+  padding: 2.5rem;
+  min-height: 300px;
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(82, 187, 144, 0.7), 0 6px 10px -2px rgba(82, 187, 144, 0.3);
+}
+
+.mentor-appointment-container li {
+  padding-bottom: 0.75rem;
+}
+
+.mentor-appointment-header {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+.mentor-skills-container {
+  grid-column: span 2;
+  padding: 2.5rem;
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(82, 187, 144, 0.7), 0 6px 10px -2px rgba(82, 187, 144, 0.3);
+  margin-top: 1.75rem;
+}
+
+.mentor-skills-header {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+
+@media (max-width: 768px) {
+  .mentor-grid-layout {
+    grid-template-columns: 1fr;
+    row-gap: 2rem;
   }
+
+  .mentor-account-info-container,
+  .mentor-appointment-container,
+  .mentor-skills-container {
+    width: 100%;
+  }
+}
+
+.mentor-account-info-container,
+.mentor-appointment-container,
+.mentor-skills-container {
+  padding: 2.5rem;
+  min-height: 300px;
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(82, 187, 144, 0.7),
+    0 6px 10px -2px rgba(82, 187, 144, 0.3);
+}
+
+.mentor-account-info-container p,
+.mentor-appointment-container li {
+  padding-bottom: 0.75rem;
+}
+
+.mentor-account-header,
+.mentor-appointment-header,
+.mentor-skills-header {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+.mentor-skills-container {
+  grid-column: span 2;
+  margin-top: 1.75rem;
+}

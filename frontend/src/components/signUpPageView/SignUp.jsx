@@ -42,9 +42,9 @@ function SignUp() {
             <label>
               <input className="signup-inputs" type="password" name="password" />
             </label>
-            <label htmlFor="mentor-checkbox">
+            <label htmlFor="singup-mentor-checkbox">
               I am a mentor 
-              <input type="checkbox" id="mentor-checkbox" name="checkbox" />
+              <input type="checkbox" id="singup-mentor-checkbox" name="checkbox" />
             </label>
             <br />
             <button type="submit" className="signup-inputs">Log in</button>

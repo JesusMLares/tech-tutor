@@ -4,31 +4,29 @@ import "./Mentor.css";
 
 function MentorAccount() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="mentor-account-container">
       <AccountNav />
-      <div className="flex flex-1 items-center justify-center">
-        <div className="grid grid-cols-2 gap-x-8 p-8 w-full max-w-6xl">
-          <div className="p-10 min-h-[300px] bg-white rounded-lg custom-shadow">
-            <h1 className="text-2xl font-bold mb-6">Account Information</h1>
-            <p className="pb-3">
+      <div className="center-mentor-boxes">
+        <div className="mentor-grid-layout">
+          <div className="mentor-account-info-container">
+            <h1 className="mentor-account-header">Account Information</h1>
+            <p>
               <strong>UserName:</strong> JohnDoe
             </p>
             <p>
               <strong>Email:</strong> johndoe@example.com
             </p>
           </div>
-          <div className="p-10 min-h-[300px] bg-white rounded-lg custom-shadow">
-            <h1 className="text-2xl font-bold mb-6">Appointment Times</h1>
+          <div className="mentor-appointment-container">
+            <h1 className="mentor-appointment-header">Appointment Times</h1>
             <ul>
-              <li className="pb-3">
-                September 28, 10:00 AM (With Mentor Name)
-              </li>
-              <li className="pb-3">October 5, 1:30 PM (With Mentor Name)</li>
-              <li className="pb-3">October 12, 4:00 PM (With Mentor Name)</li>
+              <li>September 28, 10:00 AM (With Mentor Name)</li>
+              <li>October 5, 1:30 PM (With Mentor Name)</li>
+              <li>October 12, 4:00 PM (With Mentor Name)</li>
             </ul>
           </div>
-          <div className="col-span-2 p-10 bg-white rounded-lg custom-shadow mt-7">
-            <h1 className="text-2xl font-bold mb-6">Mentor Skills</h1>
+          <div className="mentor-skills-container">
+            <h1 className="mentor-skills-header">Mentor Skills</h1>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut

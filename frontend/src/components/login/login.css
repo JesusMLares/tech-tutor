@@ -41,6 +41,8 @@
 
 .login-box h1 {
     font-size: 2rem;
+    color:#1786a8;
+    font-weight: bold;
 }
 
 /* Form inputs styling */
@@ -81,6 +83,7 @@ form label {
 label[for="mentor-checkbox"] {
     display: flex;
     align-items: center;
+    text-wrap: nowrap;
 }
 
 input[type="checkbox"] {
@@ -95,6 +98,8 @@ input[type="checkbox"] {
     }
 }
 
-.custom-color {
+.sign-up-link {
+    padding-left: 3rem;
     color: #0000EE;
+    text-decoration: none;
 }

@@ -83,6 +83,7 @@ form label {
 label[for="mentor-checkbox"] {
     display: flex;
     align-items: center;
+    text-wrap: nowrap;
 }
 
 input[type="checkbox"] {
@@ -100,4 +101,5 @@ input[type="checkbox"] {
 .sign-up-link {
     padding-left: 3rem;
     color: #0000EE;
+    text-decoration: none;
 }

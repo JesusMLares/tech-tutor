@@ -10,10 +10,14 @@ import Contact from './pages/contact/contact';
 import About from './pages/about/about';
 import FindTutor from './pages/findTutor/findTutor';
 import TutorPage from './components/tutorpage/tutorpage';
+import PaymentPage from "./pages/payment/PaymentView";
+import PaymentSuccessPage from "./pages/paymentSuccessView/PaymentSuccessView";
+import { AppointmentProvider } from "./context/AppointmentContext";
 
 function App() {
   return (
     <AuthProvider>
+      <AppointmentProvider>
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
@@ -25,8 +29,11 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/tutors" element={<FindTutor />} />
         <Route path="/tutor/:id" element={<TutorPage />} />
+        <Route path="/payment" element={<PaymentPage />} />
+        <Route path="/confirmation" element={<PaymentSuccessPage />} />
       </Routes>
     </Router>
+    </AppointmentProvider>
     </AuthProvider> 
   );
 }

@@ -45,9 +45,134 @@ Quick Brainstorm:
 
 
 
+tutor display :
+
+1. DEFINE skills array with a list of skills
+   skills = ['HTML', 'CSS', 'JavaScript', 'React.js', 'Node.js', 
+             'Python', 'Django', 'Flask', 'SQL', 'MongoDB']
+
+    full list of skills 
+    1.	HTML
+	2.	CSS
+	3.	JavaScript (JS)
+	4.	React.js
+	5.	Node.js
+	6.	Python
+	7.	Django
+	8.	Flask
+	9.	SQL
+	10.	MongoDB
+	11.	PostgreSQL
+	12.	Express.js
+	13.	Angular
+	14.	Vue.js
+	15.	TypeScript
+	16.	PHP
+	17.	Ruby on Rails
+	18.	Java
+	19.	Kotlin
+	20.	Swift
+	21.	C++
+	22.	C#
+	23.	Go (Golang)
+	24.	GraphQL
+	25.	RESTful APIs
+	26.	Sass (SCSS)
+	27.	jQuery
+	28.	Git/GitHub
+	29.	Docker
+	30.	AWS (Amazon Web Services)
+
+	2.	FUNCTION getRandomSkills():
+	•	SET numberOfSkills = random integer (1 to 3)
+	•	CREATE empty array for randomSkills
+	•	WHILE randomSkills length < numberOfSkills:
+	•	GET randomIndex (0 to length of skills array)
+	•	GET skill from skills[randomIndex]
+	•	IF skill not in randomSkills:
+	•	ADD skill to randomSkills
+	•	RETURN randomSkills
+Quick Brainstorm:
+	•	Should skills be unique for each tutor?
+	•	What if a tutor has many skills—how to showcase them?
+	3.	FUNCTION getTutorData():
+	•	FETCH user data from ‘https://randomuser.me/api/’
+	•	FETCH user images from https://xsgames.co/randomusers/
+	•	name: user.name.first + “ “ + user.name.last
+	•	gender: user.gender
+	•	SET photoUrl using gender and unique identifier
+	•	SET skills using getRandomSkills()
+	•	SET rating = random integer (1 to 5)
+	•	RETURN object with name, photoUrl, skills, and rating
+Quick Brainstorm:
+	•	How many tutors should be displayed at once?
+	•	Should we implement a “load more” feature for additional tutors?
+	5.	CALL displayTutors(12) // Display 12 tutors in a grid layout.
+Quick Brainstorm:
+	•	How to arrange the tutor cards in rows?
+	•	Consider responsiveness for different screen sizes.
+
+
+
+
+Showcase Section:
+
+	1.	DEFINE Showcase Elements
+	•	Reviews:
+	•	Capture user feedback and experiences.
+	•	Include a five-star rating system.
+	•	Display comments alongside ratings.
+Quick Brainstorm:
+	•	How many reviews should be shown at a time?
+	•	Should we rotate through reviews or allow users to scroll?
+	•	Consider a way for users to submit their reviews easily.
+	2.	CREATE Calendar Schedule
+	•	Provide a visual representation of available tutoring times.
+	•	Allow users to select dates and times for sessions.
+Quick Brainstorm:
+	•	What format should the calendar take (e.g., monthly, weekly)?
+	•	How to highlight available vs. booked slots?
+	•	Would adding reminders for sessions enhance user experience?
+	3.	INCLUDE Call to Action for Becoming a Tutor
+	•	Prompt users to sign up if they want to share their expertise.
+	•	Design an appealing sign-up button or form.
+Quick Brainstorm:
+	•	What information is necessary for the sign-up process?
+	•	How to ensure the sign-up process is straightforward?
+	•	Consider adding testimonials from current tutors to encourage sign-ups.
+	4.	DEFINE Layout and Design:
+	•	Plan to organize showcase elements in a visually appealing way.
+	•	Use cards for reviews and integrate the calendar seamlessly.
+Quick Brainstorm:
+	•	Should reviews be displayed in a grid or a carousel?
+	•	What color scheme will enhance readability and engagement?
+	•	Explore the option of adding images or icons to enhance visual interest.
+	5.	CALL Display Showcase Elements:
+	•	Combine reviews, calendar, and sign-up prompt in a cohesive section.
+Quick Brainstorm:
+	•	How to maintain user engagement within this section?
+	•	Consider adding animations or transitions for an interactive feel.
+	•	What metrics will be used to assess the effectiveness of this section?
+
+
+Footer Brainstorm:
+
+	1.	Logo:
+	•	Add the Tech Tutor logo.
+	•	Position it on the left side of the footer.
+	2.	Links from Navbar:
+	•	Reuse the navbar links (Home, Find Mentors, About, Contact).
+	•	Arrange them horizontally in the center of the footer.
+	3.	Contact Us Section:
+	•	Add a Contact Us link or small form at the right side.
+	•	Include an email or contact form submission.
+	4.	General Styling:
+	•	Ensure the footer is responsive.
+	•	Use a background color that complements the site (possibly dark teal).
+	•	Center-align text and ensure spacing between elements.
 
 Future Ideas:
 
 	•	Create detailed mentor profile pages with reviews, availability, skills, and scheduling options.
-	•	Add star ratings and a “favorite” feature for mentors.
+	•	Add star ratings and a “favorite” feature for mentors with us 
 	

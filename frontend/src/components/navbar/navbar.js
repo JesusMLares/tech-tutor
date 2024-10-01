@@ -4,26 +4,26 @@ import './navbar.css';
 
 function Navbar() {
   return (
-    <nav className="navbar">
-      <div className="navbar-container">
-        <Link to="/" className="navbar-logo">
-          <img src='/img/pc-tech.tutor-bg.png' alt='Tech Tutor Logo' className='navbar-logo-img' />
+    <nav className="navbar-nb">
+      <div className="navbar-container-nb">
+        <Link to="/" className="navbar-logo-nb">
+          <img src='/img/tech.tutor-pc.png' alt='Tech Tutor Logo' className='navbar-logo-img-nb' />
         </Link>
-        <ul className="nav-menu">
-          <li className="nav-item">
-            <Link to="/" className="nav-links">Home</Link>
+        <ul className="nav-menu-nb">
+          <li className="nav-item-nb">
+            <Link to="/" className="nav-links-nb">Home</Link>
           </li>
-          <li className="nav-item">
-            <Link to="/mentors" className="nav-links-2">Find Mentors</Link>
+          <li className="nav-item-nb">
+            <Link to="/tutors" className="nav-links-2-nb">Find Tutors</Link>
           </li>
-          <li className="nav-item">
-            <Link to="/about" className="nav-links">About</Link>
+          <li className="nav-item-nb">
+            <Link to="/about" className="nav-links-nb">About</Link>
           </li>
-          <li className="nav-item">
-            <Link to="/contact" className="nav-links-2">Contact</Link>
+          <li className="nav-item-nb">
+            <Link to="/contact" className="nav-links-2-nb">Contact</Link>
           </li>
-          <li className="nav-item">
-            <Link to="/login" className="sign-in-button">Login</Link>
+          <li className="nav-item-nb">
+            <Link to="/login" className="sign-in-button-nb">Login</Link>
           </li>
         </ul>
       </div>

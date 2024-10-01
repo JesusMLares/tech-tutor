@@ -1,23 +1,25 @@
-.home {
+.home-hm {
     min-height: 70vh;
     display: flex;
     flex-direction: column;
   }
   
-  .home-container {
+  .home-container-hm {
     display: flex;
     flex: 1;
-    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    /* padding: 5rem; */ /* Remove padding for the scroll up to touch */
   }
   
-  .home-left {
+  .home-left-hm {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-left: 100px;
+    padding-right: 18rem;
   }
   
-  .home-slogan {
+  .home-slogan-hm {
     font-size: 1.5rem;
     color: #555;
     margin-bottom: 1.5rem;
@@ -28,64 +30,149 @@
     padding-bottom: 15px;
 }
 
-.home-slogan::before,
-.home-slogan::after {
+.home-slogan-hm::before,
+.home-slogan-hm::after {
     content: '';
     position: absolute;
     width: 60px;
     height: 3px;
 }
 
-.home-slogan::before {
+.home-slogan-hm::before {
     top: 0;
     right: 0; 
     background-color: #52bb90;
 }
 
-.home-slogan::after {
+.home-slogan-hm::after {
     bottom: 0;
     left: 0;
     background-color: #25b4e0;
 }
 
-  .home-title {
+  .home-title-hm {
     font-size: 4rem;
     font-weight: bold;
     margin-bottom: 2rem;
-    color: #1786a8;
+    color: #0c1922;
+  }
+
+  .typing-effect-hm {
+    color:#52bb90;
   }
   
-  .search-bar {
+  .search-bar-hm {
     display: flex;
     margin-top: 1rem;
   }
   
-  .search-input {
+  .search-input-hm {
     flex: 1;
     padding: 0.75rem;
     font-size: 1rem;
     border: 2px solid #52bb90;
-    border-radius: 4px 0 0 4px;
+    border-radius: 30px 0 0 30px;
   }
   
-  .search-button {
+  .search-button-hm {
     padding: 0.75rem 1.5rem;
     font-size: 1rem;
     background-color: #52bb90;
     color: white;
     border: none;
-    border-radius: 0 4px 4px 0;
+    border-radius: 0 30px 30px 0;
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
   
-  .search-button:hover {
+  .search-button-hm:hover {
     background-color: #46a07a;
   }
   
   /* maybe can can the animation for the mentors */
-  .home-right {
+  .home-right-hm {
     flex: 1;
-    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
   }
   
+  .tutor-roll-container-hm {
+    width: 300px; 
+    height: 80vh; 
+    overflow: hidden;
+    border-radius: 8px; 
+    position: relative;
+    left: 10px;
+    padding: 0 10px;
+  }
+  
+  .tutor-roll-hm {
+    animation: scrollUp 30s linear infinite;
+    padding: 10px 0;
+  }
+  
+  .tutor-hm {
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #ffffff;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.092);
+  }
+  
+  .tutor-image-hm {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    margin-bottom: 1rem;
+  }
+  
+  .tutor-hm h3 {
+    margin: 5px 0;
+    font-size: 1rem;
+  }
+  
+  .tutor-hm p {
+    margin: 3px 0;
+    font-size: 0.8rem;
+  }
+
+  .tutor-hm p.tutor-skills-hm {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+  
+  .tutor-hm p.tutor-skills-hm span {
+    background-color: #52bb90;
+    color: #ffffff;
+    padding: 0.25rem 0.5rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    margin: 0.25rem;
+    display: inline-block;
+  }
+  
+  .tutor-hm p.tutor-rating-hm {
+    font-weight: bold;
+    color: #1786a8;
+    margin-top: 0.5rem;
+  }
+
+  @keyframes scrollUp {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-50%);
+    }
+  }

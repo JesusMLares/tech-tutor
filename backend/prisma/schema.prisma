@@ -15,11 +15,12 @@ model User {
   password_hash     String
   role              String
   posts             Post[]
-  userAppointments  Appointment[] @relation("UserAppointments")
-  tutorAppointments Appointment[] @relation("TutorAppointments")
   hourlyRate        Float?
   rating            Float?
-  isAvailable       Boolean       @default(false)
+  skills            String[]
+  isAvailable       Boolean?      @default(false)
+  userAppointments  Appointment[] @relation("UserAppointments")
+  tutorAppointments Appointment[] @relation("TutorAppointments")
 }
 
 model Post {
@@ -42,4 +43,3 @@ model Appointment {
   postId  String?
   Post    Post?   @relation(fields: [postId], references: [id])
 }
-

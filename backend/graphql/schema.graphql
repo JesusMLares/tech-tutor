@@ -1,11 +1,16 @@
-# ----- SCHEMA -----
+# ----- TYPES -----
 type User {
   id: String!
-  firstName: String!
-  lastName: String!
+  firstName: String
+  lastName: String
   email: String!
+  password_hash: String!
   role: String!
   posts: [Post!]!
+  hourlyRate: Float
+  rating: Float
+  skills: [String!]
+  isAvailable: Boolean
   userAppointments: [Appointment!]!
   tutorAppointments: [Appointment!]!
 }
@@ -21,17 +26,15 @@ type Post {
 }
 
 type Appointment {
-  id: ID!
+  id: String!
   date: String!
   userId: String!
   user: User!
   tutorId: String!
   tutor: User!
-  postId: String!
-  post: Post!
+  postId: String
+  post: Post
 }
-
-
 
 # ----- QUERIES ----- Read
 type Query {
@@ -50,18 +53,23 @@ type Mutation {
   createAppointment(input: CreateAppointmentInput): Appointment!
   updateUser(id: String!, input: UpdateUserInput): User!
   updatePost(id: String!, input: UpdatePostInput): Post!
+  updateAppointment(id: String!, input: UpdateAppointmentInput): Appointment!
   deleteUser(id: String!): User!
   deletePost(id: String!): Post!
+  deleteAppointment(id: String!): Appointment!
 }
 
-# ----- INPUTS -----
-# Create
+# ----- INPUT TYPES -----
 input CreateUserInput {
-  firstName: String!
-  lastName: String!
+  firstName: String
+  lastName: String
   email: String!
   password_hash: String!
   role: String!
+  skills: [String!]
+  hourlyRate: Float
+  rating: Float
+  isAvailable: Boolean
 }
 
 input CreatePostInput {
@@ -75,21 +83,31 @@ input CreateAppointmentInput {
   date: String!
   userId: String!
   tutorId: String!
-  postId: String!
+  postId: String
 }
 
-# Update
 input UpdateUserInput {
   firstName: String
   lastName: String
   email: String
+  password_hash: String
   role: String
+  skills: [String!]
+  hourlyRate: Float
+  rating: Float
+  isAvailable: Boolean
 }
 
 input UpdatePostInput {
   title: String
   content: String
   published: Boolean
+  authorId: String
 }
 
-# Delete
+input UpdateAppointmentInput {
+  date: String
+  userId: String
+  tutorId: String
+  postId: String
+}

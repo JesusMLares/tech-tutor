@@ -50,9 +50,9 @@ const resolvers = {
   Mutation: {
     // ----- Create -----
     createUser: async (_, { input }) => {
-      const { firstName, lastName, email, password_hash, role } = input
+      const { firstName, lastName, email, password_hash, role, skills, hourlyRate, rating, isAvailable } = input;
       try {
-        const hashedPassword = await bcrypt.hash(password_hash, 10)
+        const hashedPassword = await bcrypt.hash(password_hash, 10);
         return await prisma.user.create({
           data: {
             firstName,
@@ -60,11 +60,15 @@ const resolvers = {
             email,
             password_hash: hashedPassword,
             role,
+            skills,
+            hourlyRate,
+            rating,
+            isAvailable,
           },
-        })
+        });
       } catch (error) {
-        console.error(error)
-        throw new Error(`Failed to create user`)
+        console.error(error);
+        throw new Error(`Failed to create user`);
       }
     },
     createPost: async (_, { input }) => {
@@ -102,10 +106,10 @@ const resolvers = {
     // ----- Update -----
     updateUser: async (_, { id, input }) => {
       try {
-        const { firstName, lastName, email, role } = input
+        const { firstName, lastName, email, role, skills, hourlyRate, rating, isAvailable } = input
         return await prisma.user.update({
           where: { id },
-          data: { firstName, lastName, email, role },
+          data: { firstName, lastName, email, role, skills, hourlyRate, rating, isAvailable },
         })
       } catch (error) {
         console.error(error)

@@ -18,10 +18,10 @@ function AccountNav() {
         </Link>
         <ul className="nav-menu">
           <li className="nav-item">
-            <Link to="/" className="nav-links">Home</Link>
+          <Link to="/" className="nav-links">Home</Link>
           </li>
           <li className="nav-item">
-            <Link to="/mentors" className="nav-links-2">Find Mentors</Link>
+          <Link to="/tutors" className="nav-links-2-nb">Find Tutors</Link>
           </li>
           <li className="nav-item">
             <Link to="/about" className="nav-links">About</Link>

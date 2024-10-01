@@ -11,9 +11,13 @@ const CREATE_USER_MUTATION = gql`
       lastName
       email
       role
+      skills
+      hourlyRate
+      rating
+      isAvailable
     }
   }
-`
+`;
 
 const CreateUser = () => {
   const [formData, setFormData] = useState({
@@ -22,16 +26,36 @@ const CreateUser = () => {
     email: "",
     password: "",
     role: "USER",
-  })
+    skills: "",
+    hourlyRate: "",
+    rating: "",
+    isAvailable: false,
+  });
 
   const handleFormChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value })
-  }
+    const { name, value, type, checked } = e.target;
+    setFormData({
+      ...formData,
+      [name]: type === "checkbox" ? checked : value,
+    });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const { firstName, lastName, email, password, role } = formData
-    const input = { firstName, lastName, email, password_hash: password, role }
+    const { firstName, lastName, email, password, role, skills, hourlyRate, rating, isAvailable } = formData;
+    const input = {
+      firstName,
+      lastName,
+      email,
+      password_hash: password,
+      role,
+      skills: skills.split(",").map(skill => skill.trim()), // Convert skills to array
+      hourlyRate: hourlyRate ? parseFloat(hourlyRate) : null,
+      rating: rating ? parseFloat(rating) : null,
+      isAvailable,
+    };
+
+    console.log("Input data:", input);
     // This is ugly ^ Spread operator was not working with me
 
     try {
@@ -42,6 +66,10 @@ const CreateUser = () => {
         email: "",
         password: "",
         role: "USER",
+        skills: "",
+        hourlyRate: "",
+        rating: "",
+        isAvailable: false,
       })
     } catch (error) {
       console.error(error)
@@ -86,6 +114,36 @@ const CreateUser = () => {
           <option value="TUTOR">Tutor</option>
           <option value="ADMIN">Admin</option>
         </select>
+        <input
+          type="text"
+          name="skills"
+          value={formData.skills}
+          onChange={handleFormChange}
+          placeholder="Skills (Comma Seper - Tutor)"
+        />
+        <input
+          type="number"
+          name="hourlyRate"
+          value={formData.hourlyRate}
+          onChange={handleFormChange}
+          placeholder="Hourly Rate (Tutor Only)"
+        />
+        <input
+          type="number"
+          name="rating"
+          value={formData.rating}
+          onChange={handleFormChange}
+          placeholder="Rating (Tutor Only)"
+        />
+        <label>
+          <input
+            type="checkbox"
+            name="isAvailable"
+            checked={formData.isAvailable}
+            onChange={handleFormChange}
+          />
+          Is Available
+        </label>
         <button type="submit">Create</button>
       </form>
     </div>

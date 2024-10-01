@@ -16,8 +16,8 @@ model User {
   role              String
   posts             Post[]
   hourlyRate        Float?
-  rating            Float?
-  skills            String[]
+  rating            Float? //Should be a table
+  skills            String[] //Should be a table
   isAvailable       Boolean?      @default(false)
   userAppointments  Appointment[] @relation("UserAppointments")
   tutorAppointments Appointment[] @relation("TutorAppointments")

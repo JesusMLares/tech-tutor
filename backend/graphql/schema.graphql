@@ -8,9 +8,9 @@ type User {
   role: String!
   posts: [Post!]!
   hourlyRate: Float
-  rating: Float
-  skills: [String!]
-  isAvailable: Boolean
+  rating: Float #It should be a table! Jank for now
+  skills: [String!] #It should be a table!
+  isAvailable: Boolean 
   userAppointments: [Appointment!]!
   tutorAppointments: [Appointment!]!
 }

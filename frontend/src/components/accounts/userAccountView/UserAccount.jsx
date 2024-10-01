@@ -1,6 +1,7 @@
 import React from "react";
 import AccountNav from "../accountNav/accountNav";
 import "./Account.css";
+import AppointmentCard from "../loginAppointmentCards/AppointmentCard";
 
 function UserAccount() {
   return (
@@ -18,12 +19,8 @@ function UserAccount() {
             </p>
           </div>
           <div className="user-appointment-container">
-            <h1 className="user-appointment-header">Appointment Times</h1>
-            <ul className="appointment-items">
-              <li>September 28, 10:00 AM (With Mentor Name)</li>
-              <li>October 5, 1:30 PM (With Mentor Name)</li>
-              <li>October 12, 4:00 PM (With Mentor Name)</li>
-            </ul>
+            <h1 className="user-account-header">Your Appointments</h1>
+            <AppointmentCard />
           </div>
         </div>
       </div>

@@ -17,6 +17,9 @@ model User {
   posts             Post[]
   userAppointments  Appointment[] @relation("UserAppointments")
   tutorAppointments Appointment[] @relation("TutorAppointments")
+  hourlyRate        Float?
+  rating            Float?
+  isAvailable       Boolean       @default(false)
 }
 
 model Post {
@@ -30,12 +33,13 @@ model Post {
 }
 
 model Appointment {
-  id      String   @id @default(uuid())
+  id      String  @id @default(uuid())
   date    String
   userId  String
-  user    User     @relation("UserAppointments", fields: [userId], references: [id])
+  user    User    @relation("UserAppointments", fields: [userId], references: [id])
   tutorId String
-  tutor   User     @relation("TutorAppointments", fields: [tutorId], references: [id])
-  postId  String
-  Post    Post     @relation(fields: [postId], references: [id])
+  tutor   User    @relation("TutorAppointments", fields: [tutorId], references: [id])
+  postId  String?
+  Post    Post?   @relation(fields: [postId], references: [id])
 }
+

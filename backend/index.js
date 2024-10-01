@@ -20,7 +20,7 @@ const resolvers = {
     users: async () => await prisma.user.findMany(),
     posts: async () => await prisma.post.findMany(),
     appointments: async () => await prisma.appointment.findMany(),
-    user: async (_, { id }) => await prisma.user.findUnique({ where: { id, } }),
+    user: async (_, { id }) => await prisma.user.findUnique({ where: { id } }),
     post: async (_, { id }) => await prisma.post.findUnique({ where: { id } }),
     appointment: async (_, { id }) => await prisma.appointment.findUnique({ where: { id }}),
   },

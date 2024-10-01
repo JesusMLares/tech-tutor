@@ -33,6 +33,7 @@ const CreateUser = () => {
     const { firstName, lastName, email, password, role } = formData
     const input = { firstName, lastName, email, password_hash: password, role }
     // This is ugly ^ Spread operator was not working with me
+
     try {
       await client.request(CREATE_USER_MUTATION, { input })
       setFormData({

@@ -21,7 +21,7 @@ function AccountNav() {
             <Link to="/" className="nav-links">Home</Link>
           </li>
           <li className="nav-item">
-          <Link to="/tutors" className="nav-links-2-nb">Find Tutors</Link>
+          <Link to="/mentors" className="nav-links-2">Find Mentors</Link>
           </li>
           <li className="nav-item">
             <Link to="/about" className="nav-links">About</Link>

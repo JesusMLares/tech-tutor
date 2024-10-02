@@ -45,7 +45,7 @@ const FindTutor = () => {
         </aside>
         <main className="tutor-list-container-ft">
           <h1 className="tutor-list-title-ft">
-            {selectedLevel === 'Entry Level' ? 'Entry Level Tutors' : 'Tutors Online Now'}
+            {selectedLevel ? `${selectedLevel} Tutors` : 'Tutors Online Now'}
           </h1>
           <div className="tutor-grid-ft">
             {filteredTutors.map((tutor) => (

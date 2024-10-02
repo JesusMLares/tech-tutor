@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { GraphQLClient, gql } from "graphql-request";
+import { jwtDecode } from "jwt-decode";
 
 const client = new GraphQLClient("http://localhost:5000");
 
@@ -35,6 +36,15 @@ const CreateUser = () => {
     isAvailable: false,
   });
   const [token, setToken] = useState("");
+  const [localToken, setLocalToken] = useState(null);
+
+  useEffect(() => {
+    const storedToken = localStorage.getItem('token');
+    if (storedToken) {
+      setLocalToken(storedToken);
+    }
+  }, []);
+
 
   const handleFormChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -62,6 +72,7 @@ const CreateUser = () => {
     try {
       const response = await client.request(CREATE_USER_MUTATION, { input });
       setToken(response.createUser.token); // Set the token in state
+      localStorage.setItem("token", token)
       setFormData({
         firstName: "",
         lastName: "",
@@ -77,6 +88,10 @@ const CreateUser = () => {
       console.error(error);
       throw new Error("Error creating user");
     }
+  };
+
+  const decodeToken = () => {
+    return jwtDecode(localToken);
   };
 
   return (
@@ -152,6 +167,14 @@ const CreateUser = () => {
         <div>
           <h2>JWT Token</h2>
           <p>{token}</p>
+        </div>
+      )}
+      {localToken && (
+        <div>
+          <h2>Local Token</h2>
+          <p>{localToken}</p>
+          <h2>Decoded Token</h2>
+          <pre>{JSON.stringify(decodeToken(), null, 2)}</pre>
         </div>
       )}
     </div>

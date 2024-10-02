@@ -1,6 +1,7 @@
 const bcrypt = require("bcrypt")
 const { PrismaClient } = require("@prisma/client")
 const prisma = new PrismaClient()
+const { generateToken } = require("./auth")
 
 const resolvers = {
   Query: {
@@ -51,7 +52,7 @@ const resolvers = {
       } = input
       try {
         const hashedPassword = await bcrypt.hash(password_hash, 10)
-        return await prisma.user.create({
+        const user = await prisma.user.create({
           data: {
             firstName,
             lastName,
@@ -64,6 +65,14 @@ const resolvers = {
             isAvailable,
           },
         })
+        const tokenPayload = {
+          id: user.id,
+          email: user.email,
+          role: user.role,
+        };
+
+        const token = generateToken(tokenPayload)
+        return { token, user }
       } catch (error) {
         console.error(error)
         throw new Error(`Failed to create user`)

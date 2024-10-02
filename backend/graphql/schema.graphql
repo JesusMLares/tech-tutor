@@ -36,6 +36,11 @@ type Appointment {
   post: Post
 }
 
+type AuthPayload {
+  token: String!
+  user: User!
+}
+
 # ----- QUERIES ----- Read
 type Query {
   users: [User!]!
@@ -48,7 +53,7 @@ type Query {
 
 # ----- MUTATIONS ----- Create, Update, Delete
 type Mutation {
-  createUser(input: CreateUserInput!): User!
+  createUser(input: CreateUserInput!): AuthPayload!
   createPost(input: CreatePostInput): Post!
   createAppointment(input: CreateAppointmentInput): Appointment!
   updateUser(id: String!, input: UpdateUserInput): User!
@@ -57,6 +62,7 @@ type Mutation {
   deleteUser(id: String!): User!
   deletePost(id: String!): Post!
   deleteAppointment(id: String!): Appointment!
+  loginUser(email: String!, password: String!): AuthPayload!
 }
 
 # ----- INPUT TYPES -----
@@ -111,3 +117,4 @@ input UpdateAppointmentInput {
   tutorId: String
   postId: String
 }
+

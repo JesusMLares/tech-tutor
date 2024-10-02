@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { useCurrentUser } from "../../../context/CurrentUser"
 import { GraphQLClient, gql } from "graphql-request"
 
 const client = new GraphQLClient("http://localhost:5000")
@@ -12,6 +13,7 @@ const DELETE_USER_MUTATION = gql`
 `
 const DeleteUser = () => {
   const [userId, setUserId] = useState("")
+  const { currentUser } = useCurrentUser()
 
   const handleDeleteUser = async () => {
     try {
@@ -40,6 +42,12 @@ const DeleteUser = () => {
         />
         <button type="submit">Delete User</button>
       </form>
+      {currentUser && (
+        <div>
+          <h2>Current User Delete Section</h2>
+          <p>ID: {currentUser.id}</p>
+        </div>
+      )}
     </div>
   )
 }

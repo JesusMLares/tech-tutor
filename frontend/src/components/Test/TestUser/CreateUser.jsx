@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { GraphQLClient, gql } from "graphql-request";
-import { jwtDecode } from "jwt-decode";
+import { jwtDecode } from "jwt-decode"; // Correct import for jwt-decode
+import { useCurrentUser } from "../../../context/CurrentUser"; // Import the useCurrentUser hook
 
 const client = new GraphQLClient("http://localhost:5000");
 
@@ -37,6 +38,7 @@ const CreateUser = () => {
   });
   const [token, setToken] = useState("");
   const [localToken, setLocalToken] = useState(null);
+  const { currentUser, updateToken } = useCurrentUser(); // Destructure updateToken from useCurrentUser
 
   useEffect(() => {
     const storedToken = localStorage.getItem('token');
@@ -44,7 +46,6 @@ const CreateUser = () => {
       setLocalToken(storedToken);
     }
   }, []);
-
 
   const handleFormChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -71,8 +72,9 @@ const CreateUser = () => {
 
     try {
       const response = await client.request(CREATE_USER_MUTATION, { input });
-      setToken(response.createUser.token); // Set the token in state
-      localStorage.setItem("token", token)
+      const newToken = response.createUser.token;
+      setToken(newToken); // Set the token in state
+      updateToken(newToken); // Update the token in local storage and set currentUser
       setFormData({
         firstName: "",
         lastName: "",
@@ -175,6 +177,13 @@ const CreateUser = () => {
           <p>{localToken}</p>
           <h2>Decoded Token</h2>
           <pre>{JSON.stringify(decodeToken(), null, 2)}</pre>
+        </div>
+      )}
+      {currentUser && (
+        <div>
+          <h2>Current User</h2>
+          <p>ID: {currentUser.id}</p>
+          <pre>{JSON.stringify(currentUser, null, 2)}</pre>
         </div>
       )}
     </div>

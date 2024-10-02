@@ -13,8 +13,8 @@ const FindTutor = () => {
   const navigate = useNavigate();
 
   const getFilteredTutors = () => {
-    if (selectedLevel === 'Entry Level') {
-      return getTutorsByLevel('Entry Level');
+    if (selectedLevel) {
+      return getTutorsByLevel(selectedLevel);
     }
     return getTutorsByLevel('Online');
   };
@@ -32,17 +32,20 @@ const FindTutor = () => {
         <aside className="tutor-filter-sidebar-ft">
           <h2 className="filter-title-ft">Filter by Level</h2>
           <div className="level-buttons-ft">
-            <button
-              className={`level-button-ft ${selectedLevel === 'Entry Level' ? 'active' : ''}`}
-              onClick={() => setSelectedLevel(selectedLevel === 'Entry Level' ? null : 'Entry Level')}
-            >
-              Entry Level
+              {['Entry Level', 'Junior', 'Senior'].map(level => (
+              <button
+                key={level}
+                className={`level-button-ft ${selectedLevel === level ? 'active' : ''}`}
+                onClick={() => setSelectedLevel(selectedLevel === level ? null : level)}
+              >
+                {level}
             </button>
+          ))}
           </div>
         </aside>
         <main className="tutor-list-container-ft">
           <h1 className="tutor-list-title-ft">
-            {selectedLevel === 'Entry Level' ? 'Entry Level Tutors' : 'Tutors Online Now'}
+            {selectedLevel ? `${selectedLevel} Tutors` : 'Tutors Online Now'}
           </h1>
           <div className="tutor-grid-ft">
             {filteredTutors.map((tutor) => (

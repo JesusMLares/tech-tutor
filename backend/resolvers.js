@@ -164,6 +164,24 @@ const resolvers = {
         where: { id },
       })
     },
+    loginUser: async (_, { input }) => {
+      const { email, password_hash } = input
+      const user = await prisma.user.findUnique({ where: { email } })
+      if (!user) {
+        throw new Error("Invalid email or password")
+      }
+      const validPassword = await bcrypt.compare(password_hash, user.password_hash)
+      if (!validPassword) {
+        throw new Error("Invalid email or password")
+      }
+      const tokenPayload = {
+        id: user.id,
+        email: user.email,
+        role: user.role,
+      };
+      const token = generateToken(tokenPayload)
+      return { token, user }
+    },
   },
 }
 module.exports = resolvers

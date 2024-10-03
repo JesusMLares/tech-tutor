@@ -164,13 +164,12 @@ const resolvers = {
         where: { id },
       })
     },
-    loginUser: async (_, { input }) => {
-      const { email, password_hash } = input
+    loginUser: async (_, { email, password }) => {
       const user = await prisma.user.findUnique({ where: { email } })
       if (!user) {
         throw new Error("Invalid email or password")
       }
-      const validPassword = await bcrypt.compare(password_hash, user.password_hash)
+      const validPassword = await bcrypt.compare(password, user.password_hash)
       if (!validPassword) {
         throw new Error("Invalid email or password")
       }

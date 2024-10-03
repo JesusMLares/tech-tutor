@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react"
 import "./signUp.css"
 import { useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { useCurrentUser } from "../../context/CurrentUser" // Import the useCurrentUser hook
 import { GraphQLClient, gql } from "graphql-request"
-import { jwtDecode } from "jwt-decode" // Correct import for jwt-decode
 
-const client = new GraphQLClient("http://localhost:5000");
+const client = new GraphQLClient("http://localhost:5000")
 
 const CREATE_USER_MUTATION = gql`
   mutation CreateUser($input: CreateUserInput!) {
@@ -50,25 +50,35 @@ function SignUp() {
   // }
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    const { firstName, lastName, email, password, role, skills, hourlyRate, rating, isAvailable } = formData;
+    e.preventDefault()
+    const {
+      firstName,
+      lastName,
+      email,
+      password,
+      role,
+      skills,
+      hourlyRate,
+      rating,
+      isAvailable,
+    } = formData
     const input = {
       firstName,
       lastName,
       email,
       password_hash: password,
       role,
-      skills: skills.split(",").map(skill => skill.trim()), // Convert skills to array
+      skills: skills.split(",").map((skill) => skill.trim()), // Convert skills to array
       hourlyRate: hourlyRate ? parseFloat(hourlyRate) : null,
       rating: rating ? parseFloat(rating) : null,
       isAvailable, // This will now be a boolean
-    };
+    }
 
     try {
-      const response = await client.request(CREATE_USER_MUTATION, { input });
-      const newToken = response.createUser.token;
+      const response = await client.request(CREATE_USER_MUTATION, { input })
+      const newToken = response.createUser.token
       // setToken(newToken); // Set the token in state
-      updateToken(newToken); // Update the token in local storage and set currentUser
+      updateToken(newToken) // Update the token in local storage and set currentUser
       setFormData({
         firstName: "",
         lastName: "",
@@ -79,12 +89,12 @@ function SignUp() {
         hourlyRate: "",
         rating: "",
         isAvailable: false,
-      });
+      })
     } catch (error) {
-      console.error(error);
-      throw new Error("Error creating user");
+      console.error(error)
+      throw new Error("Error creating user")
     }
-  };
+  }
 
   const handleFormChange = (e) => {
     const { name, value, type, checked } = e.target
@@ -93,10 +103,10 @@ function SignUp() {
       [name]: type === "checkbox" ? checked : value,
     })
   }
-   //Clear local storage, and set currentUser to null
-  //  const handleLogout = () => {
-  //   updateToken(null);
-  // }
+  //Clear local storage, and set currentUser to null
+  const handleLogout = () => {
+    updateToken(null)
+  }
 
   return (
     <div className="signup-main-container">
@@ -202,24 +212,23 @@ function SignUp() {
               <option value="USER">User</option>
               <option value="TUTOR">Tutor</option>
             </select>
-            <br />            
+            <br />
             <button type="submit" className="signup-inputs">
               Create Account
             </button>
           </form>
+          <Link to="/login">Sign Up</Link>
         </div>
       </div>
       {/* <div>{localStorage.getItem('token')}</div> */}
-      {/* {currentUser && (
+      {currentUser && (
         <div>
           <h2>Current User</h2>
           <p>ID: {currentUser.id}</p>
           <pre>{JSON.stringify(currentUser, null, 2)}</pre>
+          <button onClick={handleLogout}>Clear</button>
         </div>
-      )} */}
-      {/* <button onClick={handleLogout}>
-        Clear
-      </button> */}
+      )}
     </div>
   )
 }

@@ -1,31 +1,73 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import "./login.css"
 import { useNavigate } from "react-router-dom"
+import { useCurrentUser } from "../../context/CurrentUser" // Import the useCurrentUser hook
+import { GraphQLClient, gql } from "graphql-request"
 import { Link } from "react-router-dom"
-import { useAuth } from "../../context/AuthContext"
+const client = new GraphQLClient("http://localhost:5000")
+
+const LOGIN_MUTATION = gql`
+  mutation LoginUser($email: String!, $password: String!) {
+    loginUser(email: $email, password: $password) {
+      token
+      user {
+        id
+        firstName
+        lastName
+        email
+        role
+        skills
+        hourlyRate
+        rating
+        isAvailable
+      }
+    }
+  }
+`
+// if (formJson.checkbox === "on") {
+//   navigate("/mentor/account")
+// } else {
+//   navigate("/user/account")
+// }
 
 function Login() {
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  })
   const navigate = useNavigate()
-  const { login } = useAuth()
+  const { currentUser, updateToken } = useCurrentUser()
 
-  function handleSubmit(e) {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-
-    const form = e.target
-    const formData = new FormData(form)
-
-    // This only returns data to the console needs to be changed in the future
-    const formJson = Object.fromEntries(formData.entries())
-    console.log(formJson)
-
-    login({ name: formJson.email })
-
-    // Logic for where a user is routed to based on whether or not they check the box
-    if (formJson.checkbox === "on") {
-      navigate("/mentor/account")
-    } else {
-      navigate("/user/account")
+    const { email, password } = formData
+    try {
+      const { loginUser } = await client.request(LOGIN_MUTATION, {
+        email,
+        password,
+      })
+      updateToken(loginUser.token)
+      // navigate("/user/account")
+      setFormData({
+        email: "",
+        password: "",
+      })
+    } catch (error) {
+      console.error(error)
+      alert("Failed to login")
     }
+  }
+
+  const handleFormChange = (e) => {
+    const { name, value } = e.target
+    setFormData({
+      ...formData,
+      [name]: value,
+    })
+  }
+
+  const handleLogout = () => {
+    updateToken(null)
   }
 
   return (
@@ -45,19 +87,29 @@ function Login() {
           <form method="post" onSubmit={handleSubmit}>
             <p>Email</p>
             <label>
-              <input className="inputs" type="email" name="email" />
+              <input
+                className="inputs"
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleFormChange}
+                placeholder="Email"
+              />
             </label>
             <p>Password</p>
             <label>
-              <input className="inputs" type="password" name="password" />
+              <input
+                className="inputs"
+                type="password"
+                name="password"
+                value={formData.password}
+                onChange={handleFormChange}
+                placeholder="Password"
+              />
             </label>
-            <label htmlFor="mentor-checkbox">
-              I am a mentor
-              <input type="checkbox" id="mentor-checkbox" name="checkbox" />
-              <Link to="/signUp" className="sign-up-link">
-                Sign Up
-              </Link>
-            </label>
+            <Link to="/signUp" className="sign-up-link">
+              Sign Up
+            </Link>
             <br />
             <button type="submit" className="inputs">
               Log in
@@ -65,6 +117,14 @@ function Login() {
           </form>
         </div>
       </div>
+      {currentUser && (
+        <div>
+          <h2>Current User</h2>
+          <p>ID: {currentUser.id}</p>
+          <pre>{JSON.stringify(currentUser, null, 2)}</pre>
+          <button onClick={handleLogout}>Clear</button>
+        </div>
+      )}
     </div>
   )
 }

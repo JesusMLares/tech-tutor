@@ -21,7 +21,7 @@ const TestCreateAppointment = () => {
         date: "",
         userId: "",
         tutorId: "",
-        postId: ""
+        // postId: ""
     })
 
     const handleCreateAppointment = async () => {
@@ -35,7 +35,7 @@ const TestCreateAppointment = () => {
                 date: "",
                 userId: "",
                 tutorId: "",
-                postId: ""
+                // postId: ""
             })
         } catch (error) {
             console.log(error)
@@ -64,12 +64,12 @@ const TestCreateAppointment = () => {
             value={appointment.tutorId}
             onChange={(e) => setAppointment({ ...appointment, tutorId: e.target.value })}
         />
-        <input
+        {/* <input
             type="text"
             placeholder="Post ID"
             value={appointment.postId}
             onChange={(e) => setAppointment({ ...appointment, postId: e.target.value })}
-        />
+        /> */}
         <button onClick={handleCreateAppointment}>Create Appointment</button>
     </div>
   )

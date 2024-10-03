@@ -7,6 +7,8 @@ import AppointmentCard from "../loginAppointmentCards/AppointmentCard";
 import { Modal, Box, Button, Typography } from '@mui/material';
 import { GraphQLClient, gql } from "graphql-request"
 
+import TestCreateAppointment from "../../Test/TestAppointment/TestCreateAppointment";
+
 const client = new GraphQLClient("http://localhost:5000")
 
 const GET_USER_QUERY = gql`
@@ -38,6 +40,7 @@ const DELETE_USER_MUTATION = gql`
 function UserAccount() {
   const { currentUser, updateToken } = useCurrentUser();
   const [userData, setUserData] = useState([]);
+  const [appointments, setAppointments] = useState([]);
   const [open, setOpen] = useState(false);
 
   const navigate = useNavigate();
@@ -60,6 +63,7 @@ function UserAccount() {
           email: data.user.email,
           role: data.user.role,
         });
+        setAppointments(data.user.userAppointments);
       } else {
         throw new Error('User not found');
       }
@@ -110,9 +114,12 @@ function UserAccount() {
           </div>
           <div className="user-appointment-container">
             <h1 className="user-account-header">Your Appointments</h1>
-            <AppointmentCard />
+            {appointments.map((appointment) => (
+              <AppointmentCard key={appointment.id} appointment={appointment} />
+            ))}
           </div>
         </div>
+        {/* <TestCreateAppointment /> */}
       </div>
       <Modal
         open={open}
@@ -136,7 +143,7 @@ function UserAccount() {
             </Button>
           </div>
         </Box>
-      </Modal>
+      </Modal>      
     </div>
   );
 }

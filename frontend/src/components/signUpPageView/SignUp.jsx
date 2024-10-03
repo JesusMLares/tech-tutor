@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react"
-import "./signUp.css"
-import { useNavigate } from "react-router-dom"
-import { Link } from "react-router-dom"
-import { useCurrentUser } from "../../context/CurrentUser" // Import the useCurrentUser hook
-import { GraphQLClient, gql } from "graphql-request"
+import React, { useEffect, useState } from "react";
+import "./signUp.css";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useCurrentUser } from "../../context/CurrentUser"; // Import the useCurrentUser hook
+import { GraphQLClient, gql } from "graphql-request";
 
-const client = new GraphQLClient("http://localhost:5000")
+const client = new GraphQLClient("http://localhost:5000");
 
 const CREATE_USER_MUTATION = gql`
   mutation CreateUser($input: CreateUserInput!) {
@@ -24,7 +24,7 @@ const CREATE_USER_MUTATION = gql`
       }
     }
   }
-`
+`;
 
 function SignUp() {
   const [formData, setFormData] = useState({
@@ -37,11 +37,11 @@ function SignUp() {
     hourlyRate: "",
     rating: "",
     isAvailable: false,
-  })
+  });
   // const [token, setToken] = useState("");
   // const [localToken, setLocalToken] = useState(null);
-  const { currentUser, updateToken } = useCurrentUser()
-  const navigate = useNavigate()
+  const { currentUser, updateToken } = useCurrentUser();
+  const navigate = useNavigate();
   //   if(formJson.checkbox === "on"){
   //     navigate("/mentor/account");
   //   } else {
@@ -50,7 +50,7 @@ function SignUp() {
   // }
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const {
       firstName,
       lastName,
@@ -61,7 +61,7 @@ function SignUp() {
       hourlyRate,
       rating,
       isAvailable,
-    } = formData
+    } = formData;
     const input = {
       firstName,
       lastName,
@@ -72,13 +72,13 @@ function SignUp() {
       hourlyRate: hourlyRate ? parseFloat(hourlyRate) : null,
       rating: rating ? parseFloat(rating) : null,
       isAvailable, // This will now be a boolean
-    }
+    };
 
     try {
-      const response = await client.request(CREATE_USER_MUTATION, { input })
-      const newToken = response.createUser.token
+      const response = await client.request(CREATE_USER_MUTATION, { input });
+      const newToken = response.createUser.token;
       // setToken(newToken); // Set the token in state
-      updateToken(newToken) // Update the token in local storage and set currentUser
+      updateToken(newToken); // Update the token in local storage and set currentUser
       setFormData({
         firstName: "",
         lastName: "",
@@ -89,24 +89,24 @@ function SignUp() {
         hourlyRate: "",
         rating: "",
         isAvailable: false,
-      })
+      });
     } catch (error) {
-      console.error(error)
-      throw new Error("Error creating user")
+      console.error(error);
+      throw new Error("Error creating user");
     }
-  }
+  };
 
   const handleFormChange = (e) => {
-    const { name, value, type, checked } = e.target
+    const { name, value, type, checked } = e.target;
     setFormData({
       ...formData,
       [name]: type === "checkbox" ? checked : value,
-    })
-  }
+    });
+  };
   //Clear local storage, and set currentUser to null
   const handleLogout = () => {
-    updateToken(null)
-  }
+    updateToken(null);
+  };
 
   return (
     <div className="signup-main-container">
@@ -123,101 +123,104 @@ function SignUp() {
         <div className="signup-login-box">
           <h1>Create Account</h1>
           <form onSubmit={handleSubmit}>
-            <p>Email</p>
-            <label>
-              <input
-                className="signup-inputs"
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleFormChange}
-                placeholder="Email"
-              />
-            </label>
-            <p>Password</p>
-            <label>
-              <input
-                className="signup-inputs"
-                type="password"
-                name="password"
-                value={formData.password}
-                onChange={handleFormChange}
-                placeholder="Password"
-              />
-            </label>
-            <p>First Name</p>
-            <label>
-              <input
-                className="signup-inputs"
-                type="text"
-                name="firstName"
-                value={formData.firstName}
-                onChange={handleFormChange}
-                placeholder="First Name"
-              ></input>
-            </label>
-            <p>Last Name</p>
-            <label>
-              <input
-                className="signup-inputs"
-                type="text"
-                name="lastName"
-                value={formData.lastName}
-                onChange={handleFormChange}
-                placeholder="Last Name"
-              ></input>
-            </label>
-            {formData.role === "TUTOR" && (
-              <>
-                <p>Skills</p>
+            <div className="input-containers">
+              <div className="user-input-container">
                 <label>
                   <input
-                    className="signup-inputs"
+                    className="user-signup-inputs"
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleFormChange}
+                    placeholder="Email"
+                  />
+                </label>
+                <label>
+                  <input
+                    className="user-signup-inputs"
+                    type="password"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleFormChange}
+                    placeholder="Password"
+                  />
+                </label>
+                <label>
+                  <input
+                    className="user-signup-inputs"
                     type="text"
-                    name="skills"
-                    value={formData.skills}
+                    name="firstName"
+                    value={formData.firstName}
                     onChange={handleFormChange}
-                    placeholder="Skills (comma separated)"
-                  ></input>
+                    placeholder="First Name"
+                  />
                 </label>
-                <p>Hourly Rate</p>
                 <label>
                   <input
-                    className="signup-inputs"
-                    type="number"
-                    name="hourlyRate"
-                    value={formData.hourlyRate}
+                    className="user-signup-inputs"
+                    type="text"
+                    name="lastName"
+                    value={formData.lastName}
                     onChange={handleFormChange}
-                    placeholder="Hourly Rate"
-                  ></input>
+                    placeholder="Last Name"
+                  />
                 </label>
-                <p>Rating</p>
-                <label>
-                  <input
-                    className="signup-inputs"
-                    type="number"
-                    name="rating"
-                    value={formData.rating}
-                    onChange={handleFormChange}
-                    placeholder="Rating"
-                  ></input>
-                </label>
-              </>
-            )}
+              </div>
+
+              {formData.role === "TUTOR" && (
+                <div className="mentor-input-container">
+                  <label>
+                    <input
+                      className="mentor-signup-inputs"
+                      type="text"
+                      name="skills"
+                      value={formData.skills}
+                      onChange={handleFormChange}
+                      placeholder="Skills (comma separated)"
+                    />
+                  </label>
+                  <label>
+                    <input
+                      className="mentor-signup-inputs"
+                      type="number"
+                      name="hourlyRate"
+                      value={formData.hourlyRate}
+                      onChange={handleFormChange}
+                      placeholder="Hourly Rate"
+                    />
+                  </label>
+                  <label>
+                    <input
+                      className="mentor-signup-inputs"
+                      type="number"
+                      name="rating"
+                      value={formData.rating}
+                      onChange={handleFormChange}
+                      placeholder="Rating"
+                    />
+                  </label>
+                </div>
+              )}
+            </div>
+
             <select
+              className="account-type-dropdown"
               name="role"
               value={formData.role}
               onChange={handleFormChange}
             >
+              <option value="">--Please choose an option--</option>
               <option value="USER">User</option>
               <option value="TUTOR">Tutor</option>
             </select>
-            <br />
+
             <button type="submit" className="signup-inputs">
               Create Account
             </button>
           </form>
-          <Link to="/login">Sign Up</Link>
+          <Link to="/login" className="sign-up-back-link">
+            Back
+          </Link>
         </div>
       </div>
       {/* <div>{localStorage.getItem('token')}</div> */}
@@ -230,7 +233,7 @@ function SignUp() {
         </div>
       )}
     </div>
-  )
+  );
 }
 
-export default SignUp
+export default SignUp;

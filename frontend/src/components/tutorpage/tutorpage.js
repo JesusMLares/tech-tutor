@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getTutorById } from '../../utils/premadeTutors';
+import { generateTutorDescription } from '../../utils/descriptionGenerator';
+import './tutorpage.css';
 
 const TutorPage = () => {
   const { id } = useParams();

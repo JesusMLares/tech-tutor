@@ -36,8 +36,12 @@ const generatePremadeTutors = async () => {
   return allTutors;
 };
 
-export const premadeTutors = await generatePremadeTutors();
+export const getTutorById = async (id) => {
+  const premadeTutors = await generatePremadeTutors()
+  premadeTutors.find((tutor) => tutor.id === id)
+}
 
-export const getTutorById = (id) => premadeTutors.find(tutor => tutor.id === id);
-
-export const getTutorsByLevel = (level) => premadeTutors.filter(tutor => tutor.level === level);
+export const getTutorsByLevel = async (level) => {
+  const premadeTutors = await generatePremadeTutors()
+  premadeTutors.filter((tutor) => tutor.level === level)
+}

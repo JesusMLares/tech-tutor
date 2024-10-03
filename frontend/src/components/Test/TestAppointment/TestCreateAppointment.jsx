@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { GraphQLClient, gql } from "graphql-request"
+import { useNavigate } from "react-router-dom"
 
 const client = new GraphQLClient("http://localhost:5000")
 
@@ -23,6 +24,7 @@ const TestCreateAppointment = () => {
         tutorId: "",
         // postId: ""
     })
+    const navigate = useNavigate()
 
     const handleCreateAppointment = async () => {
         try {
@@ -37,6 +39,7 @@ const TestCreateAppointment = () => {
                 tutorId: "",
                 // postId: ""
             })
+            navigate("/")
         } catch (error) {
             console.log(error)
             alert("Failed to create appointment")

@@ -38,16 +38,9 @@ function SignUp() {
     rating: "",
     isAvailable: false,
   })
-  // const [token, setToken] = useState("");
-  // const [localToken, setLocalToken] = useState(null);
+
   const { currentUser, updateToken } = useCurrentUser()
   const navigate = useNavigate()
-  //   if(formJson.checkbox === "on"){
-  //     navigate("/mentor/account");
-  //   } else {
-  //     navigate("/user/account");
-  //   }
-  // }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -90,6 +83,7 @@ function SignUp() {
         rating: "",
         isAvailable: false,
       })
+      navigate("/")
     } catch (error) {
       console.error(error)
       throw new Error("Error creating user")

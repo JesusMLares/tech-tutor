@@ -9,7 +9,7 @@ import MenuItem from '@mui/material/MenuItem';
 
 function AccountNav() {
   const navigate = useNavigate();
-  const { updateToken } = useCurrentUser();
+  const { currentUser, updateToken } = useCurrentUser();
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -23,6 +23,14 @@ function AccountNav() {
   const handleLogout = () => {
     updateToken(null)
     navigate("/")
+  }
+
+  const handleNaviate = () => {
+    if (currentUser.role === "TUTOR") {
+      navigate("/mentor/account")
+    } else {
+      navigate("/user/account")
+    }
   }
 
   return (
@@ -64,7 +72,7 @@ function AccountNav() {
               'aria-labelledby': 'basic-button'
             }}
           >
-            <MenuItem onClick={() => navigate("/user/account")}>My Account</MenuItem>
+            <MenuItem onClick={handleNaviate}>My Account</MenuItem>
             {/* // Will have to add logic to the above function to change the route depending 
             // on if the user is a mentor */}
             <MenuItem onClick={handleLogout}>Logout</MenuItem>

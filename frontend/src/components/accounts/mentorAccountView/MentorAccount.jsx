@@ -105,6 +105,9 @@ function MentorAccount() {
               <strong>First Name:</strong> {userData.firstName}
               <strong>Last Name:</strong> {userData.lastName}
             </p>
+            <p>
+              <strong>Role:</strong> {userData.role}
+            </p>
             <button onClick={handleOpen} className="account-delete-btn">
               Delete Account
             </button>

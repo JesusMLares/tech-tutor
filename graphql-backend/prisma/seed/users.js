@@ -14,6 +14,7 @@ async function main() {
       email: faker.internet.email(),
       password_hash: faker.internet.password(),
       role: faker.helpers.arrayElement(["USER", "TUTOR"]),
+      imageUrl: faker.image.avatar(),
       hourlyRate: faker.number.float({ min: 10, max: 100 }),
       rating: faker.number.float({ min: 1, max: 5 }),
       skills: faker.helpers.arrayElements(

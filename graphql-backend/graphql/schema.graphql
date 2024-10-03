@@ -1,11 +1,12 @@
 # ----- TYPES -----
 type User {
   id: String!
-  firstName: String
-  lastName: String
+  firstName: String!
+  lastName: String!
   email: String!
   password_hash: String!
   role: String!
+  imageUrl: String!
   posts: [Post!]!
   hourlyRate: Float
   rating: Float #It should be a table! Jank for now
@@ -54,11 +55,11 @@ type Query {
 # ----- MUTATIONS ----- Create, Update, Delete
 type Mutation {
   createUser(input: CreateUserInput!): AuthPayload!
-  createPost(input: CreatePostInput): Post!
-  createAppointment(input: CreateAppointmentInput): Appointment!
-  updateUser(id: String!, input: UpdateUserInput): User!
-  updatePost(id: String!, input: UpdatePostInput): Post!
-  updateAppointment(id: String!, input: UpdateAppointmentInput): Appointment!
+  createPost(input: CreatePostInput!): Post!
+  createAppointment(input: CreateAppointmentInput!): Appointment!
+  updateUser(id: String!, input: UpdateUserInput!): User!
+  updatePost(id: String!, input: UpdatePostInput!): Post!
+  updateAppointment(id: String!, input: UpdateAppointmentInput!): Appointment!
   deleteUser(id: String!): User!
   deletePost(id: String!): Post!
   deleteAppointment(id: String!): Appointment!
@@ -67,11 +68,12 @@ type Mutation {
 
 # ----- INPUT TYPES -----
 input CreateUserInput {
-  firstName: String
-  lastName: String
+  firstName: String!
+  lastName: String!
   email: String!
   password_hash: String!
   role: String!
+  imageUrl: String!
   skills: [String!]
   hourlyRate: Float
   rating: Float

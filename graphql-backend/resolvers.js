@@ -45,12 +45,14 @@ const resolvers = {
         email,
         password_hash,
         role,
+        imageUrl,
         skills,
         hourlyRate,
         rating,
         isAvailable,
       } = input
       try {
+        console.log(imageUrl)
         const hashedPassword = await bcrypt.hash(password_hash, 10)
         const user = await prisma.user.create({
           data: {
@@ -59,6 +61,7 @@ const resolvers = {
             email,
             password_hash: hashedPassword,
             role,
+            imageUrl,
             skills,
             hourlyRate,
             rating,

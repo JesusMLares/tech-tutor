@@ -9,11 +9,12 @@ datasource db {
 
 model User {
   id                String        @id @default(uuid())
-  firstName         String?
-  lastName          String?
+  firstName         String
+  lastName          String
   email             String        @unique
   password_hash     String
   role              String
+  imageUrl          String        @default("https://img.icons8.com/?size=100&id=ckaioC1qqwCu&format=png&color=000000")
   posts             Post[]
   hourlyRate        Float?
   rating            Float? //Should be a table

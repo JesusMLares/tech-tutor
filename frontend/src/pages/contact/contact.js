@@ -1,16 +1,16 @@
 import React from 'react';
-import { useAuth } from '../../context/AuthContext';
+import { useCurrentUser } from '../../context/CurrentUser';
 import Navbar from '../../components/navbar/navbar';
 import AccountNav from '../../components/accounts/accountNav/accountNav';
 import './contact.css';
 import Footer from '../../components/footer/footer';
 
 const Contact = () => {
-  const { user } = useAuth();
+  const { currentUser } = useCurrentUser();
 
   return (
     <div className="contact-page-ct">
-      {user ? <AccountNav /> : <Navbar />}
+      {currentUser ? <AccountNav /> : <Navbar />}
       <div className="contact-container-ct">
         <h1>Contact Us</h1>
         

@@ -10,6 +10,7 @@ const GET_USER_QUERY = gql`
       id
       firstName
       lastName
+      imageUrl
       skills
     }
   }
@@ -28,6 +29,7 @@ function MentorAppointmentCard( { appointment } ) {
           firstName: data.user.firstName,
           lastName: data.user.lastName,
           skills: data.user.skills,
+          imageUrl: data.user.imageUrl
         });
       }
     } catch (error) {
@@ -44,7 +46,7 @@ function MentorAppointmentCard( { appointment } ) {
   return (
     <div className="custom-mentor-card">
       <div className="custom-mentor-card-info">
-        <img src="/img/pc-tech.tutor-bg.png" className="custom-mentor-card-image" alt="Mentor" />
+        <img src={user.imageUrl} className="custom-mentor-card-image" alt="Mentor" />
         <div className="custom-mentor-card-details">
           <h1 className="custom-mentor-card-name">
             {user.firstName} {user.lastName}

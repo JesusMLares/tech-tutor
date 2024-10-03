@@ -19,6 +19,7 @@ const GET_USER_QUERY = gql`
       lastName
       email
       role
+      imageUrl
       userAppointments {
         id
         date
@@ -62,6 +63,7 @@ function UserAccount() {
           lastName: data.user.lastName,
           email: data.user.email,
           role: data.user.role,
+          imageUrl: data.user.imageUrl,
         });
         setAppointments(data.user.userAppointments);
       } else {
@@ -108,6 +110,7 @@ function UserAccount() {
             <p>
               <strong>Role:</strong> {userData.role}
             </p>
+            <img src={userData.imageUrl} alt="user" className="user-image" />
             <button onClick={handleOpen} className="account-delete-btn">
               Delete Account
             </button>

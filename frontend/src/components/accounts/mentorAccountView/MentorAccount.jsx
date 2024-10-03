@@ -17,6 +17,8 @@ const GET_USER_QUERY = gql`
       lastName
       email
       role
+      imageUrl
+      skills
       userAppointments {
         id
         date
@@ -66,6 +68,8 @@ function MentorAccount() {
           lastName: data.user.lastName,
           email: data.user.email,
           role: data.user.role,
+          imageUrl: data.user.imageUrl,
+          skills: data.user.skills,
         })
         setAppointments(data.user.tutorAppointments)
       }
@@ -108,6 +112,7 @@ function MentorAccount() {
             <p>
               <strong>Role:</strong> {userData.role}
             </p>
+            <img src={userData.imageUrl} alt="profile" className="mentor-profile-img" />
             <button onClick={handleOpen} className="account-delete-btn">
               Delete Account
             </button>
@@ -121,13 +126,7 @@ function MentorAccount() {
           <div className="mentor-skills-container">
             <h1 className="mentor-skills-header">Mentor Skills</h1>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
+              <strong>{userData.skills}</strong>
             </p>
           </div>
         </div>

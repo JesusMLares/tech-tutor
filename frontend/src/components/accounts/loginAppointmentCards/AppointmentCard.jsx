@@ -11,6 +11,7 @@ const GET_TUTOR_QUERY = gql`
       firstName
       lastName
       skills
+      imageUrl
     }
   }
 `
@@ -28,6 +29,7 @@ function AppointmentCard({ appointment }) {
           firstName: data.user.firstName,
           lastName: data.user.lastName,
           skills: data.user.skills,
+          imageUrl: data.user.imageUrl
         })
       }
     } catch (error) {
@@ -44,7 +46,7 @@ function AppointmentCard({ appointment }) {
     <div className="custom-card">
       <div className="custom-card-info">
         <img
-          src="/img/pc-tech.tutor-bg.png"
+          src={tutor.imageUrl}
           className="custom-card-image"
           alt="Mentor"
         />

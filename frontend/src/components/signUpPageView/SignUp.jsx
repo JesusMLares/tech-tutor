@@ -17,6 +17,7 @@ const CREATE_USER_MUTATION = gql`
         lastName
         email
         role
+        imageUrl
         skills
         hourlyRate
         rating
@@ -33,11 +34,17 @@ function SignUp() {
     email: "",
     password: "",
     role: "USER",
+    imageUrl: "",
     skills: "",
     hourlyRate: "",
     rating: "",
     isAvailable: false,
   })
+
+  const imageUrls = [
+    "https://img.icons8.com/?size=100&id=ckaioC1qqwCu&format=png&color=000000",
+    "https://img.icons8.com/?size=100&id=FiwH5zzc0ZrP&format=png&color=000000",
+  ]
 
   const { currentUser, updateToken } = useCurrentUser()
   const navigate = useNavigate()
@@ -50,6 +57,7 @@ function SignUp() {
       email,
       password,
       role,
+      imageUrl,
       skills,
       hourlyRate,
       rating,
@@ -61,6 +69,7 @@ function SignUp() {
       email,
       password_hash: password,
       role,
+      imageUrl,
       skills: skills.split(",").map((skill) => skill.trim()), // Convert skills to array
       hourlyRate: hourlyRate ? parseFloat(hourlyRate) : null,
       rating: rating ? parseFloat(rating) : null,
@@ -78,6 +87,7 @@ function SignUp() {
         email: "",
         password: "",
         role: "USER",
+        imageUrl: "",
         skills: "",
         hourlyRate: "",
         rating: "",
@@ -161,6 +171,20 @@ function SignUp() {
                 placeholder="Last Name"
               ></input>
             </label>
+            <p>Profile Image</p>
+            {imageUrls.map((url, index) => (
+              <label key={index}>
+                <input
+                  className="signup-inputs"
+                  type="radio"
+                  name="imageUrl"
+                  value={url}
+                  checked={formData.imageUrl === url}
+                  onChange={handleFormChange}
+                />
+                <img src={url} alt={`Profile Image ${index + 1}`} />
+              </label>
+            ))}
             {formData.role === "TUTOR" && (
               <>
                 <p>Skills</p>

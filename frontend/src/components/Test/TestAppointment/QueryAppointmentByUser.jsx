@@ -11,6 +11,7 @@ const QUERY_USER_WITH_APPOINTMENTS = gql`
       lastName
       email
       role
+      imageUrl
       userAppointments {
         id
         date

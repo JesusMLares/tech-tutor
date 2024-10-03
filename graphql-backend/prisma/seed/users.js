@@ -5,8 +5,9 @@ const prisma = new PrismaClient()
 
 async function main() {
   const users = []
+  const amount = 10
 
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < amount ; i++) {
     users.push({
       firstName: faker.person.firstName(),
       lastName: faker.person.lastName(),
@@ -27,7 +28,7 @@ async function main() {
     data: users,
   })
 
-  console.log("10 users created")
+  console.log(`${amount} users created`)
 }
 
 main()

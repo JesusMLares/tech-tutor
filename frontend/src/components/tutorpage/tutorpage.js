@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
+import Navbar from '../navbar/navbar';
 import { getTutorById } from '../../utils/premadeTutors';
 import { generateTutorDescription } from '../../utils/descriptionGenerator';
 import './tutorpage.css';
+import Footer from '../../components/footer/footer';
 
 const TutorPage = () => {
   const { id } = useParams();
   const [tutor, setTutor] = useState(null);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchTutor = async () => {
@@ -24,6 +27,10 @@ const TutorPage = () => {
     fetchTutor();
   }, [id]);
 
+  const handleBack = () => {
+    navigate(-1);
+  };
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -32,18 +39,39 @@ const TutorPage = () => {
     return <div>Tutor not found</div>;
   }
 
+  const tutorDescription = generateTutorDescription(tutor.name, tutor.skills);
+
   return (
-    <div className="tutor-page">
-      <h1>{tutor.name}</h1>
-      <img src={tutor.photo} alt={tutor.name} className="tutor-image" />
-      <p>Level: {tutor.level}</p>
-      <p>Rating: {typeof tutor.rating === 'number' ? tutor.rating.toFixed(1) : 'N/A'}</p>
+    <div className="tutor-page-container-tp">
+      <Navbar />
+      <div className="tutor-page-content-tp">
+    <div className="tutor-page-tp">
+     <button className="back-button-tp" onClick={() => navigate(-1)}>Back</button>
+    <div className="tutor-header-tp">
+      <img src={tutor.photo} alt={tutor.name} className="tutor-image-tp" />
+      <div className="tutor-info-tp">
+        <h1>{tutor.name}</h1>
+        <p className="tutor-level-tp">Level: {tutor.level}</p>
+        <p className="tutor-rating-tp">
+          Rating: {typeof tutor.rating === 'number' ? tutor.rating.toFixed(1) : 'N/A'}
+        </p>
+        <button className="book-button-tp">Book Me Now</button>
+      </div>
+    </div>
+    <div className="tutor-description-tp">
+      <p>{tutorDescription}</p>
+    </div>
+    <div className="tutor-skills-tp">
       <h2>Skills:</h2>
       <ul>
         {tutor.skills.map((skill, index) => (
           <li key={index}>{skill}</li>
         ))}
       </ul>
+        </div>
+      </div>
+    </div>
+    <Footer />
     </div>
   );
 };

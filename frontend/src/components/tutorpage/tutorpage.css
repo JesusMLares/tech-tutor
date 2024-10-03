@@ -1,0 +1,123 @@
+.tutor-page-container-tp {
+    display: flex;
+    flex-direction: column;
+    min-height: 150vh; 
+  }
+  
+  .tutor-page-content-tp { 
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; 
+    padding: 20px;
+  }
+  
+  .tutor-page-tp {
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    padding: 20px;
+  }
+  
+  .tutor-header-tp {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .tutor-image-tp {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+  
+  .tutor-info-tp h1 {
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .tutor-level-tp, .tutor-rating-tp {
+    color: #667;
+    margin-bottom: 5px;
+  }
+  
+  .book-button-tp {
+    background-color: #52bb90;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .book-button-tp:hover {
+    background-color: #45a07a;
+  }
+  
+  .tutor-skills-tp h2 {
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .tutor-skills-tp ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .tutor-skills-tp li {
+    background-color: #52bb90;
+    color: #ffffff;
+    padding: 5px 10px;
+    border-radius: 20px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .loading, .not-found {
+    text-align: center;
+    font-size: 18px;
+    color: #667;
+    margin-top: 50px;
+  }
+
+  .tutor-description-tp {
+    margin-bottom: 20px;
+    line-height: 1.6;
+    color: #333;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+
+  .back-button-tp {
+    background-color: #f0f0f0;
+    color: #333;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .back-button-tp:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .back-button-tp::before {
+    content: '←';
+    margin-right: 5px;
+  }

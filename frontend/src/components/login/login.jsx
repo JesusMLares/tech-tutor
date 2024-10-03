@@ -47,11 +47,11 @@ function Login() {
         password,
       })
       updateToken(loginUser.token)
-      // navigate("/user/account")
       setFormData({
         email: "",
         password: "",
       })
+      navigate("/")
     } catch (error) {
       console.error(error)
       alert("Failed to login")

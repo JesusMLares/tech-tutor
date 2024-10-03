@@ -1,0 +1,135 @@
+.tutor-listing-page-ft {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .tutor-listing-content-ft {
+    display: flex;
+    flex: 1;
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    margin-bottom: 10rem;
+  }
+  
+  .tutor-filter-sidebar-ft {
+    width: 200px;
+    padding-right: 2rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 1rem;
+  }
+  
+  .filter-title-ft {
+    color: #1786a8;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .level-buttons-ft {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .level-button-ft {
+    padding: 0.5rem 1rem;
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: left;
+  }
+  
+  .level-button-ft:hover,
+  .level-button-ft.active {
+    background-color: #52bb90;
+    color: white;
+  }
+  
+  .tutor-list-container-ft {
+    flex: 1;
+  }
+  
+  .tutor-list-title-ft {
+    color: #1786a8;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    position: relative;
+  }
+  
+  .tutor-list-title-ft::after {
+    content: '';
+    position: absolute;
+    bottom: -10px; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    height: 5px;
+    background-color: #52bb90;
+  }
+  
+  .tutor-grid-ft {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    justify-content: center;
+  }
+  
+  .tutor-card-ft {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  
+  .tutor-card-ft:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.241);
+  }
+  
+  .tutor-image-ft {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+  }
+  
+  .tutor-name-ft {
+    margin: 0.5rem 0;
+    color: #333;
+    font-size: 1.2rem;
+  }
+  
+  .tutor-skills-ft {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+  
+  .skill-tag-ft {
+    background-color: #52bb90;
+    color: #ffffff;
+    padding: 0.25rem 0.5rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    margin: 0.25rem;
+  }
+  
+  .tutor-rating-ft {
+    font-weight: bold;
+    color: #1786a8;
+    margin-top: 0.5rem;
+  }

@@ -1,0 +1,109 @@
+.footer-filler-ff {
+    background: linear-gradient(to bottom, #f9fafb, #1786a8);
+    padding: 4rem;
+  }
+  
+  .footer-filler-content-ff {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+  
+  .cta-section-ff {
+    text-align: center;
+    margin-bottom: 4rem;
+    padding: 3rem;
+    border-radius: 15px;
+  }
+  
+  .cta-section-ff h2 {
+    font-size: 2.5rem;
+    color: #000000;
+    margin-bottom: 1rem;
+  }
+
+  .cta-p-ff {
+    padding-bottom: 1rem;
+  }
+  
+  .cta-button-ff {
+    background-color: #52bb90;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .cta-button-ff:hover {
+    background-color: #46a07a;
+    transform: translateY(-2px);
+  }
+  
+  .stats-section-ff {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 4rem;
+  }
+  
+  .stat-item-ff {
+    text-align: center;
+    padding: 2rem;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+  }
+  
+  .stat-item-ff h3 {
+    font-size: 3rem;
+    color: #52bb90;
+    margin-bottom: 0.5rem;
+  }
+  
+  .newsletter-section-ff {
+    text-align: center;
+    padding: 3rem;
+    border-radius: 15px;
+  }
+  
+  .newsletter-section-ff h2 {
+    font-size: 2rem;
+    color: #000000;
+    margin-bottom: 1rem;
+  }
+  
+  .newsletter-form-ff {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+  }
+  
+  .newsletter-form-ff input {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 30px 0 0 30px;
+    width: 300px;
+    transition: all 0.3s ease;
+  }
+  
+  .newsletter-form-ff input:focus {
+    outline: none;
+    border-color: #52bb90;
+  }
+  
+  .newsletter-form-ff button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    background-color: #52bb90;
+    color: white;
+    border: none;
+    border-radius: 0 30px 30px 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .newsletter-form-ff button:hover {
+    background-color: #46a07a;
+  }

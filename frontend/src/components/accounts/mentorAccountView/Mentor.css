@@ -1,0 +1,70 @@
+.mentor-account-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.center-mentor-boxes {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.mentor-grid-layout {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 2rem;
+  row-gap: 2rem;
+  padding: 2rem;
+  width: 100%;
+  max-width: 72rem;
+}
+
+.mentor-account-info-container,
+.mentor-appointment-container,
+.mentor-skills-container {
+  padding: 2.5rem;
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(82, 187, 144, 0.7), 0 6px 10px -2px rgba(82, 187, 144, 0.3);
+  min-height: 300px;
+}
+
+.mentor-account-info-container {
+  width: 100%;
+}
+
+.mentor-appointment-container {
+  width: 100%;
+}
+
+.mentor-skills-container {
+  grid-column: span 2;
+  width: 100%;
+  margin-top: 1.75rem;
+}
+
+.mentor-account-header,
+.mentor-appointment-header,
+.mentor-skills-header {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .mentor-grid-layout {
+    grid-template-columns: 1fr;
+    row-gap: 2rem;
+  }
+
+  .mentor-account-info-container,
+  .mentor-appointment-container,
+  .mentor-skills-container {
+    width: 100%;
+  }
+}

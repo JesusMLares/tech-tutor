@@ -1,0 +1,55 @@
+.custom-mentor-card {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 20px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .custom-mentor-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .custom-mentor-card-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .custom-mentor-card-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+  
+  .custom-mentor-card-details {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .custom-mentor-card-name {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .custom-mentor-card-skills {
+    margin: 5px 0;
+    font-size: 1rem;
+    color: #666;
+  }
+  
+  .custom-mentor-card-date {
+    font-size: 1rem;
+    color: #333;
+    align-self: center;
+  }
+  

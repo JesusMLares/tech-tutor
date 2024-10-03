@@ -1,0 +1,80 @@
+.contact-page-ct {
+    background-color: #f9fafb;
+    min-height: 100vh;
+  }
+  
+  .contact-container-ct {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+  h1 {
+    color: #1786a8;
+  }
+
+  h2 {
+    color: #0c1922;
+    margin-bottom: 0.5rem;
+  }
+  
+  .faq-section-ct {
+    margin-bottom: 3rem;
+  }
+  
+  .faq-item-ct {
+    margin-bottom: 1.5rem;
+    background-color: #ffffff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .faq-item-ct h3 {
+    color: #52bb90;
+    margin-bottom: 0.5rem;
+  }
+
+  .contact-form-section-ct {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .contact-form-ct {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group-ct {
+    margin-bottom: 1rem;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #333;
+  }
+  
+  input, textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .submit-btn-ct {
+    background-color: #52bb90;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .submit-btn-ct:hover {
+    background-color: #46a07a;
+  }

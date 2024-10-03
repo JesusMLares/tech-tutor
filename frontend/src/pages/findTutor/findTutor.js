@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../context/AuthContext';
+import { useCurrentUser } from '../../context/CurrentUser';
 import Navbar from '../../components/navbar/navbar';
 import AccountNav from '../../components/accounts/accountNav/accountNav';
 import { generatePremadeTutors, getTutorsByLevel } from '../../utils/premadeTutors';
@@ -8,7 +8,7 @@ import './findTutor.css';
 import Footer from '../../components/footer/footer';
 
 const FindTutor = () => {
-  const { user } = useAuth();  
+  const { currentUser } = useCurrentUser();  
   const [selectedLevel, setSelectedLevel] = useState(null);
   const [tutors, setTutors] = useState([]);
   const [filteredTutors, setFilteredTutors] = useState([]);
@@ -44,7 +44,7 @@ const FindTutor = () => {
 
   return (
     <div className="tutor-listing-page-ft">
-        {user ? <AccountNav /> : <Navbar />}
+        {currentUser ? <AccountNav /> : <Navbar />}
       <div className="tutor-listing-content-ft">
         <aside className="tutor-filter-sidebar-ft">
           <h2 className="filter-title-ft">Filter by Level</h2>

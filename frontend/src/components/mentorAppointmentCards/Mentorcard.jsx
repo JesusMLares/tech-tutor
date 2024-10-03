@@ -49,7 +49,7 @@ function MentorAppointmentCard( { appointment } ) {
           <h1 className="custom-mentor-card-name">
             {user.firstName} {user.lastName}
           </h1>
-          <p className="custom-mentor-card-skills">JavaScript, Python</p>
+          <p className="custom-mentor-card-skills">Student</p>
         </div>
         <p className="custom-mentor-card-date">{appointment.date}</p>
       </div>

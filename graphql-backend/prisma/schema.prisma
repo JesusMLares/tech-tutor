@@ -29,7 +29,7 @@ model Post {
   content      String?
   published    Boolean       @default(false)
   authorId     String
-  author       User          @relation(fields: [authorId], references: [id])
+  author       User          @relation(fields: [authorId], references: [id], onDelete: Cascade)
   appointments Appointment[]
 }
 
@@ -37,9 +37,9 @@ model Appointment {
   id      String  @id @default(uuid())
   date    String
   userId  String
-  user    User    @relation("UserAppointments", fields: [userId], references: [id])
+  user    User    @relation("UserAppointments", fields: [userId], references: [id], onDelete: Cascade)
   tutorId String
-  tutor   User    @relation("TutorAppointments", fields: [tutorId], references: [id])
+  tutor   User    @relation("TutorAppointments", fields: [tutorId], references: [id], onDelete: Cascade)
   postId  String?
-  Post    Post?   @relation(fields: [postId], references: [id])
+  Post    Post?   @relation(fields: [postId], references: [id], onDelete: Cascade)
 }

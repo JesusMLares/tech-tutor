@@ -31,7 +31,7 @@
 
 /* Center box for login form */
 .login-box {
-    width: 300px;
+    width: 500px;
     padding: 40px;
     background-color: white;
     box-shadow: 0px 4px 8px #333;
@@ -40,9 +40,11 @@
 }
 
 .login-box h1 {
-    font-size: 2rem;
+    display: flex;
+    font-size: 3rem;
     color:#1786a8;
     font-weight: bold;
+    justify-content: center;
 }
 
 /* Form inputs styling */
@@ -56,39 +58,40 @@
     border: 1px solid #ccc;
 }
 
-button.inputs {
+.login-page-button {
+    width: 100%;
+    border-radius: 4px;
     background-color: #000435;
     color: white;
     border: none;
     cursor: pointer;
-    padding: 10px;
+    padding: 1rem;
     transition: background-color 0.3s ease-in;
 }
 
-button.inputs:hover {
+
+.login-page-button:hover {
     background-color: #333;
 }
 
 
-form p, h1 {
-    font-size: 18px;
-    margin-bottom: 10px;
-}
-
-form label {
-    display: block;
-    margin-bottom: 15px;
-}
-
-label[for="mentor-checkbox"] {
+.login-links-container {
     display: flex;
-    align-items: center;
-    text-wrap: nowrap;
+    justify-content: space-between;
 }
 
-input[type="checkbox"] {
-    margin-left: 3px;
-    vertical-align: middle;
+.login-home-link {
+    text-decoration: none;
+    color: #1786a8;
+    margin-top: 1rem;
+    font-size: 1.5rem;
+}
+
+.login-sign-up-link {
+    text-decoration: none;
+    color: #1786a8;
+    margin-top: 1rem;
+    font-size: 1.5rem;
 }
 
 

@@ -1,10 +1,10 @@
 import { getMultipleRandomTutors } from './tutorGenerator';
 
 const generatePremadeTutors = async () => {
-  const entryLevelTutors = await getMultipleRandomTutors(16, 1, 2);
-  const juniorTutors = await getMultipleRandomTutors(16, 1, 2);
-  const seniorTutors = await getMultipleRandomTutors(16, 1, 2);
-  const onlineTutors = await getMultipleRandomTutors(8, 1, 5);
+  const entryLevelTutors = await getMultipleRandomTutors(2, 1, 2);
+  const juniorTutors = await getMultipleRandomTutors(2, 1, 2);
+  const seniorTutors = await getMultipleRandomTutors(2, 1, 2);
+  const onlineTutors = await getMultipleRandomTutors(2, 1, 5);
 
   const allTutors = [
     ...entryLevelTutors.map((tutor, index) => ({
@@ -36,12 +36,23 @@ const generatePremadeTutors = async () => {
   return allTutors;
 };
 
+let premadeTutorsCache = null;
+
+const getPremadeTutors = async () => {
+  if (!premadeTutorsCache) {
+    premadeTutorsCache = await generatePremadeTutors();
+  }
+  return premadeTutorsCache;
+};
+
 export const getTutorById = async (id) => {
-  const premadeTutors = await generatePremadeTutors()
-  premadeTutors.find((tutor) => tutor.id === id)
-}
+  const premadeTutors = await getPremadeTutors();
+  return premadeTutors.find(tutor => tutor.id === id);
+};
 
 export const getTutorsByLevel = async (level) => {
-  const premadeTutors = await generatePremadeTutors()
-  premadeTutors.filter((tutor) => tutor.level === level)
-}
+  const premadeTutors = await getPremadeTutors();
+  return premadeTutors.filter(tutor => tutor.level === level);
+};
+
+export { generatePremadeTutors };

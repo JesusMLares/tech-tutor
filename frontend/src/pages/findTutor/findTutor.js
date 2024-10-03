@@ -1,29 +1,46 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import Navbar from '../../components/navbar/navbar';
 import AccountNav from '../../components/accounts/accountNav/accountNav';
-import { premadeTutors, getTutorsByLevel } from '../../utils/premadeTutors';
+import { generatePremadeTutors, getTutorsByLevel } from '../../utils/premadeTutors';
 import './findTutor.css';
 import Footer from '../../components/footer/footer';
 
 const FindTutor = () => {
   const { user } = useAuth();  
   const [selectedLevel, setSelectedLevel] = useState(null);
+  const [tutors, setTutors] = useState([]);
+  const [filteredTutors, setFilteredTutors] = useState([]);
   const navigate = useNavigate();
 
-  const getFilteredTutors = () => {
-    if (selectedLevel) {
-      return getTutorsByLevel(selectedLevel);
-    }
-    return getTutorsByLevel('Online');
-  };
+  useEffect(() => {
+    const fetchTutors = async () => {
+      const premadeTutors = await generatePremadeTutors();
+      setTutors(premadeTutors);
+      setFilteredTutors(premadeTutors); // Initially set to all tutors
+    };
+
+    fetchTutors();
+  }, []);
+
+  useEffect(() => {
+    const filterTutors = async () => {
+      if (selectedLevel) {
+        const filtered = await getTutorsByLevel(selectedLevel, tutors);
+        setFilteredTutors(filtered);
+      } else {
+        setFilteredTutors(tutors);
+      }
+    };
+
+    filterTutors();
+  }, [selectedLevel, tutors]);
 
   const handleTutorClick = (tutor) => {
     navigate(`/tutor/${tutor.id}`);
   };
 
-  const filteredTutors = getFilteredTutors();
 
   return (
     <div className="tutor-listing-page-ft">

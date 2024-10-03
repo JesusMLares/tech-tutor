@@ -96,6 +96,8 @@ const CreateUser = () => {
     return jwtDecode(localToken);
   };
 
+ 
+
   return (
     <div>
       <h1>Create User</h1>

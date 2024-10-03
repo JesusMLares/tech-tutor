@@ -1,0 +1,120 @@
+# ----- TYPES -----
+type User {
+  id: String!
+  firstName: String
+  lastName: String
+  email: String!
+  password_hash: String!
+  role: String!
+  posts: [Post!]!
+  hourlyRate: Float
+  rating: Float #It should be a table! Jank for now
+  skills: [String!] #It should be a table!
+  isAvailable: Boolean 
+  userAppointments: [Appointment!]!
+  tutorAppointments: [Appointment!]!
+}
+
+type Post {
+  id: String!
+  title: String!
+  content: String
+  published: Boolean!
+  authorId: String!
+  author: User!
+  appointments: [Appointment!]!
+}
+
+type Appointment {
+  id: String!
+  date: String!
+  userId: String!
+  user: User!
+  tutorId: String!
+  tutor: User!
+  postId: String
+  post: Post
+}
+
+type AuthPayload {
+  token: String!
+  user: User!
+}
+
+# ----- QUERIES ----- Read
+type Query {
+  users: [User!]!
+  posts: [Post!]!
+  appointments: [Appointment!]!
+  user(id: String!): User!
+  post(id: String!): Post!
+  appointment(id: String!): Appointment!
+}
+
+# ----- MUTATIONS ----- Create, Update, Delete
+type Mutation {
+  createUser(input: CreateUserInput!): AuthPayload!
+  createPost(input: CreatePostInput): Post!
+  createAppointment(input: CreateAppointmentInput): Appointment!
+  updateUser(id: String!, input: UpdateUserInput): User!
+  updatePost(id: String!, input: UpdatePostInput): Post!
+  updateAppointment(id: String!, input: UpdateAppointmentInput): Appointment!
+  deleteUser(id: String!): User!
+  deletePost(id: String!): Post!
+  deleteAppointment(id: String!): Appointment!
+  loginUser(email: String!, password: String!): AuthPayload!
+}
+
+# ----- INPUT TYPES -----
+input CreateUserInput {
+  firstName: String
+  lastName: String
+  email: String!
+  password_hash: String!
+  role: String!
+  skills: [String!]
+  hourlyRate: Float
+  rating: Float
+  isAvailable: Boolean
+}
+
+input CreatePostInput {
+  title: String!
+  content: String
+  published: Boolean
+  authorId: String!
+}
+
+input CreateAppointmentInput {
+  date: String!
+  userId: String!
+  tutorId: String!
+  postId: String
+}
+
+input UpdateUserInput {
+  firstName: String
+  lastName: String
+  email: String
+  password_hash: String
+  role: String
+  skills: [String!]
+  hourlyRate: Float
+  rating: Float
+  isAvailable: Boolean
+}
+
+input UpdatePostInput {
+  title: String
+  content: String
+  published: Boolean
+  authorId: String
+}
+
+input UpdateAppointmentInput {
+  date: String
+  userId: String
+  tutorId: String
+  postId: String
+}
+

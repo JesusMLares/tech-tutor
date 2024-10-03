@@ -5,6 +5,18 @@ import { useCurrentUser } from "../../../context/CurrentUser"; // Import the use
 
 const client = new GraphQLClient("http://localhost:5000");
 
+const GET_USER_QUERY = gql`
+  query User($id: String!) {
+    user(id: $id) {
+      id
+      firstName
+      lastName
+      email
+      role
+    }
+  }
+`
+
 const CREATE_USER_MUTATION = gql`
   mutation CreateUser($input: CreateUserInput!) {
     createUser(input: $input) {

@@ -86,7 +86,7 @@ function CheckOut() {
 
   return (
     <div className="payment-container">
-      <AccountNav />
+      {/* <AccountNav /> */}
       <div className="payment-grid-cotainer">
         <div className="payment-header">
           <h1>Book an appointment</h1>

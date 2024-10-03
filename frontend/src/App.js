@@ -14,6 +14,7 @@ import PaymentPage from "./pages/payment/PaymentView"
 import PaymentSuccessPage from "./pages/paymentSuccessView/PaymentSuccessView"
 import { AppointmentProvider } from "./context/AppointmentContext"
 import { CurrentUserProvider } from "./context/CurrentUser"
+import TemporayModalPage from "./pages/temproaryModalPage/TempModalView"
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
               <Route path="/tutor/:id" element={<TutorPage />} />
               <Route path="/payment" element={<PaymentPage />} />
               <Route path="/confirmation" element={<PaymentSuccessPage />} />
+              <Route path="/modal" element={<TemporayModalPage />} />
             </Routes>
           </Router>
         </AppointmentProvider>

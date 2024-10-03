@@ -3,7 +3,6 @@ import "./AppointmentCard.css"
 import { GraphQLClient, gql } from "graphql-request"
 
 const client = new GraphQLClient("http://localhost:5000")
-//import { AppointmentContext } from '../../../context/AppointmentContext
 
 const GET_TUTOR_QUERY = gql`
   query User($id: String!) {
@@ -17,7 +16,6 @@ const GET_TUTOR_QUERY = gql`
 `
 
 function AppointmentCard({ appointment }) {
-  //const { appointment } = useContext(AppointmentContext)
   const tutorId = appointment.tutorId
   const [tutor, setTutor] = useState({})
 
@@ -34,6 +32,7 @@ function AppointmentCard({ appointment }) {
       }
     } catch (error) {
       console.error(error)
+      alert("Failed to fetch tutor")
     }
   }
 

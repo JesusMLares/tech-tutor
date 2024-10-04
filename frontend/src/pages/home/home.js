@@ -7,7 +7,6 @@ import "./home.css"
 import SponsorDivider from "../../components/sponsor/sponsorDivider"
 import TutorDisplay from "../../components/tutorDisplay/tutorDisplay"
 import Showcase from "../../components/showcase/showcase"
-import { getMultipleRandomTutors } from "../../utils/tutorGenerator"
 import Footer from "../../components/footer/footer"
 import FooterFiller from "../../components/footerfiller/footerFiller"
 import { GraphQLClient, gql } from "graphql-request"
@@ -42,6 +41,8 @@ function Home() {
       alert("Failed to fetch tutors")
     }
   }
+  
+      
 
   useEffect(() => {
     fetchTutors()
@@ -132,7 +133,7 @@ function Home() {
                       </span>
                     ))}
                   </p>
-                  <p className="tutor-rating-hm">Rating: {tutor.rating}</p>
+                  <p className="tutor-rating-hm">Rating: {tutor.rating.toFixed(1)}</p>
                 </div>
               ))}
             </div>
@@ -140,7 +141,7 @@ function Home() {
         </div>
       </div>
       <SponsorDivider />
-      <Showcase />
+      <Showcase tutors={tutors} />
       <TutorDisplay />
       <FooterFiller />
       <Footer />

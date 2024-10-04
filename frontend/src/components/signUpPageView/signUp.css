@@ -1,9 +1,9 @@
 .signup-main-container {
     display: flex;
     height: 100vh;
-}
-
-.signup-side-bar {
+  }
+  
+  .signup-side-bar {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -11,60 +11,56 @@
     background-color: #000435;
     max-width: 25vw;
     height: 100vh;
-}
-
-.signup-login-logo {
+  }
+  
+  .signup-login-logo {
     max-width: 100%;
     height: auto;
     padding: 20px;
-}
-
-.signup-login-section {
+  }
+  
+  .signup-login-section {
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.signup-login-box {
+  }
+  
+  .signup-login-box {
     width: 800px;
     padding: 40px;
     background-color: white;
     box-shadow: 0px 4px 8px #333;
     border-radius: 8px;
     text-align: left;
-}
-
-.signup-login-box form {
+  }
+  
+  .signup-login-box form {
     display: block;
-}
-
-/* Flexbox layout for input containers */
-.input-containers {
+  }
+  
+  .input-containers {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
     width: 100%;
-}
-
-/* Headline */
-.signup-login-box h1 {
+  }
+  
+  .signup-login-box h1 {
     display: flex;
     font-size: 3rem;
     color: #1786a8;
     font-weight: bold;
     justify-content: center;
-}
-
-/* User inputs container */
-.user-input-container {
+  }
+  
+  .user-input-container {
     display: flex;
     flex-direction: column;
     flex: 1;
-}
-
-/* Form inputs styling */
-.user-signup-inputs {
+  }
+  
+  .user-signup-inputs {
     width: 100%;
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
@@ -72,23 +68,20 @@
     font-size: 16px;
     border-radius: 4px;
     border: 1px solid #ccc;
-}
-
-/* Adjust layout when tutor is selected */
-.input-containers.tutor-active .user-input-container,
-.input-containers.tutor-active .mentor-input-container {
-    flex: 1 1 48%; /* Split the width for tutor and user fields */
-}
-
-/* Mentor inputs container */
-.mentor-input-container {
+  }
+  
+  .input-containers.tutor-active .user-input-container,
+  .input-containers.tutor-active .mentor-input-container {
+    flex: 1 1 48%;
+  }
+  
+  .mentor-input-container {
     display: flex;
     flex-direction: column;
     flex: 1;
-}
-
-/* Mentor inputs styling */
-.mentor-signup-inputs {
+  }
+  
+  .mentor-signup-inputs {
     width: 100%;
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
@@ -96,52 +89,69 @@
     font-size: 16px;
     border-radius: 4px;
     border: 1px solid #ccc;
-}
-
-/* Dropdown and button */
-.signup-login-box select, button.signup-inputs {
+  }
+  
+  .signup-login-box select,
+  button.signup-inputs {
     width: 100%;
     margin-top: 1rem;
-}
-
-button.signup-inputs {
+  }
+  
+  button.signup-inputs {
     background-color: #000435;
     color: white;
     border: none;
     cursor: pointer;
     padding: 10px;
     transition: background-color 0.3s ease-in;
-}
-
-button.signup-inputs:hover {
+  }
+  
+  button.signup-inputs:hover {
     background-color: #333;
-}
-
-/* Dropdown styling */
-.account-type-dropdown {
+  }
+  
+  .profile-image-selection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  
+  .profile-image-header {
+    color: #1786a8;
+    font-size: 1.5rem;
+  }
+  
+  .radio-input {
+    display: none;
+  }
+  
+  .profile-image {
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: box-shadow 0.3s ease;
+  }
+  
+  /* When the image is selected, apply a green box shadow */
+  .image-label.selected .profile-image {
+    box-shadow: 0px 0px 10px 4px green;
+  }
+  
+  .account-type-dropdown {
     width: 100%;
     margin-bottom: 0.5rem;
     padding: 10px;
     font-size: 16px;
     border-radius: 4px;
     border: 1px solid #ccc;
-}
-
-/* "Back" link styling */
-.sign-up-back-link {
+  }
+  
+  .sign-up-back-link {
     display: inline-block;
     text-decoration: none;
     color: #1786a8;
-    margin-top: 20px; /* Add space between the button and the link */
+    margin-top: 20px;
     font-size: 1.5rem;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .signup-side-bar {
-        display: none;
-    }
-    .input-containers {
-        flex-direction: column;
-    }
-}
+  }

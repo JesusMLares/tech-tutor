@@ -126,7 +126,11 @@ function SignUp() {
         <div className="signup-login-box">
           <h1>Create Account</h1>
           <form onSubmit={handleSubmit}>
-          <div className={`input-containers ${formData.role === "TUTOR" ? "tutor-active" : ""}`}>
+            <div
+              className={`input-containers ${
+                formData.role === "TUTOR" ? "tutor-active" : ""
+              }`}
+            >
               <div className="user-input-container">
                 <label>
                   <input
@@ -170,55 +174,69 @@ function SignUp() {
                 </label>
               </div>
               {formData.role === "TUTOR" && (
-              <div className="mentor-input-container">
-                    <label>
-                      <input
-                        className="mentor-signup-inputs"
-                        type="text"
-                        name="skills"
-                        value={formData.skills}
-                        onChange={handleFormChange}
-                        placeholder="Skills (comma separated)"
-                      />
-                    </label>
-                    <label>
-                      <input
-                        className="mentor-signup-inputs"
-                        type="number"
-                        name="hourlyRate"
-                        value={formData.hourlyRate}
-                        onChange={handleFormChange}
-                        placeholder="Hourly Rate"
-                      />
-                    </label>
-                    <label>
-                      <input
-                        className="mentor-signup-inputs"
-                        type="number"
-                        name="rating"
-                        value={formData.rating}
-                        onChange={handleFormChange}
-                        placeholder="Rating"
-                      />
-                    </label>
-              </div>
+                <div className="mentor-input-container">
+                  <label>
+                    <input
+                      className="mentor-signup-inputs"
+                      type="text"
+                      name="skills"
+                      value={formData.skills}
+                      onChange={handleFormChange}
+                      placeholder="Skills (comma separated)"
+                    />
+                  </label>
+                  <label>
+                    <input
+                      className="mentor-signup-inputs"
+                      type="number"
+                      name="hourlyRate"
+                      min="10"
+                      max="250"
+                      value={formData.hourlyRate}
+                      onChange={handleFormChange}
+                      placeholder="Hourly Rate"
+                    />
+                  </label>
+                  <label>
+                    <input
+                      className="mentor-signup-inputs"
+                      type="number"
+                      name="rating"
+                      min="1"
+                      max="5"
+                      value={formData.rating}
+                      onChange={handleFormChange}
+                      placeholder="Rating"
+                    />
+                  </label>
+                </div>
               )}
             </div>
-
-            <p>Profile Image</p>
-            {imageUrls.map((url, index) => (
-              <label key={index}>
-                <input
-                  className="signup-inputs"
-                  type="radio"
-                  name="imageUrl"
-                  value={url}
-                  checked={formData.imageUrl === url}
-                  onChange={handleFormChange}
-                />
-                <img src={url} alt={`Profile Image ${index + 1}`} />
-              </label>
-            ))}
+            <div className="profile-image-selection">
+              <p className="profile-image-header">Select your Profile Image</p>
+              {imageUrls.map((url, index) => (
+                <label
+                  key={index}
+                  className={`image-label ${
+                    formData.imageUrl === url ? "selected" : ""
+                  }`}
+                >
+                  <input
+                    className="radio-input"
+                    type="radio"
+                    name="imageUrl"
+                    value={url}
+                    checked={formData.imageUrl === url}
+                    onChange={handleFormChange}
+                  />
+                  <img
+                    src={url}
+                    alt={`Profile Image ${index + 1}`}
+                    className="profile-image"
+                  />
+                </label>
+              ))}
+            </div>
 
             <select
               name="role"

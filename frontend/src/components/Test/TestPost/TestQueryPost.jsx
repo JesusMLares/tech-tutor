@@ -35,6 +35,7 @@ const GET_USER_POSTS_QUERY = gql`
             lastName
             email
             role
+            imageUrl
             posts{
                 id
                 title

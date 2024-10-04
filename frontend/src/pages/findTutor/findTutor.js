@@ -118,9 +118,9 @@ const FindTutor = () => {
         </div>
       </aside>
         <main className="tutor-list-container-ft">
-          {/* <h1 className="tutor-list-title-ft">
+          <h1 className="tutor-list-title-ft">
             {selectedLevel ? `${selectedLevel} Tutors` : 'Tutors Online Now'}
-          </h1> */}
+          </h1>
           <div className="tutor-grid-ft">
             {filteredTutors.map((tutor) => (
               <div

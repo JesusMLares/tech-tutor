@@ -39,13 +39,15 @@
     display: block;
 }
 
+/* Flexbox layout for input containers */
 .input-containers {
     display: flex;
-    justify-content: space-between;
-    gap: 1rem;
     flex-wrap: wrap;
+    gap: 1rem;
+    width: 100%;
 }
 
+/* Headline */
 .signup-login-box h1 {
     display: flex;
     font-size: 3rem;
@@ -54,12 +56,14 @@
     justify-content: center;
 }
 
+/* User inputs container */
 .user-input-container {
     display: flex;
-    flex: 1;
     flex-direction: column;
+    flex: 1;
 }
 
+/* Form inputs styling */
 .user-signup-inputs {
     width: 100%;
     margin-top: 0.5rem;
@@ -70,14 +74,21 @@
     border: 1px solid #ccc;
 }
 
-.mentor-input-container {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
+/* Adjust layout when tutor is selected */
+.input-containers.tutor-active .user-input-container,
+.input-containers.tutor-active .mentor-input-container {
+    flex: 1 1 48%; /* Split the width for tutor and user fields */
 }
 
+/* Mentor inputs container */
+.mentor-input-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+/* Mentor inputs styling */
 .mentor-signup-inputs {
-    display: inline-block;
     width: 100%;
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
@@ -87,6 +98,7 @@
     border: 1px solid #ccc;
 }
 
+/* Dropdown and button */
 .signup-login-box select, button.signup-inputs {
     width: 100%;
     margin-top: 1rem;
@@ -105,6 +117,7 @@ button.signup-inputs:hover {
     background-color: #333;
 }
 
+/* Dropdown styling */
 .account-type-dropdown {
     width: 100%;
     margin-bottom: 0.5rem;
@@ -114,11 +127,12 @@ button.signup-inputs:hover {
     border: 1px solid #ccc;
 }
 
+/* "Back" link styling */
 .sign-up-back-link {
     display: inline-block;
     text-decoration: none;
     color: #1786a8;
-    margin-top: 1rem;
+    margin-top: 20px; /* Add space between the button and the link */
     font-size: 1.5rem;
 }
 

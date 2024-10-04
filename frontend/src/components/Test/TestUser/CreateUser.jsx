@@ -13,6 +13,7 @@ const GET_USER_QUERY = gql`
       lastName
       email
       role
+      imageUrl
     }
   }
 `

@@ -6,6 +6,8 @@ const { generateToken } = require("./auth")
 const resolvers = {
   Query: {
     users: async () => await prisma.user.findMany(),
+    tutorUsers: async () => await prisma.user.findMany({ where: { role: "TUTOR" } }),
+    tutorUsersAvailable: async () => await prisma.user.findMany({ where: { role: "TUTOR", isAvailable: true } }),
     posts: async () => await prisma.post.findMany(),
     appointments: async () => await prisma.appointment.findMany(),
     user: async (_, { id }) => await prisma.user.findUnique({ where: { id } }),
@@ -45,12 +47,14 @@ const resolvers = {
         email,
         password_hash,
         role,
+        imageUrl,
         skills,
         hourlyRate,
         rating,
         isAvailable,
       } = input
       try {
+        console.log(imageUrl)
         const hashedPassword = await bcrypt.hash(password_hash, 10)
         const user = await prisma.user.create({
           data: {
@@ -59,6 +63,7 @@ const resolvers = {
             email,
             password_hash: hashedPassword,
             role,
+            imageUrl,
             skills,
             hourlyRate,
             rating,

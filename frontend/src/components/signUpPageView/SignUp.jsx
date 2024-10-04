@@ -5,7 +5,9 @@ import { Link } from "react-router-dom";
 import { useCurrentUser } from "../../context/CurrentUser"; // Import the useCurrentUser hook
 import { GraphQLClient, gql } from "graphql-request";
 
-const client = new GraphQLClient("http://localhost:5000");
+const graphqlUrl = process.env.REACT_APP_GRAPHQL_URL
+
+const client = new GraphQLClient(graphqlUrl);
 
 const CREATE_USER_MUTATION = gql`
   mutation CreateUser($input: CreateUserInput!) {

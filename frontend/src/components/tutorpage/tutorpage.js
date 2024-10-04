@@ -8,7 +8,8 @@ import "./tutorpage.css"
 import Footer from "../../components/footer/footer"
 import { GraphQLClient, gql } from "graphql-request"
 
-const client = new GraphQLClient("http://localhost:5000")
+const graphqlUrl = process.env.REACT_APP_GRAPHQL_URL
+const client = new GraphQLClient(graphqlUrl);
 
 const GET_USER_QUERY = gql`
   query User($id: String!) {

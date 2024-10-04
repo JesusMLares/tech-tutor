@@ -9,7 +9,9 @@ import { GraphQLClient, gql } from "graphql-request"
 
 import TestCreateAppointment from "../../Test/TestAppointment/TestCreateAppointment";
 
-const client = new GraphQLClient("http://localhost:5000")
+const graphqlUrl = process.env.REACT_APP_GRAPHQL_URL
+
+const client = new GraphQLClient(graphqlUrl);
 
 const GET_USER_QUERY = gql`
   query User($id: String!) {

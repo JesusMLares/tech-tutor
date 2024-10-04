@@ -3,7 +3,8 @@ import { GraphQLClient, gql } from "graphql-request"
 import { useNavigate } from "react-router-dom"
 import { useCurrentUser } from "../../../context/CurrentUser"
 
-const client = new GraphQLClient("http://localhost:5000")
+const graphqlUrl = process.env.REACT_APP_GRAPHQL_URL
+const client = new GraphQLClient(graphqlUrl);
 
 const CREATE_APPOINTMENT_MUTATION = gql`
   mutation CreateAppointment($input: CreateAppointmentInput!) {

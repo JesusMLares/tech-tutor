@@ -133,8 +133,8 @@ const TutorPage = () => {
                 <div className="tutor-booking-info-tp">
                   <button className="book-button-tp">Book Me Now</button>
                   <div className="tutor-rates-availability-tp">
-                    <p className="tutor-rates-tp">{tutor.hourlyRate}</p>
-                    <p className="tutor-availability-tp">{tutor.isAvailable}</p>
+                    <p className="tutor-rates-tp">${tutor.hourlyRate}/per hour</p>
+                    {/* <p className="tutor-availability-tp">{tutor.isAvailable}</p> */}
                   </div>
                 </div>
               </div>

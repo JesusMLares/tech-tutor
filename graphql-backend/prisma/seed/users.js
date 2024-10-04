@@ -5,7 +5,7 @@ const prisma = new PrismaClient()
 
 async function main() {
   const users = []
-  const amount = 10
+  const amount = 5
 
   for (let i = 0; i < amount ; i++) {
     users.push({
@@ -21,7 +21,7 @@ async function main() {
         ["JavaScript", "Python", "Java", "C#", "Ruby"],
         3
       ),
-      isAvailable: faker.datatype.boolean(),
+      isAvailable: true,
     })
   }
 

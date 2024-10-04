@@ -6,6 +6,8 @@ const { generateToken } = require("./auth")
 const resolvers = {
   Query: {
     users: async () => await prisma.user.findMany(),
+    tutorUsers: async () => await prisma.user.findMany({ where: { role: "TUTOR" } }),
+    tutorUsersAvailable: async () => await prisma.user.findMany({ where: { role: "TUTOR", isAvailable: true } }),
     posts: async () => await prisma.post.findMany(),
     appointments: async () => await prisma.appointment.findMany(),
     user: async (_, { id }) => await prisma.user.findUnique({ where: { id } }),

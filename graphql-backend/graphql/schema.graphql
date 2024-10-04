@@ -45,6 +45,8 @@ type AuthPayload {
 # ----- QUERIES ----- Read
 type Query {
   users: [User!]!
+  tutorUsers: [User!]!
+  tutorUsersAvailable: [User!]!
   posts: [Post!]!
   appointments: [Appointment!]!
   user(id: String!): User!

@@ -204,22 +204,21 @@ function SignUp() {
               </div>
               )}
             </div>
-            <div className="profile-image-selection">
-            <p className="profile-image-header">Select your Profile Image</p>
+
+            <p>Profile Image</p>
             {imageUrls.map((url, index) => (
-              <label key={index} className={`image-label ${formData.imageUrl === url ? "selected" : ""}`}>
+              <label key={index}>
                 <input
-                  className="radio-input"
+                  className="signup-inputs"
                   type="radio"
                   name="imageUrl"
                   value={url}
                   checked={formData.imageUrl === url}
                   onChange={handleFormChange}
                 />
-                <img src={url} alt={`Profile Image ${index + 1}`} className="profile-image" />
+                <img src={url} alt={`Profile Image ${index + 1}`} />
               </label>
             ))}
-            </div>
 
             <select
               name="role"

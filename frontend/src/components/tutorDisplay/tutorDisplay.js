@@ -1,11 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { getMultipleRandomTutors } from '../../utils/tutorGenerator';
 import './tutorDisplay.css';
+import { GraphQLClient, gql } from "graphql-request"
 
-const TutorCard = ({ name, photo, skills, rating }) => (
+const client = new GraphQLClient("http://localhost:5000")
+
+const GET_TUTORS_QUERY = gql`
+  query {
+    tutorUsers {
+      id
+      firstName
+      lastName
+      imageUrl
+      skills
+      rating
+    }
+  }
+`
+
+const TutorCard = ({ firstName, lastName, imageUrl, skills, rating }) => (
     <div className="tutor-card-td">
-      <img src={photo} alt={name} className="tutor-image-td" />
-      <h3>{name}</h3>
+      <img src={imageUrl} alt={firstName} className="tutor-image-td" />
+      <h3>{firstName} {lastName}</h3>
       <div className="tutor-skills-td">
         {skills.map((skill, index) => (
           <span key={index} className="skill-tag-td">{skill}</span>
@@ -17,25 +33,24 @@ const TutorCard = ({ name, photo, skills, rating }) => (
 
 const TutorDisplay = () => {
   const [tutors, setTutors] = useState([]);
-  const [loading, setLoading] = useState(true);
+  
+  const fetchTutors = async () => {
+    try {
+      const data = await client.request(GET_TUTORS_QUERY)
+      if (data && data.tutorUsers) {
+        setTutors(data.tutorUsers)
+      }
+    } catch (error) {
+      console.error(error)
+      alert("Failed to fetch tutors")
+    }
+  }
+  
+      
 
   useEffect(() => {
-    async function fetchTutors() {
-      try {
-        const randomTutors = await getMultipleRandomTutors(12);
-        setTutors(randomTutors);
-      } catch (error) {
-        console.error('Error fetching tutors:', error);
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchTutors();
-  }, []);
-
-  if (loading) {
-    return <div>Loading tutors...</div>;
-  }
+    fetchTutors()
+  }, [])
 
   return (
     <div className="tutor-display-page-td">

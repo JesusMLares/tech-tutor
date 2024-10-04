@@ -19,6 +19,7 @@ const GET_USER_QUERY = gql`
       role
       imageUrl
       skills
+      isAvailable
       userAppointments {
         id
         date
@@ -70,6 +71,7 @@ function MentorAccount() {
           role: data.user.role,
           imageUrl: data.user.imageUrl,
           skills: data.user.skills,
+          isAvailable: data.user.isAvailable,
         })
         setAppointments(data.user.tutorAppointments)
       }

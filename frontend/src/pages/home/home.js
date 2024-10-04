@@ -141,7 +141,7 @@ function Home() {
         </div>
       </div>
       <SponsorDivider />
-      <Showcase tutors={tutors} />
+      <Showcase />
       <TutorDisplay />
       <FooterFiller />
       <Footer />

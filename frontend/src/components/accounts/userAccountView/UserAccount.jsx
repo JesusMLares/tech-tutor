@@ -105,7 +105,9 @@ function UserAccount() {
             </p>
             <p>
               <strong>First Name:</strong> {userData.firstName}
-              <strong>Last Name:</strong> {userData.lastName}
+            </p>
+            <p>
+            <strong>Last Name:</strong> {userData.lastName}
             </p>
             <p>
               <strong>Role:</strong> {userData.role}

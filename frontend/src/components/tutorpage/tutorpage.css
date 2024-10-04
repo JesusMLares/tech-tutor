@@ -1,31 +1,57 @@
 .tutor-page-container-tp {
     display: flex;
     flex-direction: column;
-    min-height: 150vh; 
+    min-height: 100vh;
+    background-color: #f5f7fa;
   }
   
-  .tutor-page-content-tp { 
+  .tutor-page-content-tp {
     flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start; 
-    padding: 20px;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
   }
   
   .tutor-page-tp {
-    max-width: 800px;
-    width: 100%;
-    margin: 0 auto;
-    background-color: #f9f9f9;
+    display: flex;
+    background-color: #ffffff;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  .tutor-left-column-tp {
+    flex: 0 0 300px;
+    padding: 2rem;
+    background-color: #f0f8ff;
+    border-right: 1px solid #e0e0e0;
+  }
+  
+  .tutor-right-column-tp {
+    flex: 1;
+    padding: 2rem;
+  }
+  
+  .back-button-tp {
+    background-color: #e0e0e0;
+    color: #333;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+    margin-bottom: 1rem;
+  }
+  
+  .back-button-tp:hover {
+    background-color: #d0d0d0;
   }
   
   .tutor-header-tp {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
+    text-align: center;
+    margin-bottom: 2rem;
   }
   
   .tutor-image-tp {
@@ -33,37 +59,56 @@
     height: 200px;
     object-fit: cover;
     border-radius: 50%;
-    margin-right: 20px;
+    margin-bottom: 1rem;
+    border: 4px solid #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   
   .tutor-info-tp h1 {
     color: #333;
-    margin-bottom: 10px;
+    margin-bottom: 0.5rem;
   }
   
   .tutor-level-tp, .tutor-rating-tp {
     color: #667;
-    margin-bottom: 5px;
+    margin-bottom: 0.5rem;
+  }
+  
+  .tutor-booking-info-tp {
+    margin-top: 1rem;
   }
   
   .book-button-tp {
     background-color: #52bb90;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 0.75rem 1.5rem;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 1rem;
     transition: background-color 0.3s ease;
+    width: 100%;
+    margin-bottom: 1rem;
   }
   
   .book-button-tp:hover {
     background-color: #45a07a;
   }
   
+ .tutor-rates-tp, .tutor-availability-tp {
+    font-size: 1.2rem; 
+    font-weight: bold; 
+    color: #333;
+    margin-bottom: 0.8rem; 
+}
+  
+  .tutor-skills-tp {
+    margin-top: 2rem;
+  }
+  
   .tutor-skills-tp h2 {
     color: #333;
-    margin-bottom: 10px;
+    margin-bottom: 1rem;
   }
   
   .tutor-skills-tp ul {
@@ -74,50 +119,63 @@
   }
   
   .tutor-skills-tp li {
-    background-color: #52bb90;
-    color: #ffffff;
-    padding: 5px 10px;
+    background-color: #e0f2fe;
+    color: #1786a8;
+    padding: 0.25rem 0.75rem;
     border-radius: 20px;
-    margin-right: 10px;
-    margin-bottom: 10px;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
   }
   
-  .loading, .not-found {
-    text-align: center;
-    font-size: 18px;
-    color: #667;
-    margin-top: 50px;
+  .tutor-description-tp,
+  .tutor-experience-tp,
+  .tutor-testimonials-tp,
+  .tutor-comments-tp {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   }
-
-  .tutor-description-tp {
-    margin-bottom: 20px;
+  
+  .tutor-description-tp p,
+  .tutor-experience-tp p {
+    color: #333;
     line-height: 1.6;
-    color: #333;
-    background-color: #fff;
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  }
-
-  .back-button-tp {
-    background-color: #f0f0f0;
-    color: #333;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
   }
   
-  .back-button-tp:hover {
-    background-color: #e0e0e0;
+  .tutor-testimonials-tp h2,
+  .tutor-comments-tp h2 {
+    color: #1786a8;
+    margin-bottom: 1rem;
   }
   
-  .back-button-tp::before {
-    content: '←';
-    margin-right: 5px;
+  .tutor-testimonials-tp blockquote {
+    font-style: italic;
+    border-left: 3px solid #52bb90;
+    padding-left: 1rem;
+    margin-left: 0;
+    margin-bottom: 1rem;
+    color: #555;
+  }
+  
+  .tutor-testimonials-tp blockquote footer {
+    margin-top: 0.5rem;
+    font-style: normal;
+    text-align: right;
+    color: #888;
+  }
+  
+  .tutor-comments-tp ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .tutor-comments-tp li {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    color: #333;
   }

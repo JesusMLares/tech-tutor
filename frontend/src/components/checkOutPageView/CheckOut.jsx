@@ -66,9 +66,6 @@ function CheckOut({ tutor }) {
           tutorId: tutor.id,
         },
       })
-
-      alert("Appointment created successfully")
-      navigate("/")
     } catch (error) {
       alert("Failed to create appointment")
     }
@@ -98,8 +95,8 @@ function CheckOut({ tutor }) {
         payment_method_data: {
           metadata: {
             appointmentDate: appointmentDate,
-            firstName: firstName,
-            lastName: lastName,
+            firstName: currentUser.firstName,
+            lastName: currentUser.lastName,
           },
         },
       },
@@ -113,10 +110,8 @@ function CheckOut({ tutor }) {
         `Payment successful! Appointment Date: ${appointmentDate}, Name: ${firstName} ${lastName}`
       );
       setAppointmentDetails({
-        firstName,
-        lastName,
         appointmentDate,
-        mentor: "",
+        mentor: tutor.firstName + " " + tutor.lastName,
       });
       handleCreateAppointment(appointmentDate);
       navigate("/confirmation");

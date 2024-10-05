@@ -34,7 +34,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
- 
+  "proxy": "tech-tutor-production-eaa7.up.railway.app",
   "eslintConfig": {
     "extends": [
       "react-app",

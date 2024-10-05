@@ -9,11 +9,11 @@ function Payment(props) {
   const [stripePromise, setStripePromise] = useState(null);
   const [clientSecret, setClientSecret] = useState("");
   
-  const prismaUrl = process.env.REACT_APP_STRIPE_URL;
+  const stripeUrl = process.env.REACT_APP_STRIPE_URL;
 
   useEffect(() => {
     //Remove or add env HERE!
-    fetch(`${prismaUrl}/checkOut/config`).then(async (r) => {
+    fetch(`${stripeUrl}/checkOut/config`).then(async (r) => {
       const { publishableKey } = await r.json();
 
       //console.log("Publishable key:",publishableKey);
@@ -23,7 +23,7 @@ function Payment(props) {
 
   useEffect(() => {
     //Remove or add env HERE!
-    fetch(`${prismaUrl}/checkOut/create-payment-intent`, {
+    fetch(`${stripeUrl}/checkOut/create-payment-intent`, {
       method: "POST",
       body: JSON.stringify({}),
     }).then(async (r) => {

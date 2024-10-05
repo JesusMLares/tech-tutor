@@ -10,6 +10,7 @@ const products = require('./routes/products')
 
 // Passes the route to each specific file, therefore 
 // routes do not have to be explicity defined in their file
+app.use(express.json())
 app.use('/checkOut', checkOut)
 app.use('/products', products)
 

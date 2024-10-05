@@ -66,7 +66,10 @@ function CheckOut({ tutor }) {
           tutorId: tutor.id,
         },
       })
+      console.log("Appointment created: ", data)
+      alert("Appointment created successfully")
     } catch (error) {
+      console.error("Failed to create appointment: ", error)
       alert("Failed to create appointment")
     }
   }

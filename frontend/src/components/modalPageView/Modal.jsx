@@ -24,7 +24,7 @@ function ModalPage({ tutor }) {
   
 
   useEffect(() => {
-    // Remove env for local testing
+    // Remove env/url for local testing: https://tech-tutor-production-eaa7.up.railway.app
     fetch("https://tech-tutor-production-eaa7.up.railway.app/checkOut/config").then(async (r) => {
       const { publishableKey } = await r.json();
       setStripePromise(loadStripe(publishableKey));

@@ -19,15 +19,17 @@ function ModalPage({ tutor }) {
   const [stripePromise, setStripePromise] = useState(null);
   const [clientSecret, setClientSecret] = useState("");
 
+  const prismaUrl = process.env.REACT_APP_STRIPE_URL;
+
   useEffect(() => {
-    fetch("/checkOut/config").then(async (r) => {
+    fetch(`${prismaUrl}/checkOut/config`).then(async (r) => {
       const { publishableKey } = await r.json();
       setStripePromise(loadStripe(publishableKey));
     });
   }, []);
 
   useEffect(() => {
-    fetch("/checkOut/create-payment-intent", {
+    fetch(`${prismaUrl}/checkOut/create-payment-intent`, {
       method: "POST",
       body: JSON.stringify({}),
     }).then(async (r) => {

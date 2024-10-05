@@ -91,6 +91,7 @@
     margin-bottom: 1rem;
   }
   
+  
   .book-button-tp:hover {
     background-color: #45a07a;
   }
@@ -133,7 +134,7 @@
   .tutor-testimonials-tp,
   .tutor-comments-tp {
     margin-bottom: 2rem;
-    padding: 1.5rem;
+    padding: .2rem;
     background-color: #ffffff;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);

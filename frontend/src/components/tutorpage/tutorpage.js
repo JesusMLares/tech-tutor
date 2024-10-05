@@ -1,113 +1,195 @@
-import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import Navbar from '../navbar/navbar';
-import { getTutorById } from '../../utils/premadeTutors';
-import { generateTutorDescription } from '../../utils/descriptionGenerator';
-import { generateTutorProfile } from '../../utils/tutorProfileGenerator';
-import './tutorpage.css';
-import Footer from '../../components/footer/footer';
+import React, { useEffect, useState } from "react"
+import { useParams, useNavigate } from "react-router-dom"
+import Navbar from "../navbar/navbar"
+import AccountNav from "../../components/accounts/accountNav/accountNav"
+import { getTutorById } from "../../utils/premadeTutors"
+import { generateTutorDescription } from "../../utils/descriptionGenerator"
+import { generateTutorProfile } from "../../utils/tutorProfileGenerator"
+import "./tutorpage.css"
+import Footer from "../../components/footer/footer"
+import { GraphQLClient, gql } from "graphql-request"
+import ModalPage from "../modalPageView/Modal"
+import { useCurrentUser } from "../../context/CurrentUser"
+
+const graphqlUrl = process.env.REACT_APP_GRAPHQL_URL
+const client = new GraphQLClient(graphqlUrl);
+
+const GET_USER_QUERY = gql`
+  query User($id: String!) {
+    user(id: $id) {
+      id
+      firstName
+      lastName
+      email
+      role
+      imageUrl
+      skills
+      rating
+      hourlyRate
+      isAvailable
+    }
+  }
+`
 
 const TutorPage = () => {
-  const { id } = useParams();
-  const [tutor, setTutor] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
-  const [tutorProfile, setTutorProfile] = useState(null);
+  const { id } = useParams()
+  const userId = id
+  const [tutor, setTutor] = useState([])
+  const navigate = useNavigate()
+  const [tutorProfile, setTutorProfile] = useState(null)
+  const { currentUser } = useCurrentUser()
+
+
+  const fetchTutor = async () => {
+    if (!userId) {
+      return
+    }
+
+    try {
+      const data = await client.request(GET_USER_QUERY, { id: userId })
+
+      if (data && data.user) {
+        setTutor({
+          id: data.user.id,
+          firstName: data.user.firstName,
+          lastName: data.user.lastName,
+          email: data.user.email,
+          role: data.user.role,
+          imageUrl: data.user.imageUrl,
+          skills: data.user.skills,
+          rating: data.user.rating,
+          hourlyRate: data.user.hourlyRate,
+          isAvailable: data.user.isAvailable,
+        })
+      } else {
+        alert("User not found")
+      }
+    } catch (error) {
+      console.error(error)
+      alert("Failed to fetch user")
+    }
+  }
 
   useEffect(() => {
-    const fetchTutor = async () => {
-      try {
-        const fetchedTutor = await getTutorById(id);
-        setTutor(fetchedTutor);
-        setTutorProfile(generateTutorProfile());
-      } catch (error) {
-        console.error('Error fetching tutor:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
+    fetchTutor()
+    setTutorProfile(generateTutorProfile())
+  }, [userId])
 
-    fetchTutor();
-  }, [id]);
+  // useEffect(() => {
+  //   const fetchTutor = async () => {
+  //     try {
+  //       const fetchedTutor = await getTutorById(id);
+  //       setTutor(fetchedTutor);
+  //       setTutorProfile(generateTutorProfile());
+  //     } catch (error) {
+  //       console.error('Error fetching tutor:', error);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
 
-  const handleBack = () => {
-    navigate(-1);
-  };
+  //   fetchTutor();
+  // }, [id]);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  // const handleBack = () => {
+  //   navigate(-1);
+  // };
+
+  // if (loading) {
+  //   return <div>Loading...</div>;
+  // }
+
+  // if (!tutor) {
+  //   return <div>Tutor not found</div>;
+  // }
 
   if (!tutor) {
-    return <div>Tutor not found</div>;
+    return <div>Loading...</div>
   }
 
-  const tutorDescription = generateTutorDescription(tutor.name, tutor.skills);
+  let tutorDescription = ""
+  if (tutor && tutor.firstName && tutor.skills) {
+    tutorDescription = generateTutorDescription(tutor.firstName, tutor.skills)
+  }
 
   return (
     <div className="tutor-page-container-tp">
-  <Navbar />
-  <div className="tutor-page-content-tp">
-    <div className="tutor-page-tp">
-      <div className="tutor-left-column-tp">
-        <button className="back-button-tp" onClick={() => navigate(-1)}>Back</button>
-        <div className="tutor-header-tp">
-          <img src={tutor.photo} alt={tutor.name} className="tutor-image-tp" />
-          <div className="tutor-info-tp">
-            <h1>{tutor.name}</h1>
-            <p className="tutor-level-tp">Level: {tutor.level}</p>
-            <p className="tutor-rating-tp">
-              Rating: {typeof tutor.rating === 'number' ? tutor.rating.toFixed(1) : 'N/A'}
-            </p>
-            <div className="tutor-booking-info-tp">
-              <button className="book-button-tp">Book Me Now</button>
-              <div className="tutor-rates-availability-tp">
-                <p className="tutor-rates-tp">{tutorProfile.rate}</p>
-                <p className="tutor-availability-tp">{tutorProfile.availability}</p>
+      {currentUser ? <AccountNav /> : <Navbar />}
+      <div className="tutor-page-content-tp">
+        <div className="tutor-page-tp">
+          <div className="tutor-left-column-tp">
+            <button className="back-button-tp" onClick={() => navigate(-1)}>
+              Back
+            </button>
+            <div className="tutor-header-tp">
+              <img
+                src={tutor.imageUrl}
+                alt={tutor.firstName}
+                className="tutor-image-tp"
+              />
+              <div className="tutor-info-tp">
+                <h1>
+                  {tutor.firstName} {tutor.lastName}
+                </h1>
+                <p className="tutor-level-tp">Level: Experienced</p>
+                <p className="tutor-rating-tp">Rating: {tutor.rating}</p>
+                <div className="tutor-booking-info-tp">
+                  <div className="center-modal-btn" >
+                    <ModalPage tutor={tutor}/>
+                  </div>
+                  <div className="tutor-rates-availability-tp">
+                    <p className="tutor-rates-tp">${tutor.hourlyRate}/per hour</p>
+                    {/* <p className="tutor-availability-tp">{tutor.isAvailable}</p> */}
+                  </div>
+                </div>
               </div>
             </div>
+            <div className="tutor-skills-tp">
+              <h2>Skills:</h2>
+              {tutor.skills && ( //Fixed rendering issue
+                <ul>
+                  {tutor.skills.map((skill, index) => (
+                    <li key={index}>{skill}</li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </div>
+          <div className="tutor-right-column-tp">
+            <div className="tutor-description-tp">
+              <h2>About Me</h2>
+              <p>{tutorDescription}</p>
+            </div>
+            {tutorProfile && ( //Fixed rendering issue
+              <div className="tutor-profile-tp">
+                <div className="tutor-experience-tp">
+                  <h2>Experience</h2>
+                  <p>{tutorProfile.experience}</p>
+                </div>
+                <div className="tutor-testimonials-tp">
+                <h2>What My Students Say</h2>
+                {tutorProfile.testimonials.map((testimonial, index) => (
+                  <blockquote key={index}>
+                    "{testimonial}"<footer>- Student {index + 1}</footer>
+                  </blockquote>
+                ))}
+              </div>
+              <div className="tutor-comments-tp">
+                <h2>Recent Comments</h2>
+                <ul>
+                  {tutorProfile.comments.map((comment, index) => (
+                    <li key={index}>{comment}</li>
+                  ))}
+                </ul>
+              </div>
+              </div>
+            )}
           </div>
         </div>
-        <div className="tutor-skills-tp">
-          <h2>Skills:</h2>
-          <ul>
-            {tutor.skills.map((skill, index) => (
-              <li key={index}>{skill}</li>
-            ))}
-          </ul>
-        </div>
-      </div>
-      <div className="tutor-right-column-tp">
-        <div className="tutor-description-tp">
-          <p>{tutorDescription}</p>
-        </div>
-        <div className="tutor-experience-tp">
-          <h2>Experience</h2>
-          <p>{tutorProfile.experience}</p>
-        </div>
-        <div className="tutor-testimonials-tp">
-          <h2>What My Students Say</h2>
-          {tutorProfile.testimonials.map((testimonial, index) => (
-            <blockquote key={index}>
-              "{testimonial}"
-              <footer>- Student {index + 1}</footer>
-            </blockquote>
-          ))}
-        </div>
-        <div className="tutor-comments-tp">
-          <h2>Recent Comments</h2>
-          <ul>
-            {tutorProfile.comments.map((comment, index) => (
-              <li key={index}>{comment}</li>
-            ))}
-          </ul>
-        </div>
+        <Footer />
       </div>
     </div>
-  </div>
-  <Footer />
-</div>
-  );
-};
+  )
+}
 
-export default TutorPage;
+export default TutorPage

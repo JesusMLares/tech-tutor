@@ -7,7 +7,11 @@ import AppointmentCard from "../loginAppointmentCards/AppointmentCard";
 import { Modal, Box, Button, Typography } from '@mui/material';
 import { GraphQLClient, gql } from "graphql-request"
 
-const client = new GraphQLClient("http://localhost:5000")
+import TestCreateAppointment from "../../Test/TestAppointment/TestCreateAppointment";
+
+const graphqlUrl = process.env.REACT_APP_GRAPHQL_URL
+
+const client = new GraphQLClient(graphqlUrl);
 
 const GET_USER_QUERY = gql`
   query User($id: String!) {
@@ -17,6 +21,7 @@ const GET_USER_QUERY = gql`
       lastName
       email
       role
+      imageUrl
       userAppointments {
         id
         date
@@ -38,6 +43,7 @@ const DELETE_USER_MUTATION = gql`
 function UserAccount() {
   const { currentUser, updateToken } = useCurrentUser();
   const [userData, setUserData] = useState([]);
+  const [appointments, setAppointments] = useState([]);
   const [open, setOpen] = useState(false);
 
   const navigate = useNavigate();
@@ -50,7 +56,6 @@ function UserAccount() {
     }
     try {
       const data = await client.request(GET_USER_QUERY, { id: currentUser.id });
-      console.log('Fetched user data:', data); // Log the response
   
       if (data && data.user) {
         setUserData({
@@ -59,7 +64,9 @@ function UserAccount() {
           lastName: data.user.lastName,
           email: data.user.email,
           role: data.user.role,
+          imageUrl: data.user.imageUrl,
         });
+        setAppointments(data.user.userAppointments);
       } else {
         throw new Error('User not found');
       }
@@ -69,8 +76,13 @@ function UserAccount() {
     }
   };
 
+
   //currentUser takes time to load
   useEffect(() => {
+    if(currentUser.role !== "USER") {
+      navigate("/mentor/account");
+    }
+
     handleFetchUser();
   }, [currentUser]);
 
@@ -99,20 +111,26 @@ function UserAccount() {
             </p>
             <p>
               <strong>First Name:</strong> {userData.firstName}
-              <strong>Last Name:</strong> {userData.lastName}
+            </p>
+            <p>
+            <strong>Last Name:</strong> {userData.lastName}
             </p>
             <p>
               <strong>Role:</strong> {userData.role}
             </p>
+            <img src={userData.imageUrl} alt="user" className="user-image" />
             <button onClick={handleOpen} className="account-delete-btn">
               Delete Account
             </button>
           </div>
           <div className="user-appointment-container">
             <h1 className="user-account-header">Your Appointments</h1>
-            <AppointmentCard />
+            {appointments.map((appointment) => (
+              <AppointmentCard key={appointment.id} appointment={appointment} />
+            ))}
           </div>
         </div>
+        {/* <TestCreateAppointment /> */}
       </div>
       <Modal
         open={open}
@@ -136,7 +154,7 @@ function UserAccount() {
             </Button>
           </div>
         </Box>
-      </Modal>
+      </Modal>      
     </div>
   );
 }

@@ -3,7 +3,8 @@ import { GraphQLClient, gql } from "graphql-request";
 import { jwtDecode } from "jwt-decode"; // Correct import for jwt-decode
 import { useCurrentUser } from "../../../context/CurrentUser"; // Import the useCurrentUser hook
 
-const client = new GraphQLClient("http://localhost:5000");
+const graphqlUrl = process.env.REACT_APP_GRAPHQL_URL
+const client = new GraphQLClient(graphqlUrl);
 
 const GET_USER_QUERY = gql`
   query User($id: String!) {
@@ -13,6 +14,7 @@ const GET_USER_QUERY = gql`
       lastName
       email
       role
+      imageUrl
     }
   }
 `

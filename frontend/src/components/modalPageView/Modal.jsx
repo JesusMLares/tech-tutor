@@ -5,7 +5,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import CheckOut from "../checkOutPageView/CheckOut";
 import './modal.css';
 
-function ModalPage() {
+function ModalPage({ tutor }) {
   // Modal controls
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -51,7 +51,7 @@ function ModalPage() {
           {/* Render the Stripe checkout form within the modal */}
           {stripePromise && clientSecret && (
             <Elements stripe={stripePromise} options={{ clientSecret }}>
-              <CheckOut />
+              <CheckOut tutor={tutor}/>
             </Elements>
           )}
         </Box>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useParams, useNavigate } from "react-router-dom"
 import Navbar from "../navbar/navbar"
+import AccountNav from "../../components/accounts/accountNav/accountNav"
 import { getTutorById } from "../../utils/premadeTutors"
 import { generateTutorDescription } from "../../utils/descriptionGenerator"
 import { generateTutorProfile } from "../../utils/tutorProfileGenerator"
@@ -8,6 +9,7 @@ import "./tutorpage.css"
 import Footer from "../../components/footer/footer"
 import { GraphQLClient, gql } from "graphql-request"
 import ModalPage from "../modalPageView/Modal"
+import { useCurrentUser } from "../../context/CurrentUser"
 
 const graphqlUrl = process.env.REACT_APP_GRAPHQL_URL
 const client = new GraphQLClient(graphqlUrl);
@@ -35,8 +37,8 @@ const TutorPage = () => {
   const [tutor, setTutor] = useState([])
   const navigate = useNavigate()
   const [tutorProfile, setTutorProfile] = useState(null)
+  const { currentUser } = useCurrentUser()
 
-  console.log(userId)
 
   const fetchTutor = async () => {
     if (!userId) {
@@ -45,7 +47,6 @@ const TutorPage = () => {
 
     try {
       const data = await client.request(GET_USER_QUERY, { id: userId })
-      console.log("Fetched user data:", data)
 
       if (data && data.user) {
         setTutor({
@@ -113,7 +114,7 @@ const TutorPage = () => {
 
   return (
     <div className="tutor-page-container-tp">
-      <Navbar />
+      {currentUser ? <AccountNav /> : <Navbar />}
       <div className="tutor-page-content-tp">
         <div className="tutor-page-tp">
           <div className="tutor-left-column-tp">
@@ -133,8 +134,8 @@ const TutorPage = () => {
                 <p className="tutor-level-tp">Level: Experienced</p>
                 <p className="tutor-rating-tp">Rating: {tutor.rating}</p>
                 <div className="tutor-booking-info-tp">
-                  <div className="center-modal-btn">
-                    <ModalPage />
+                  <div className="center-modal-btn" >
+                    <ModalPage tutor={tutor}/>
                   </div>
                   <div className="tutor-rates-availability-tp">
                     <p className="tutor-rates-tp">${tutor.hourlyRate}/per hour</p>

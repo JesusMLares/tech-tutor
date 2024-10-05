@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { AppointmentContext } from "../../context/AppointmentContext";
 import { useNavigate } from "react-router-dom";
 import {
@@ -12,11 +12,29 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
 import dayjs from "dayjs";
+import { GraphQLClient, gql } from "graphql-request"
+import { useCurrentUser } from "../../context/CurrentUser";
+
+const graphqlUrl = process.env.REACT_APP_GRAPHQL_URL
+const client = new GraphQLClient(graphqlUrl);
+
+const CREATE_APPOINTMENT_MUTATION = gql`
+  mutation CreateAppointment($input: CreateAppointmentInput!) {
+    createAppointment(input: $input) {
+      id
+      date
+      userId
+      tutorId
+      postId
+    }
+  }
+`
 
 
-function CheckOut() {
+function CheckOut({ tutor }) {
   const stripe = useStripe();
   const elements = useElements();
+  const { currentUser } = useCurrentUser()
   const navigate = useNavigate();
 
   const { setAppointmentDetails } = useContext(AppointmentContext);
@@ -26,6 +44,35 @@ function CheckOut() {
   const [selectedDate, setSelectedDate] = useState(null);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  
+  useEffect(() => {
+    if (tutor) {
+      console.log("Tutor: ", tutor);
+    }
+  }, [tutor]);
+
+  useEffect(() => {
+    if (currentUser) {
+      console.log("Current User: ", currentUser);
+    }
+  }, [currentUser]);
+
+  const handleCreateAppointment = async (dateFormatted) => {
+    try {
+      const data = await client.request(CREATE_APPOINTMENT_MUTATION, {
+        input: {
+          date: dateFormatted,
+          userId: currentUser.id,
+          tutorId: tutor.id,
+        },
+      })
+
+      alert("Appointment created successfully")
+      navigate("/")
+    } catch (error) {
+      alert("Failed to create appointment")
+    }
+  }
 
   const handleDateChange = (newDate) => {
     setSelectedDate(newDate);
@@ -71,7 +118,7 @@ function CheckOut() {
         appointmentDate,
         mentor: "",
       });
-
+      handleCreateAppointment(appointmentDate);
       navigate("/confirmation");
     } else if (paymentIntent && paymentIntent.status === "processing") {
       setMessage("Payment is still processing.");

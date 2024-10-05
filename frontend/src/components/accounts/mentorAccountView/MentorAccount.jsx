@@ -8,7 +8,7 @@ import { Modal, Box, Button, Typography } from "@mui/material"
 import { GraphQLClient, gql } from "graphql-request"
 
 const graphqlUrl = process.env.REACT_APP_GRAPHQL_URL
-const client = new GraphQLClient(graphqlUrl);
+const client = new GraphQLClient(graphqlUrl)
 
 const GET_USER_QUERY = gql`
   query User($id: String!) {
@@ -119,7 +119,11 @@ function MentorAccount() {
             <p>
               <strong>Role:</strong> {userData.role}
             </p>
-            <img src={userData.imageUrl} alt="profile" className="mentor-profile-img" />
+            <img
+              src={userData.imageUrl}
+              alt="profile"
+              className="mentor-profile-img"
+            />
             <button onClick={handleOpen} className="account-delete-btn">
               Delete Account
             </button>
@@ -127,17 +131,27 @@ function MentorAccount() {
           <div className="mentor-appointment-container">
             <h1 className="mentor-account-header">Your Student Appointments</h1>
             {tutorAppointments.map((appointment) => (
-              <MentorAppointmentCard key={appointment.id} appointment={appointment} />
+              <MentorAppointmentCard
+                key={appointment.id}
+                appointment={appointment}
+              />
             ))}
             <h1 className="mentor-account-header">Your Booked Appointment</h1>
             {userAppointments.map((appointment) => (
-              <MentorAppointmentCard key={appointment.id} appointment={appointment} />
+              <MentorAppointmentCard
+                key={appointment.id}
+                appointment={appointment}
+              />
             ))}
           </div>
           <div className="mentor-skills-container">
             <h1 className="mentor-skills-header">Mentor Skills</h1>
             <p>
-              <strong>{userData.skills}</strong>
+              <ul>
+                {userData.skills.map((skill, index) => (
+                  <li key={index}>{skill}</li>
+                ))}
+              </ul>
             </p>
           </div>
         </div>

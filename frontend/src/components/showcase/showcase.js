@@ -103,7 +103,7 @@ const Showcase = () => {
             <li>Free initial consultation with tutors</li>
             <li>Proven success with a 96% satisfaction rate</li>
           </ul>
-          <button className="cta-button-sc">Find Your Tutor</button>
+          <button className="cta-button-sc" onClick={() => navigate('/tutors')}>Find Your Tutor</button>
         </div>
 
         <div className="testimonial-sc">
@@ -125,7 +125,7 @@ const Showcase = () => {
           {currentUser ? (
             <button className="cta-button-sc" onClick={() => navigate('/user/account')}>View Your Profile</button>
           ) : (
-            <button className="cta-button-sc" onClick={() => navigate('/signup')}>Become a Tutor</button>
+            <button className="cta-button-sc" onClick={() => navigate('/signUp')}>Become a Tutor</button>
           )}
         </section>
       </section>

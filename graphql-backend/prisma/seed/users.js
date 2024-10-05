@@ -18,7 +18,7 @@ async function main() {
       hourlyRate: parseFloat(
         faker.number.float({ min: 10, max: 100 }).toFixed(2)
       ),
-      rating: parseFloat(faker.number.float({ min: 0, max: 5 }).toFixed(1)),
+      rating: parseFloat(faker.number.float({ min: 0, max: 4.9 }).toFixed(1)),
       skills: faker.helpers.arrayElements(
         ['HTML', 'CSS', 'JavaScript', 'React.js', 'Node.js',
         'Python', 'Django', 'Flask', 'SQL', 'MongoDB',

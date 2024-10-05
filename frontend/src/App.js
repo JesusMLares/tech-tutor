@@ -15,6 +15,7 @@ import PaymentSuccessPage from "./pages/paymentSuccessView/PaymentSuccessView"
 import TestCreateAppointment from "./components/Test/TestAppointment/TestCreateAppointment"
 import { AppointmentProvider } from "./context/AppointmentContext"
 import { CurrentUserProvider } from "./context/CurrentUser"
+import TemporayModalPage from "./pages/temproaryModalPage/TempModalView"
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
               <Route path="/confirmation" element={<PaymentSuccessPage />} />
               {/* Remove later */}
               <Route path="/createAppointment" element={<TestCreateAppointment />} />
+              <Route path="/modal" element={<TemporayModalPage />} />
             </Routes>
           </Router>
         </AppointmentProvider>

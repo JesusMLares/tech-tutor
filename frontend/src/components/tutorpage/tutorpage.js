@@ -7,6 +7,7 @@ import { generateTutorProfile } from "../../utils/tutorProfileGenerator"
 import "./tutorpage.css"
 import Footer from "../../components/footer/footer"
 import { GraphQLClient, gql } from "graphql-request"
+import ModalPage from "../modalPageView/Modal"
 
 const graphqlUrl = process.env.REACT_APP_GRAPHQL_URL
 const client = new GraphQLClient(graphqlUrl);
@@ -132,7 +133,9 @@ const TutorPage = () => {
                 <p className="tutor-level-tp">Level: Experienced</p>
                 <p className="tutor-rating-tp">Rating: {tutor.rating}</p>
                 <div className="tutor-booking-info-tp">
-                  <button className="book-button-tp">Book Me Now</button>
+                  <div className="center-modal-btn">
+                    <ModalPage />
+                  </div>
                   <div className="tutor-rates-availability-tp">
                     <p className="tutor-rates-tp">${tutor.hourlyRate}/per hour</p>
                     {/* <p className="tutor-availability-tp">{tutor.isAvailable}</p> */}

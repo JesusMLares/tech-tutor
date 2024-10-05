@@ -55,6 +55,7 @@ function MentorAppointmentCard( { appointment } ) {
           <p className="custom-mentor-card-skills">Student</p>
         </div>
         <p className="custom-mentor-card-date">{appointment.date}</p>
+        <button className="mentor-finished-btn">Finished</button>
       </div>
     </div>
   );

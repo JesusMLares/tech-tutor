@@ -11,6 +11,10 @@ function ModalPage({ tutor }) {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  // Card info controls
+  const [showFakeCardInfo, setShowFakeCardInfo] = useState(false);
+  const handleCardOpen = () => setShowFakeCardInfo(!showFakeCardInfo);
+
   // Stripe setup
   const [stripePromise, setStripePromise] = useState(null);
   const [clientSecret, setClientSecret] = useState("");
@@ -48,6 +52,25 @@ function ModalPage({ tutor }) {
           <Button className="booking-modal-back-btn" onClick={handleClose}>
             Back
           </Button>
+
+          <Button className="booking-modal-warning-btn" onClick={handleCardOpen} >
+            {showFakeCardInfo ? "Hide Card Info" : "Card info"}
+          </Button>
+
+          {showFakeCardInfo && (
+            <div className="fake-card-info">
+              <p>Use this card number for testing:</p>
+              <p><strong>Card Number:</strong> 4242 4242 4242 4242</p>
+              <p><strong>Expiration:</strong> 04/44</p>
+              <p><strong>CVC:</strong> 444</p>
+              <p><strong>ZIP:</strong> 44444</p>
+            </div>
+          )}
+
+          <div className="modal-info-warning">
+            <p>This is a test environment please do not enter real card information</p>
+          </div>
+
           {/* Render the Stripe checkout form within the modal */}
           {stripePromise && clientSecret && (
             <Elements stripe={stripePromise} options={{ clientSecret }}>

@@ -25,14 +25,14 @@ function ModalPage({ tutor }) {
 
   useEffect(() => {
     // Remove env for local testing
-    fetch(`${stripeUrl}/checkOut/config`).then(async (r) => {
+    fetch("https://tech-tutor-production-eaa7.up.railway.app/checkOut/config").then(async (r) => {
       const { publishableKey } = await r.json();
       setStripePromise(loadStripe(publishableKey));
     });
   }, [stripeUrl]);
 
   useEffect(() => {
-    fetch(`${stripeUrl}/checkOut/create-payment-intent`, {
+    fetch("https://tech-tutor-production-eaa7.up.railway.app/checkOut/create-payment-intent", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

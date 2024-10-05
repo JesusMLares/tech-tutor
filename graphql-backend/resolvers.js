@@ -6,6 +6,8 @@ const { generateToken } = require("./auth")
 const resolvers = {
   Query: {
     users: async () => await prisma.user.findMany(),
+    tutorUsers: async () => await prisma.user.findMany({ where: { role: "TUTOR" } }),
+    tutorUsersAvailable: async () => await prisma.user.findMany({ where: { role: "TUTOR", isAvailable: true } }),
     posts: async () => await prisma.post.findMany(),
     appointments: async () => await prisma.appointment.findMany(),
     user: async (_, { id }) => await prisma.user.findUnique({ where: { id } }),
@@ -45,6 +47,7 @@ const resolvers = {
         email,
         password_hash,
         role,
+        imageUrl,
         skills,
         hourlyRate,
         rating,
@@ -59,6 +62,7 @@ const resolvers = {
             email,
             password_hash: hashedPassword,
             role,
+            imageUrl,
             skills,
             hourlyRate,
             rating,
@@ -164,13 +168,12 @@ const resolvers = {
         where: { id },
       })
     },
-    loginUser: async (_, { input }) => {
-      const { email, password_hash } = input
+    loginUser: async (_, { email, password }) => {
       const user = await prisma.user.findUnique({ where: { email } })
       if (!user) {
         throw new Error("Invalid email or password")
       }
-      const validPassword = await bcrypt.compare(password_hash, user.password_hash)
+      const validPassword = await bcrypt.compare(password, user.password_hash)
       if (!validPassword) {
         throw new Error("Invalid email or password")
       }

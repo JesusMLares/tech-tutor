@@ -1,16 +1,16 @@
 import React from "react";
-import { useAuth } from "../../context/AuthContext";
+import { useCurrentUser } from "../../context/CurrentUser";
 import Navbar from "../../components/navbar/navbar";
 import AccountNav from "../../components/accounts/accountNav/accountNav";
 import Footer from "../../components/footer/footer";
 import "./about.css";
 
 const About = () => {
-  const { user } = useAuth();
+  const { currentUser } = useCurrentUser();
 
   return (
     <div className="about-page-ab">
-      {user ? <AccountNav /> : <Navbar />}
+      {currentUser ? <AccountNav /> : <Navbar />}
       <div className="about-container-ab">
         <h1 className="about-title-ab">About Tech Tutor</h1>
 

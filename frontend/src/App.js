@@ -12,6 +12,7 @@ import FindTutor from "./pages/findTutor/findTutor"
 import TutorPage from "./components/tutorpage/tutorpage"
 import PaymentPage from "./pages/payment/PaymentView"
 import PaymentSuccessPage from "./pages/paymentSuccessView/PaymentSuccessView"
+import TestCreateAppointment from "./components/Test/TestAppointment/TestCreateAppointment"
 import { AppointmentProvider } from "./context/AppointmentContext"
 import { CurrentUserProvider } from "./context/CurrentUser"
 import TemporayModalPage from "./pages/temproaryModalPage/TempModalView"
@@ -34,7 +35,8 @@ function App() {
               <Route path="/tutor/:id" element={<TutorPage />} />
               <Route path="/payment" element={<PaymentPage />} />
               <Route path="/confirmation" element={<PaymentSuccessPage />} />
-              <Route path="/modal" element={<TemporayModalPage />} />
+              {/* Remove later */}
+              <Route path="/createAppointment" element={<TestCreateAppointment />} />
             </Routes>
           </Router>
         </AppointmentProvider>

@@ -2,12 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './accountNav.css';
 import { useNavigate } from "react-router-dom";
+import { useCurrentUser } from "../../../context/CurrentUser";
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
 function AccountNav() {
   const navigate = useNavigate();
+  const { currentUser, updateToken } = useCurrentUser();
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -18,10 +20,19 @@ function AccountNav() {
     setAnchorEl(null);
   };
 
-  function logOut() {
-    // Add additional logic for logging the user out 
-    navigate("/");
+  const handleLogout = () => {
+    updateToken(null)
+    navigate("/")
   }
+
+  const handleNaviate = () => {
+    if (currentUser.role === "TUTOR") {
+      navigate("/mentor/account")
+    } else {
+      navigate("/user/account")
+    }
+  }
+
   return (
     <nav className="navbar">
       <div className="navbar-container">
@@ -61,10 +72,10 @@ function AccountNav() {
               'aria-labelledby': 'basic-button'
             }}
           >
-            <MenuItem onClick={() => navigate("/user/account")}>My Account</MenuItem>
+            <MenuItem onClick={handleNaviate}>My Account</MenuItem>
             {/* // Will have to add logic to the above function to change the route depending 
             // on if the user is a mentor */}
-            <MenuItem onClick={logOut}>Logout</MenuItem>
+            <MenuItem onClick={handleLogout}>Logout</MenuItem>
           </Menu>
           </li>
         </ul>

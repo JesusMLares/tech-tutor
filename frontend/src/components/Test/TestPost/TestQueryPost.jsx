@@ -1,7 +1,8 @@
 import React, { useState } from "react"
 import { GraphQLClient, gql } from "graphql-request"
 
-const client = new GraphQLClient("http://localhost:5000")
+const graphqlUrl = process.env.REACT_APP_GRAPHQL_URL
+const client = new GraphQLClient(graphqlUrl);
 
 const GET_POSTS_QUERY = gql`
     query{
@@ -35,6 +36,7 @@ const GET_USER_POSTS_QUERY = gql`
             lastName
             email
             role
+            imageUrl
             posts{
                 id
                 title

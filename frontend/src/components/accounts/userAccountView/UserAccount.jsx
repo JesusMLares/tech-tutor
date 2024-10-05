@@ -1,19 +1,99 @@
-import React from "react";
+import React, { useState, useEffect } from "react"
 import AccountNav from "../accountNav/accountNav";
 import "./Account.css";
+import { useNavigate } from "react-router-dom"
+import { useCurrentUser } from "../../../context/CurrentUser";
 import AppointmentCard from "../loginAppointmentCards/AppointmentCard";
 import { Modal, Box, Button, Typography } from '@mui/material';
+import { GraphQLClient, gql } from "graphql-request"
+
+import TestCreateAppointment from "../../Test/TestAppointment/TestCreateAppointment";
+
+const graphqlUrl = process.env.REACT_APP_GRAPHQL_URL
+
+const client = new GraphQLClient(graphqlUrl);
+
+const GET_USER_QUERY = gql`
+  query User($id: String!) {
+    user(id: $id) {
+      id
+      firstName
+      lastName
+      email
+      role
+      imageUrl
+      userAppointments {
+        id
+        date
+        tutorId
+        postId
+      }
+    }
+  }
+`
+
+const DELETE_USER_MUTATION = gql`
+  mutation DeleteUser($id: String!) {
+    deleteUser(id: $id) {
+      id
+    }
+  }
+`
 
 function UserAccount() {
-  
-  const [open, setOpen] = React.useState(false);
+  const { currentUser, updateToken } = useCurrentUser();
+  const [userData, setUserData] = useState([]);
+  const [appointments, setAppointments] = useState([]);
+  const [open, setOpen] = useState(false);
+
+  const navigate = useNavigate();
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  function handleDelete() {
-    console.log("Account Deleted");
-    handleClose();
+  const handleFetchUser = async () => {
+    if (!currentUser) {
+      return;
+    }
+    try {
+      const data = await client.request(GET_USER_QUERY, { id: currentUser.id });
+  
+      if (data && data.user) {
+        setUserData({
+          id: data.user.id,
+          firstName: data.user.firstName,
+          lastName: data.user.lastName,
+          email: data.user.email,
+          role: data.user.role,
+          imageUrl: data.user.imageUrl,
+        });
+        setAppointments(data.user.userAppointments);
+      } else {
+        throw new Error('User not found');
+      }
+    } catch (error) {
+      console.error('Error fetching user:', error);
+      alert('Failed to fetch user');
+    }
+  };
+
+  //currentUser takes time to load
+  useEffect(() => {
+    handleFetchUser();
+  }, [currentUser]);
+
+
+  const handleDelete = async () => {
+    try {
+      await client.request(DELETE_USER_MUTATION, { id: currentUser.id });
+      alert("User deleted successfully");
+      updateToken(null);
+      navigate("/");
+    } catch (error) {
+      console.error(error);
+      alert("Failed to delete user");
+    }
   }
+
   return (
     <div className="user-account-container">
       <AccountNav />
@@ -22,20 +102,30 @@ function UserAccount() {
           <div className="user-account-info-container">
             <h1 className="user-account-header">Account Information</h1>
             <p>
-              <strong>UserName:</strong> JohnDoe
+              <strong>Email:</strong> {userData.email}
             </p>
             <p>
-              <strong>Email:</strong> johndoe@example.com
+              <strong>First Name:</strong> {userData.firstName}
             </p>
+            <p>
+            <strong>Last Name:</strong> {userData.lastName}
+            </p>
+            <p>
+              <strong>Role:</strong> {userData.role}
+            </p>
+            <img src={userData.imageUrl} alt="user" className="user-image" />
             <button onClick={handleOpen} className="account-delete-btn">
               Delete Account
             </button>
           </div>
           <div className="user-appointment-container">
             <h1 className="user-account-header">Your Appointments</h1>
-            <AppointmentCard />
+            {appointments.map((appointment) => (
+              <AppointmentCard key={appointment.id} appointment={appointment} />
+            ))}
           </div>
         </div>
+        {/* <TestCreateAppointment /> */}
       </div>
       <Modal
         open={open}
@@ -59,7 +149,7 @@ function UserAccount() {
             </Button>
           </div>
         </Box>
-      </Modal>
+      </Modal>      
     </div>
   );
 }

@@ -22,20 +22,37 @@ function ModalPage({ tutor }) {
   const prismaUrl = process.env.REACT_APP_STRIPE_URL;
 
   useEffect(() => {
-    fetch(`${prismaUrl}/checkOut/config`).then(async (r) => {
-      const { publishableKey } = await r.json();
-      setStripePromise(loadStripe(publishableKey));
-    });
+    fetch(`${prismaUrl}/checkOut/config`)
+      .then(async (r) => {
+        if (!r.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const { publishableKey } = await r.json();
+        setStripePromise(loadStripe(publishableKey));
+      })
+      .catch((error) => {
+        console.error('Error fetching config:', error);
+      });
   }, []);
-
+  
   useEffect(() => {
     fetch(`${prismaUrl}/checkOut/create-payment-intent`, {
       method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({}),
-    }).then(async (r) => {
-      const { clientSecret } = await r.json();
-      setClientSecret(clientSecret);
-    });
+    })
+      .then(async (r) => {
+        if (!r.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const { clientSecret } = await r.json();
+        setClientSecret(clientSecret);
+      })
+      .catch((error) => {
+        console.error('Error creating payment intent:', error);
+      });
   }, []);
 
   return (

@@ -19,41 +19,48 @@ function ModalPage({ tutor }) {
   const [stripePromise, setStripePromise] = useState(null);
   const [clientSecret, setClientSecret] = useState("");
 
-  const prismaUrl = process.env.REACT_APP_STRIPE_URL;
+  const backendUrl = process.env.REACT_APP_BACKEND_URL;
+
+  const handleFetchResponse = async (response) => {
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`Network response was not ok: ${errorText}`);
+    }
+    try {
+      return await response.json();
+    } catch (error) {
+      const errorText = await response.text();
+      throw new Error(`Failed to parse JSON: ${errorText}`);
+    }
+  };
 
   useEffect(() => {
-    fetch(`${prismaUrl}/checkOut/config`)
-      .then(async (r) => {
-        if (!r.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const { publishableKey } = await r.json();
+    fetch(`${backendUrl}/checkOut/config`)
+      .then(handleFetchResponse)
+      .then(({ publishableKey }) => {
         setStripePromise(loadStripe(publishableKey));
       })
       .catch((error) => {
         console.error('Error fetching config:', error);
       });
-  }, [prismaUrl]);
-  
+  }, [backendUrl]);
+
   useEffect(() => {
-    fetch(`${prismaUrl}/checkOut/create-payment-intent`, {
+    fetch(`${backendUrl}/checkOut/create-payment-intent`, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({}),
     })
-      .then(async (r) => {
-        if (!r.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const { clientSecret } = await r.json();
+      .then(handleFetchResponse)
+      .then(({ clientSecret }) => {
         setClientSecret(clientSecret);
       })
       .catch((error) => {
         console.error('Error creating payment intent:', error);
       });
-  }, [prismaUrl]);
+  }, [backendUrl]);
 
   return (
     <div>

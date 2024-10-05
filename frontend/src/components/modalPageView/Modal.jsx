@@ -27,10 +27,10 @@ function ModalPage({ tutor }) {
       throw new Error(`Network response was not ok: ${errorText}`);
     }
     try {
-      return await response.json();
+      const jsonResponse = await response.json();
+      return jsonResponse;
     } catch (error) {
-      const errorText = await response.text();
-      throw new Error(`Failed to parse JSON: ${errorText}`);
+      throw new Error(`Failed to parse JSON: ${error.message}`);
     }
   };
 

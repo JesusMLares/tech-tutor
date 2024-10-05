@@ -37,6 +37,7 @@ function App() {
               <Route path="/confirmation" element={<PaymentSuccessPage />} />
               {/* Remove later */}
               <Route path="/createAppointment" element={<TestCreateAppointment />} />
+              <Route path="/modal" element={<TemporayModalPage />} />
             </Routes>
           </Router>
         </AppointmentProvider>

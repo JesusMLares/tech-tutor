@@ -56,7 +56,6 @@ function UserAccount() {
     }
     try {
       const data = await client.request(GET_USER_QUERY, { id: currentUser.id });
-      console.log('Fetched user data:', data); // Log the response
   
       if (data && data.user) {
         setUserData({

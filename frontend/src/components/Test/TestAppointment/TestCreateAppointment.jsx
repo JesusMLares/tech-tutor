@@ -33,7 +33,7 @@ const TestCreateAppointment = () => {
       const data = await client.request(CREATE_APPOINTMENT_MUTATION, {
         input: appointment,
       })
-      console.log(data)
+
       alert("Appointment created successfully")
       setAppointment({
         date: "",
@@ -43,7 +43,6 @@ const TestCreateAppointment = () => {
       })
       navigate("/")
     } catch (error) {
-      console.log(error)
       alert("Failed to create appointment")
     }
   }

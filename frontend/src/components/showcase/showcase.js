@@ -44,7 +44,7 @@ const Showcase = () => {
           .sort(() => 0.5 - Math.random())
           .slice(0, 2)
         setTutors(randomTutors)
-        console.log(randomTutors)
+
       }
     } catch (error) {
       console.error(error)

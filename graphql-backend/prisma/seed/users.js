@@ -3,9 +3,16 @@ const { faker } = require("@faker-js/faker")
 
 const prisma = new PrismaClient()
 
-async function fetchAvatar(gender) {
-  const response = await fetch(`https://xsgames.co/randomusers/avatar.php?g=${gender}`);
-  return response.url;
+async function fetchUser() {
+  const response = await fetch('https://randomuser.me/api/');
+  const data = await response.json();
+  const user = data.results[0];
+  return {
+    firstName: user.name.first,
+    lastName: user.name.last,
+    gender: user.gender,
+    imageUrl: user.picture.large
+  };
 }
 
 async function main() {
@@ -13,16 +20,15 @@ async function main() {
   const amount = 10;
 
   for (let i = 0; i < amount; i++) {
-    const gender = faker.helpers.arrayElement(['male', 'female']);
-    const imageUrl = await fetchAvatar(gender); // Await the fetchAvatar function
+    const user = await fetchUser();
 
     users.push({
-      firstName: faker.person.firstName({ gender }),
-      lastName: faker.person.lastName(),
-      email: faker.internet.email(),
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: `${user.firstName.toLowerCase()}.${user.lastName.toLowerCase()}@example.com`,
       password_hash: faker.internet.password(),
       role: faker.helpers.arrayElement(["TUTOR"]),
-      imageUrl, // Use the fetched image URL
+      imageUrl: user.imageUrl, 
       hourlyRate: parseFloat(
         faker.number.float({ min: 10, max: 100 }).toFixed(2)
       ),
@@ -40,6 +46,7 @@ async function main() {
       isAvailable: true,
     });
     console.log(users[i]);
+    console.log(user.gender);
   }
 
   await prisma.user.createMany({

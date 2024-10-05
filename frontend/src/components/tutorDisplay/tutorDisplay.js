@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getMultipleRandomTutors } from '../../utils/tutorGenerator';
 import './tutorDisplay.css';
 import { GraphQLClient, gql } from "graphql-request"
+import { useNavigate } from "react-router-dom"
 
 const graphqlUrl = process.env.REACT_APP_GRAPHQL_URL
 const client = new GraphQLClient(graphqlUrl);
@@ -33,6 +34,7 @@ const TutorCard = ({ firstName, lastName, imageUrl, skills, rating }) => (
   );
 
 const TutorDisplay = () => {
+  const navigate = useNavigate()
   const [tutors, setTutors] = useState([]);
   
   const fetchTutors = async () => {
@@ -47,6 +49,9 @@ const TutorDisplay = () => {
     }
   }
   
+  const handleViewAllTutors = () => {
+    navigate('/tutors');
+  }
       
 
   useEffect(() => {
@@ -66,7 +71,7 @@ const TutorDisplay = () => {
         ))}
       </div>
       <div className="view-all-tutors-td">
-        <button className="view-all-button-td">View All Tutors</button>
+        <button className="view-all-button-td" onClick={handleViewAllTutors}>View All Tutors</button>
       </div>
     </div>
     </div>

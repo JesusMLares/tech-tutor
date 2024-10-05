@@ -205,7 +205,7 @@ function SignUp() {
                       type="number"
                       name="rating"
                       min="1"
-                      max="5"
+                      max="4"
                       value={formData.rating}
                       onChange={handleFormChange}
                       placeholder="Rating"

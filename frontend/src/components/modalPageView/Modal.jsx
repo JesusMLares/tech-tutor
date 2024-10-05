@@ -18,49 +18,24 @@ function ModalPage({ tutor }) {
   // Stripe setup
   const [stripePromise, setStripePromise] = useState(null);
   const [clientSecret, setClientSecret] = useState("");
-
-  const backendUrl = process.env.REACT_APP_STRIPE_URL;
-
-  const handleFetchResponse = async (response) => {
-    if (!response.ok) {
-      const errorText = await response.text();
-      throw new Error(`Network response was not ok: ${errorText}`);
-    }
-    try {
-      const jsonResponse = await response.json();
-      return jsonResponse;
-    } catch (error) {
-      throw new Error(`Failed to parse JSON: ${error.message}`);
-    }
-  };
+  
 
   useEffect(() => {
-    fetch(`${backendUrl}/checkOut/config`)
-      .then(handleFetchResponse)
-      .then(({ publishableKey }) => {
-        setStripePromise(loadStripe(publishableKey));
-      })
-      .catch((error) => {
-        console.error('Error fetching config:', error);
-      });
-  }, [backendUrl]);
+    fetch("/checkOut/config").then(async (r) => {
+      const { publishableKey } = await r.json();
+      setStripePromise(loadStripe(publishableKey));
+    });
+  }, []);
 
   useEffect(() => {
-    fetch(`${backendUrl}/checkOut/create-payment-intent`, {
+    fetch("/checkOut/create-payment-intent", {
       method: "POST",
-      headers: {
-        'Content-Type': 'application/json'
-      },
       body: JSON.stringify({}),
-    })
-      .then(handleFetchResponse)
-      .then(({ clientSecret }) => {
-        setClientSecret(clientSecret);
-      })
-      .catch((error) => {
-        console.error('Error creating payment intent:', error);
-      });
-  }, [backendUrl]);
+    }).then(async (r) => {
+      const { clientSecret } = await r.json();
+      setClientSecret(clientSecret);
+    });
+  }, []);
 
   return (
     <div>

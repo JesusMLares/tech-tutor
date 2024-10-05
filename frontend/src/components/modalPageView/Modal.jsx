@@ -24,14 +24,15 @@ function ModalPage({ tutor }) {
   
 
   useEffect(() => {
-    fetch(`/checkOut/config`).then(async (r) => {
+    // Remove env for local testing
+    fetch(`${stripeUrl}/checkOut/config`).then(async (r) => {
       const { publishableKey } = await r.json();
       setStripePromise(loadStripe(publishableKey));
     });
   }, [stripeUrl]);
 
   useEffect(() => {
-    fetch(`/checkOut/create-payment-intent`, {
+    fetch(`${stripeUrl}/checkOut/create-payment-intent`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

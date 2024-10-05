@@ -10,7 +10,7 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY, {
 
 // sends publishable key to frontend
 router.get("/config", (req, res) => {
-  res.send({
+  res.json({
     publishableKey: process.env.STRIPE_PUBLISHABLE_KEY,
   });
 });
@@ -26,9 +26,9 @@ router.post("/create-payment-intent", async (req, res) => {
       },
     });
 
-    res.send({ clientSecret: paymentIntent.client_secret });
+    res.json({ clientSecret: paymentIntent.client_secret });
   } catch (e) {
-    return res.status(400).send({
+    return res.status(400).json({
       error: {
         message: e.message,
       },

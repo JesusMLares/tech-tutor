@@ -79,7 +79,7 @@ function CheckOut({ tutor }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!stripe || !elements || !selectedDate || !firstName || !lastName) {
+    if (!stripe || !elements || !selectedDate) {
       setMessage("Please fill in all fields before submitting.");
       return;
     }
@@ -134,24 +134,6 @@ function CheckOut({ tutor }) {
           <h1>Book an appointment</h1>
           <form className="date-name-container">
             <div className="name-container">
-              <label>
-                <input
-                  type="text"
-                  name="firstName"
-                  placeholder="First Name"
-                  value={firstName}
-                  onChange={(e) => setFirstName(e.target.value)}
-                />
-              </label>
-              <label>
-                <input
-                  type="text"
-                  name="lastName"
-                  placeholder="Last Name"
-                  value={lastName}
-                  onChange={(e) => setLastName(e.target.value)}
-                />
-              </label>
             </div>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DateCalendar

@@ -256,7 +256,7 @@ function SignUp() {
             </button>
           </form>
           <Link to="/login" className="sign-up-back-link">
-            Sign Up
+            Login
           </Link>
         </div>
       </div>

@@ -33,12 +33,47 @@
     left: 1rem !important;
     background-color: #52bb90 !important;
     border: none !important;
-    border-radius: 1rem !important;
+    border-radius: 4px !important;
     color: #f5f5f5 !important;
-    font-size: 1.5rem !important;
+    font-size: 1rem !important;
     font-weight: bold !important;
     cursor: pointer !important;
     transition: color 0.3s ease-out !important;
+    text-decoration: none !important;
+    text-transform: initial !important;
+}
+
+.booking-modal-warning-btn {
+    position: absolute !important;
+    top: 1rem !important;
+    right: 1rem !important;
+    background-color: #52bb90 !important;
+    border: none !important;
+    border-radius: 4px !important;
+    color: #f5f5f5 !important;
+    font-size: 1rem !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+    transition: color 0.3s ease-out !important;
+    text-decoration: none !important;
+    text-transform: initial !important;
+}
+
+.fake-card-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    top: .5rem;
+}
+
+.modal-info-warning {
+    position: absolute;
+    bottom: .5rem;
+    background-color: #9f0000;
+    border-radius: 4px;
+    color: white;
+    padding: 1rem;
 }
 
 /* Hover effect for the back button */

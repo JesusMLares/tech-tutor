@@ -4,8 +4,11 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckOut from "../checkOutPageView/CheckOut";
 import './modal.css';
+import { useCurrentUser } from "../../context/CurrentUser";
 
 function ModalPage({ tutor }) {
+  const { currentUser } = useCurrentUser();
+
   // Modal controls
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -45,7 +48,7 @@ function ModalPage({ tutor }) {
 
   return (
     <div>
-      <button onClick={handleOpen} className="booking-modal-open-btn">
+      <button onClick={handleOpen} className={currentUser ? "booking-modal-open-btn" : "booking-modal-no-user-btn"} disabled={!currentUser}>
         Book Appointment
       </button>
       <Modal

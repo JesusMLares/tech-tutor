@@ -2,7 +2,8 @@ import React, { useState } from "react"
 import { useCurrentUser } from "../../../context/CurrentUser"
 import { GraphQLClient, gql } from "graphql-request"
 
-const client = new GraphQLClient("http://localhost:5000")
+const graphqlUrl = process.env.REACT_APP_GRAPHQL_URL
+const client = new GraphQLClient(graphqlUrl);
 
 const DELETE_USER_MUTATION = gql`
   mutation DeleteUser($id: String!) {

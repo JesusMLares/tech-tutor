@@ -4,7 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { useCurrentUser } from "../../context/CurrentUser"; // Import the useCurrentUser hook
 import { GraphQLClient, gql } from "graphql-request";
 import { Link } from "react-router-dom";
-const client = new GraphQLClient("http://localhost:5000");
+
+const graphqlUrl = process.env.REACT_APP_GRAPHQL_URL
+const client = new GraphQLClient(graphqlUrl);
 
 const LOGIN_MUTATION = gql`
   mutation LoginUser($email: String!, $password: String!) {

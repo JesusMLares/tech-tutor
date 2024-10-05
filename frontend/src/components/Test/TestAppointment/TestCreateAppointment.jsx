@@ -3,7 +3,8 @@ import { GraphQLClient, gql } from "graphql-request"
 import { useNavigate } from "react-router-dom"
 import { useCurrentUser } from "../../../context/CurrentUser"
 
-const client = new GraphQLClient("http://localhost:5000")
+const graphqlUrl = process.env.REACT_APP_GRAPHQL_URL
+const client = new GraphQLClient(graphqlUrl);
 
 const CREATE_APPOINTMENT_MUTATION = gql`
   mutation CreateAppointment($input: CreateAppointmentInput!) {
@@ -32,7 +33,7 @@ const TestCreateAppointment = () => {
       const data = await client.request(CREATE_APPOINTMENT_MUTATION, {
         input: appointment,
       })
-      console.log(data)
+
       alert("Appointment created successfully")
       setAppointment({
         date: "",
@@ -42,7 +43,6 @@ const TestCreateAppointment = () => {
       })
       navigate("/")
     } catch (error) {
-      console.log(error)
       alert("Failed to create appointment")
     }
   }

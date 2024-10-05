@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react"
 import "./showcase.css"
 import { GraphQLClient, gql } from "graphql-request"
 
-const client = new GraphQLClient("http://localhost:5000")
+const graphqlUrl = process.env.REACT_APP_GRAPHQL_URL
+const client = new GraphQLClient(graphqlUrl);
 
 const GET_TUTORS_QUERY = gql`
   query {
@@ -43,7 +44,7 @@ const Showcase = () => {
           .sort(() => 0.5 - Math.random())
           .slice(0, 2)
         setTutors(randomTutors)
-        console.log(randomTutors)
+
       }
     } catch (error) {
       console.error(error)

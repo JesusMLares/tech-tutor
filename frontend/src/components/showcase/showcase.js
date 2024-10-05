@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import "./showcase.css"
 import { GraphQLClient, gql } from "graphql-request"
+import { useCurrentUser } from "../../context/CurrentUser"
 
 const graphqlUrl = process.env.REACT_APP_GRAPHQL_URL
 const client = new GraphQLClient(graphqlUrl);
@@ -35,6 +36,9 @@ const GET_TUTORS_QUERY = gql`
 
 const Showcase = () => {
   const [tutors, setTutors] = useState([])
+  const { currentUser } = useCurrentUser()
+  console.log(currentUser)
+  
 
   const fetchTwoRandomTutors = async () => {
     try {
@@ -44,7 +48,6 @@ const Showcase = () => {
           .sort(() => 0.5 - Math.random())
           .slice(0, 2)
         setTutors(randomTutors)
-
       }
     } catch (error) {
       console.error(error)
@@ -118,7 +121,11 @@ const Showcase = () => {
             their potential, join our community of skilled tutors. Set your own
             schedule, teach what you love, and make an impact today.
           </p>
-          <button className="cta-button-sc">Become a Tutor</button>
+          {currentUser?.role === "TUTOR" ? (
+            <button className="cta-button-sc">View Your Profile</button>
+          ) : (
+            <button className="cta-button-sc">Become a Tutor</button>
+          )}
         </section>
       </section>
     </div>

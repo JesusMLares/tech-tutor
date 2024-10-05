@@ -33,7 +33,7 @@ function ModalPage({ tutor }) {
       .catch((error) => {
         console.error('Error fetching config:', error);
       });
-  }, []);
+  }, [prismaUrl]);
   
   useEffect(() => {
     fetch(`${prismaUrl}/checkOut/create-payment-intent`, {
@@ -53,7 +53,7 @@ function ModalPage({ tutor }) {
       .catch((error) => {
         console.error('Error creating payment intent:', error);
       });
-  }, []);
+  }, [prismaUrl]);
 
   return (
     <div>

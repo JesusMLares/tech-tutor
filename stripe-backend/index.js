@@ -18,5 +18,4 @@ app.listen(PORT, () => {
     console.log("The server is working if you can read this")
 })
 
-
 // ****** PROXY SERVER TO LOCALHOST ADDED TO FRONTEND PACKAGE.JSON *******

@@ -8,9 +8,12 @@ import CheckOut from "../checkOutPageView/CheckOut";
 function Payment(props) {
   const [stripePromise, setStripePromise] = useState(null);
   const [clientSecret, setClientSecret] = useState("");
+  
+  const prismaUrl = process.env.REACT_APP_STRIPE_URL;
 
   useEffect(() => {
-    fetch("/checkOut/config").then(async (r) => {
+    //Remove or add env HERE!
+    fetch(`${prismaUrl}/checkOut/config`).then(async (r) => {
       const { publishableKey } = await r.json();
 
       //console.log("Publishable key:",publishableKey);
@@ -19,7 +22,8 @@ function Payment(props) {
   }, []);
 
   useEffect(() => {
-    fetch("/checkOut/create-payment-intent", {
+    //Remove or add env HERE!
+    fetch(`${prismaUrl}/checkOut/create-payment-intent`, {
       method: "POST",
       body: JSON.stringify({}),
     }).then(async (r) => {

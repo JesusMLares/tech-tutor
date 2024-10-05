@@ -19,7 +19,7 @@ function ModalPage({ tutor }) {
   const [stripePromise, setStripePromise] = useState(null);
   const [clientSecret, setClientSecret] = useState("");
 
-  const backendUrl = process.env.REACT_APP_BACKEND_URL;
+  const backendUrl = process.env.REACT_APP_STRIPE_URL;
 
   const handleFetchResponse = async (response) => {
     if (!response.ok) {

@@ -10,6 +10,7 @@ import {
 import "./findTutor.css"
 import Footer from "../../components/footer/footer"
 import { GraphQLClient, gql } from "graphql-request"
+import ExpertTab from "../expertTab/expertTab";
 
 const graphqlUrl = process.env.REACT_APP_GRAPHQL_URL
 const client = new GraphQLClient(graphqlUrl);
@@ -121,6 +122,9 @@ const FindTutor = () => {
           <h1 className="tutor-list-title-ft">
             {selectedLevel ? `${selectedLevel} Tutors` : 'Tutors Online Now'}
           </h1>
+          {selectedLevel === 'Expert' ? (
+            <ExpertTab />
+          ) : ( 
           <div className="tutor-grid-ft">
             {filteredTutors.map((tutor) => (
               <div
@@ -149,6 +153,7 @@ const FindTutor = () => {
               </div>
             ))}
           </div>
+          )}
         </main>
         {/* <main className="tutor-list-container-ft">
           <h1 className="tutor-list-title-ft">

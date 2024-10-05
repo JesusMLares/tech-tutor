@@ -1,0 +1,62 @@
+.expert-grid-et {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    justify-content: center;
+  }
+  
+  .expert-card-et {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .expert-card-et:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.241);
+  }
+  
+  .expert-image-et {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+  }
+  
+  .expert-name-et {
+    margin: 0.5rem 0;
+    color: #333;
+    font-size: 1.2rem;
+  }
+  
+  .expert-skills-et {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+  
+  .skill-tag-et {
+    background-color: #E31837;
+    color: #ffffff;
+    padding: 0.25rem 0.5rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    margin: 0.25rem;
+  }
+  
+  .expert-rating-et {
+    font-weight: bold;
+    color: #E31837;
+    margin-top: 0.5rem;
+  }

@@ -82,6 +82,9 @@ function MentorAccount() {
   }
 
   useEffect(() => {
+    if (currentUser?.role !== "TUTOR") {
+      navigate("/user/account")
+    }
     handleFetchUser()
   }, [currentUser])
 

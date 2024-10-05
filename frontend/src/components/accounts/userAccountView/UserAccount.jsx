@@ -76,8 +76,13 @@ function UserAccount() {
     }
   };
 
+
   //currentUser takes time to load
   useEffect(() => {
+    if(currentUser.role !== "USER") {
+      navigate("/mentor/account");
+    }
+
     handleFetchUser();
   }, [currentUser]);
 

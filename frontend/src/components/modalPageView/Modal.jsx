@@ -20,6 +20,7 @@ function ModalPage({ tutor }) {
   const [clientSecret, setClientSecret] = useState("");
 
   const stripeUrl = process.env.REACT_APP_STRIPE_URL;
+  console.log("Stripe URL: ", stripeUrl);
   
 
   useEffect(() => {
@@ -32,6 +33,9 @@ function ModalPage({ tutor }) {
   useEffect(() => {
     fetch(`${stripeUrl}/checkOut/create-payment-intent`, {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
       body: JSON.stringify({}),
     }).then(async (r) => {
       const { clientSecret } = await r.json();

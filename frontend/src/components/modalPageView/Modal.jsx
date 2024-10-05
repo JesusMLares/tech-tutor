@@ -18,24 +18,26 @@ function ModalPage({ tutor }) {
   // Stripe setup
   const [stripePromise, setStripePromise] = useState(null);
   const [clientSecret, setClientSecret] = useState("");
+
+  const stripeUrl = process.env.REACT_APP_STRIPE_URL;
   
 
   useEffect(() => {
-    fetch("/checkOut/config").then(async (r) => {
+    fetch(`${stripeUrl}/checkOut/config`).then(async (r) => {
       const { publishableKey } = await r.json();
       setStripePromise(loadStripe(publishableKey));
     });
-  }, []);
+  }, [stripeUrl]);
 
   useEffect(() => {
-    fetch("/checkOut/create-payment-intent", {
+    fetch(`${stripeUrl}/checkOut/create-payment-intent`, {
       method: "POST",
       body: JSON.stringify({}),
     }).then(async (r) => {
       const { clientSecret } = await r.json();
       setClientSecret(clientSecret);
     });
-  }, []);
+  }, [stripeUrl]);
 
   return (
     <div>

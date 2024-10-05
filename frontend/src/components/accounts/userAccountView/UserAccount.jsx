@@ -79,7 +79,7 @@ function UserAccount() {
 
   //currentUser takes time to load
   useEffect(() => {
-    if(currentUser.role !== "USER") {
+    if(currentUser?.role !== "USER") {
       navigate("/mentor/account");
     }
 
@@ -128,6 +128,7 @@ function UserAccount() {
             {appointments.map((appointment) => (
               <AppointmentCard key={appointment.id} appointment={appointment} />
             ))}
+
           </div>
         </div>
         {/* <TestCreateAppointment /> */}

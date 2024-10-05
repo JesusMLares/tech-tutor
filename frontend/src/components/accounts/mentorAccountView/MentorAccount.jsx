@@ -74,6 +74,7 @@ function MentorAccount() {
           skills: data.user.skills,
           isAvailable: data.user.isAvailable,
         })
+        console.log("User Data: ", data.user)
         setUserAppointments(data.user.userAppointments)
         setTutorAppointments(data.user.tutorAppointments)
       }
@@ -129,7 +130,7 @@ function MentorAccount() {
             {tutorAppointments.map((appointment) => (
               <MentorAppointmentCard key={appointment.id} appointment={appointment} />
             ))}
-            <h1 className="mentor-account-header">Your Booked Appointments</h1>
+            <h1 className="mentor-account-header">Your Booked Appointment</h1>
             {userAppointments.map((appointment) => (
               <MentorAppointmentCard key={appointment.id} appointment={appointment} />
             ))}

@@ -44,18 +44,6 @@ function CheckOut({ tutor }) {
   const [selectedDate, setSelectedDate] = useState(null);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  
-  useEffect(() => {
-    if (tutor) {
-      console.log("Tutor: ", tutor);
-    }
-  }, [tutor]);
-
-  useEffect(() => {
-    if (currentUser) {
-      console.log("Current User: ", currentUser);
-    }
-  }, [currentUser]);
 
   const handleCreateAppointment = async (dateFormatted) => {
     try {

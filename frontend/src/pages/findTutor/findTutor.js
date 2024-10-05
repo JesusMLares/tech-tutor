@@ -41,7 +41,6 @@ const FindTutor = () => {
         if (data && data.tutorUsers) {
           setTutors(data.tutorUsers)
           setFilteredTutors(data.tutorUsers)
-          console.log(data.tutorUsers)
         }
       } catch (error) {
         console.error(error)

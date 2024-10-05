@@ -74,7 +74,6 @@ function MentorAccount() {
           skills: data.user.skills,
           isAvailable: data.user.isAvailable,
         })
-        console.log("User Data: ", data.user)
         setUserAppointments(data.user.userAppointments)
         setTutorAppointments(data.user.tutorAppointments)
       }

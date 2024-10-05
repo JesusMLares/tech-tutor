@@ -31,7 +31,6 @@ const verifyToken = (token) => {
 const decodeToken = (token) => {
     try {
       const decoded = jwt.decode(token, { complete: true });
-      console.log('Decoded Token:', decoded);
       return decoded;
     } catch (error) {
       console.error('Error decoding token:', error);

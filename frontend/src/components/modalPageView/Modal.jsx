@@ -20,7 +20,6 @@ function ModalPage({ tutor }) {
   const [clientSecret, setClientSecret] = useState("");
 
   const stripeUrl = process.env.REACT_APP_STRIPE_URL;
-  console.log("Stripe URL: ", stripeUrl);
   
 
   useEffect(() => {

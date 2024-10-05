@@ -48,7 +48,6 @@ const QueryUsers = () => {
     try {
       e.preventDefault()
       const data = await client.request(GET_USER_QUERY, { id: userId });
-      console.log('Fetched user data:', data); // Log the response
   
       if (data && data.user) {
         setUser({

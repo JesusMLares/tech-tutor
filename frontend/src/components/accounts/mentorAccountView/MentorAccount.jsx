@@ -136,13 +136,11 @@ function MentorAccount() {
           </div>
           <div className="mentor-skills-container">
             <h1 className="mentor-skills-header">Mentor Skills</h1>
-            <p>
             <ul className="tutor-features-sc">
                 {userData.skills?.map((skill, index) => (
                   <li key={index}>{skill}</li>
                 ))}
               </ul>
-            </p>
           </div>
         </div>
       </div>

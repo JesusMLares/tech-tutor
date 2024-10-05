@@ -168,6 +168,11 @@ const resolvers = {
         where: { id },
       })
     },
+    deleteAppointment: async (_, { id }) => {
+      return await prisma.appointment.delete({
+        where: { id },
+      })
+    },
     loginUser: async (_, { email, password }) => {
       const user = await prisma.user.findUnique({ where: { email } })
       if (!user) {

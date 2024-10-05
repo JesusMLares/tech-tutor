@@ -48,7 +48,8 @@ const DELETE_USER_MUTATION = gql`
 function MentorAccount() {
   const { currentUser, updateToken } = useCurrentUser()
   const [userData, setUserData] = useState([])
-  const [appointments, setAppointments] = useState([])
+  const [userAppointments, setUserAppointments] = useState([])
+  const [tutorAppointments, setTutorAppointments] = useState([])
   const [open, setOpen] = React.useState(false)
 
   const navigate = useNavigate()
@@ -73,7 +74,8 @@ function MentorAccount() {
           skills: data.user.skills,
           isAvailable: data.user.isAvailable,
         })
-        setAppointments(data.user.tutorAppointments)
+        setUserAppointments(data.user.userAppointments)
+        setTutorAppointments(data.user.tutorAppointments)
       }
     } catch (error) {
       console.error("Error fetching user:", error)
@@ -124,7 +126,11 @@ function MentorAccount() {
           </div>
           <div className="mentor-appointment-container">
             <h1 className="mentor-account-header">Your Student Appointments</h1>
-            {appointments.map((appointment) => (
+            {tutorAppointments.map((appointment) => (
+              <MentorAppointmentCard key={appointment.id} appointment={appointment} />
+            ))}
+            <h1 className="mentor-account-header">Your Booked Appointments</h1>
+            {userAppointments.map((appointment) => (
               <MentorAppointmentCard key={appointment.id} appointment={appointment} />
             ))}
           </div>

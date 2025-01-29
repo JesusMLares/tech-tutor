@@ -6,6 +6,8 @@ const app = express();
 const PORT = process.env.PORT;
 const FRONTEND_URL = process.env.FRONTEND_URL;
 
+console.log("FRONTEND_URL:", FRONTEND_URL); // Add this line to verify the FRONTEND_URL
+
 // Imports the routes from other files uisng express router
 const checkOut = require('./routes/checkOut')
 const products = require('./routes/products')

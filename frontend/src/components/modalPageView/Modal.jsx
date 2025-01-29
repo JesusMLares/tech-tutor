@@ -49,7 +49,7 @@ function ModalPage({ tutor }) {
   return (
     <div>
       <button onClick={handleOpen} className={currentUser ? "booking-modal-open-btn" : "booking-modal-no-user-btn"} disabled={!currentUser}>
-        Book Appointment
+        {currentUser ? "Book Appointment" : "Log in to book appointment"}
       </button>
       <Modal
         open={open}
